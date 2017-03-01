@@ -7,30 +7,79 @@
 //
 
 import UIKit
+import AVFoundation
 
 class CameraViewController: UIViewController {
 
+    var device: AVCaptureDevice!
+    var input: AVCaptureInput!
+    var output: AVCaptureMetadataOutput!
+    var session: AVCaptureSession!
+    var preview: AVCaptureVideoPreviewLayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        
         self.navigationItem.title = "扫描"
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        // Input
+        device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        do {
+            input = try AVCaptureDeviceInput(device: device)
+        } catch {
+            print("Input失败")
+        }
+        
+        // Output
+        output = AVCaptureMetadataOutput()
+        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+        output.metadataOutputRectOfInterest(for: CGRect(x: 0, y: 0, width: 1, height: 1))
+        
+        // Session
+        session = AVCaptureSession()
+        session.sessionPreset = AVCaptureSessionPreset640x480
+        if session.canAddInput(input) {
+            session.addInput(input)
+        }else {
+            print("session add input fail")
+        }
+        
+        if session.canAddOutput(output) {
+            session.addOutput(output)
+        }else {
+            print("session add output fail")
+        }
+        // 这行必须放在session初始化后，不然会crash
+        output.metadataObjectTypes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code]
+        
+        // Preview
+        preview = AVCaptureVideoPreviewLayer(session: session)
+        preview.videoGravity = AVLayerVideoGravityResizeAspectFill
+        preview.frame.size = CGSize(width: 200, height: 200)
+        preview.frame.origin = CGPoint(x: Screen.width / 2 - preview.frame.width / 2, y: 150)
+        view.layer.insertSublayer(preview, at: 0)
+        
+        session.startRunning()
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+// MARK: - AVCaptureMetadataOutputObjectsDelegate
+extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
+    
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+        
+        if metadataObjects.count > 0 {
+            
+            if let meta = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
+                print(meta.stringValue)
+            }else {
+                print("扫描失败")
+            }
+            session.stopRunning()
+        }
+        
     }
-    */
-
+    
 }

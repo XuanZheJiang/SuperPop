@@ -68,8 +68,8 @@ class MainViewController: UIViewController {
             let pattern = "key':'(.*)'"
             let result = str.match(pattern: pattern, index: 1)
             let resultFirst = result.first
+            
             if let resultFirst = resultFirst {
-                print("key=\(resultFirst)")
                 self.startClick(key: resultFirst)
             }
         }
@@ -77,19 +77,8 @@ class MainViewController: UIViewController {
     
     // 启动
     func startClick(key: String) {
-        print(linkArray.count)
         
         for dict in linkArray {
-            
-            let parameters1 = ["type":"4", "url":dict["url"]! as String]
-            Alamofire.request(postUrl, method: .post, parameters: parameters1, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
-                
-                let jsonDic = try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String : Any];
-                let code = jsonDic["code"] as! NSNumber
-                let msg = jsonDic["msg"] as! String
-                let url = jsonDic["url"] as! String
-                print(code, msg, url)
-            })
             
             let parameters2 = ["type":"2", "id":dict["id"]! as String, "key":key]
             Alamofire.request(postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
@@ -100,7 +89,6 @@ class MainViewController: UIViewController {
                 print(code, msg);
                 
             })
-            sleep(1)
         }
         self.isSuccessful = true
         tableView.reloadData()
@@ -114,11 +102,6 @@ class MainViewController: UIViewController {
         self.navigationController?.pushViewController(addVC, animated: true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.isSuccessful = false

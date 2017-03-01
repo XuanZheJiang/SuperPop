@@ -27,7 +27,7 @@ class AddViewController: UIViewController {
         
         // 推广链接输入框
         shareLinkTF = UITextField()
-        shareLinkTF.text = "http://dwz.cn/2KzNUw"
+        shareLinkTF.text = "http://t.cn/RtGs7ed"
         shareLinkTF.placeholder = "请输入推广链接"
         shareLinkTF.font = UIFont.systemFont(ofSize: 20)
         shareLinkTF.autocorrectionType = .no
@@ -87,12 +87,11 @@ class AddViewController: UIViewController {
             print("account=\(account.first!)")
             
             // 存入plist
-            let dict = ["url":self.shareLinkTF.text!, "id":id.first!, "account":account.first!]
+            let dict = ["id":id.first!, "account":account.first!]
             PlistManager.standard.array.append(dict)
         }
         
     }
-    
     
     func pushCameraPage() {
         let cameraVC = CameraViewController()
@@ -102,11 +101,4 @@ class AddViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
