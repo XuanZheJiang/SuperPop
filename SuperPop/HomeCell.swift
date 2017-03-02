@@ -36,11 +36,13 @@ class HomeCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        contentView.backgroundColor = UIColor.clear
+        self.backgroundColor = UIColor.clear
+        self.selectionStyle = .none
         // 帐号Label
         accountL = UILabel()
-        accountL.text = "-------"
         contentView.addSubview(accountL)
-        accountL.font = UIFont.systemFont(ofSize: 15)
+        accountL.font = UIFont.systemFont(ofSize: 18)
         accountL.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
             make.left.equalToSuperview().offset(15)

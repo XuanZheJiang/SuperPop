@@ -18,7 +18,7 @@ class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
         
         self.navigationItem.title = "增加帐号"
         
@@ -29,7 +29,8 @@ class AddViewController: UIViewController {
         shareLinkTF = UITextField()
         shareLinkTF.text = "http://t.cn/RtGs7ed"
         shareLinkTF.placeholder = "请输入推广链接"
-        shareLinkTF.font = UIFont.systemFont(ofSize: 20)
+        shareLinkTF.clearButtonMode = .whileEditing
+        shareLinkTF.font = UIFont.systemFont(ofSize: 18)
         shareLinkTF.autocorrectionType = .no
         shareLinkTF.autocapitalizationType = .none
         view.addSubview(shareLinkTF)
@@ -56,7 +57,7 @@ class AddViewController: UIViewController {
         addBtn.layer.cornerRadius = 5
         addBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         addBtn.setTitle("增加", for: .normal)
-        addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         addBtn.setTitleColor(UIColor.white, for: .normal)
         addBtn.addTarget(self, action: #selector(addAccount), for: .touchUpInside)
         view.addSubview(addBtn)
@@ -75,20 +76,31 @@ class AddViewController: UIViewController {
         Alamofire.request("http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { (response) in
             
             let result = String.init(data: response.data!, encoding: .utf8)
+            var dict = [String:String]()
             
             // 取出id
             let pattern = "id=(\\d{6,10})"
-            let id = result!.match(pattern: pattern, index: 1)
-            print("id=\(id.first!)")
+            let id = result?.match(pattern: pattern, index: 1)
+            if let id = id?.first {
+                print("id=\(id)")
+                dict["id"] = id
+            }
 
             // 取出Account
             let pattern2 = "Account=(.*)\" target"
-            let account = result!.match(pattern: pattern2, index: 1)
-            print("account=\(account.first!)")
+            let account = result?.match(pattern: pattern2, index: 1)
+            if let account = account?.first {
+                print("account=\(account)")
+                dict["account"] = account
+            }
             
             // 存入plist
-            let dict = ["id":id.first!, "account":account.first!]
-            PlistManager.standard.array.append(dict)
+            if dict.count == 2 {
+                PlistManager.standard.array.append(dict)
+                _ = self.navigationController?.popViewController(animated: true)
+            }else {
+                print("推广链接有误")
+            }
         }
         
     }

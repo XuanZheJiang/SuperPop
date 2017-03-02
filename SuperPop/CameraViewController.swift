@@ -19,7 +19,7 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
         self.navigationItem.title = "扫描"
         
         // Input
@@ -74,6 +74,36 @@ extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
             
             if let meta = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
                 print(meta.stringValue)
+                let result = meta.stringValue!
+                
+                let patternDomain = "http://www.battleofballs.com"
+                let toIndex = result.index(result.startIndex, offsetBy: 28)
+                let subString = result.substring(to: toIndex)
+                
+                
+                
+                if patternDomain == subString {
+                    
+                    // 取出id
+                    let patternId = "id=(\\d{6,10})"
+                    let id = result.match(pattern: patternId, index: 1)
+                    print("id=\(id.first!)")
+                    
+                    // 取出Account
+                    let patternAccount = "Account=(.*)"
+                    let account = result.match(pattern: patternAccount, index: 1)
+                    print("account=\(account.first!)")
+                    
+                    // 存入plist
+                    let dict = ["id":id.first!, "account":account.first!]
+                    PlistManager.standard.array.append(dict)
+                    session.stopRunning()
+                    _ = navigationController?.popToRootViewController(animated: true)
+                }else {
+                    print("二维码不符")
+                }
+                
+                
             }else {
                 print("扫描失败")
             }

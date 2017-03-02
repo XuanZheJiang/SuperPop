@@ -25,14 +25,19 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         
         self.navigationItem.title = "球球辅助"
         // 导航栏右按钮
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "增加", style: .plain, target: self, action: #selector(pushAddPage))
         
+        // 导航栏左按钮
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "清空", style: .plain, target: self, action: #selector(clear))
+        
         // 初始化tableView
         tableView = UITableView()
+        // 去掉tableView多余的空白行分割线
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
         tableView.frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
         tableView.register(HomeCell.classForCoder(), forCellReuseIdentifier: "HomeCell")
         tableView.delegate = self
@@ -101,6 +106,14 @@ class MainViewController: UIViewController {
         let addVC = AddViewController()
         self.navigationController?.pushViewController(addVC, animated: true)
     }
+    
+    // 清空plist
+    func clear() {
+        PlistManager.standard.clear()
+        tableView.reloadData()
+        startBtn.backgroundColor = UIColor.gray
+        startBtn.isEnabled = false
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -115,6 +128,10 @@ class MainViewController: UIViewController {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return linkArray.count

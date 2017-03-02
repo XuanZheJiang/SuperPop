@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FA121E961E6866A10027451E"
+               BuildableName = "SuperPopTests.xctest"
+               BlueprintName = "SuperPopTests"
+               ReferencedContainer = "container:SuperPop.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FA121EA41E686EB70027451E"
+               BuildableName = "SuperPopUITests.xctest"
+               BlueprintName = "SuperPopUITests"
+               ReferencedContainer = "container:SuperPop.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
