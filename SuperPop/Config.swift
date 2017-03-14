@@ -9,7 +9,7 @@
 import UIKit
 
 let postUrl = "http://xzfuli.cn/index.php?a=api_qiuqiu"
-let filePath = NSHomeDirectory() + "/Documents/wb.plist"
+let filePath = NSHomeDirectory() + "/Documents/profile.plist"
 /// 常用路径
 struct Path {
     static let documents = NSHomeDirectory() + "/Documents/"

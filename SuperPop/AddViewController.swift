@@ -27,7 +27,7 @@ class AddViewController: UIViewController {
         
         // 推广链接输入框
         shareLinkTF = UITextField()
-        shareLinkTF.text = "http://t.cn/RtGs7ed"
+        shareLinkTF.text = "http://"
         shareLinkTF.placeholder = "请输入推广链接"
         shareLinkTF.clearButtonMode = .whileEditing
         shareLinkTF.font = UIFont.systemFont(ofSize: 18)

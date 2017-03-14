@@ -92,12 +92,16 @@ extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
                     // 取出Account
                     let patternAccount = "Account=(.*)"
                     let account = result.match(pattern: patternAccount, index: 1)
-                    print("account=\(account.first!)")
+                    let utfAccount = account.first!
+                    print("account=\((utfAccount as NSString).removingPercentEncoding!)")
                     
-                    // 存入plist
-                    let dict = ["id":id.first!, "account":account.first!]
-                    PlistManager.standard.array.append(dict)
-                    session.stopRunning()
+                    if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
+                        // 存入plist
+                        let dict = ["id":id.first!, "account":utfAccount]
+                        PlistManager.standard.array.append(dict)
+                        session.stopRunning()
+                    }
+                    
                     _ = navigationController?.popToRootViewController(animated: true)
                 }else {
                     print("二维码不符")
