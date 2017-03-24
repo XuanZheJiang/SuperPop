@@ -90,7 +90,7 @@ class MainViewController: UIViewController {
             Alamofire.request(postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
                 
                 let jsonDic = try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String : Any];
-                let code = jsonDic["code"] as! NSNumber
+                let code = jsonDic["code"] as! Int
                 let msg = jsonDic["msg"] as! String
                 print(code, msg);
                 
