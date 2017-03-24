@@ -71,43 +71,42 @@ extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         if metadataObjects.count > 0 {
-            
             if let meta = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
+                
                 print(meta.stringValue)
                 let result = meta.stringValue!
                 
-                let patternDomain = "http://www.battleofballs.com"
-                let toIndex = result.index(result.startIndex, offsetBy: 28)
-                let subString = result.substring(to: toIndex)
-                
-                
-                
-                if patternDomain == subString {
+                if result.characters.count >= 28 {
+                    let patternDomain = "http://www.battleofballs.com"
+                    let toIndex = result.index(result.startIndex, offsetBy: 28)
+                    let subString = result.substring(to: toIndex)
                     
-                    // 取出id
-                    let patternId = "id=(\\d{6,10})"
-                    let id = result.match(pattern: patternId, index: 1)
-                    print("id=\(id.first!)")
-                    
-                    // 取出Account
-                    let patternAccount = "Account=(.*)"
-                    let account = result.match(pattern: patternAccount, index: 1)
-                    let utfAccount = account.first!
-                    print("account=\((utfAccount as NSString).removingPercentEncoding!)")
-                    
-                    if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
-                        // 存入plist
-                        let dict = ["id":id.first!, "account":utfAccount]
-                        PlistManager.standard.array.append(dict)
-                        session.stopRunning()
+                    if patternDomain == subString {
+                        
+                        // 取出id
+                        let patternId = "id=(\\d{6,10})"
+                        let id = result.match(pattern: patternId, index: 1)
+                        print("id=\(id.first!)")
+                        
+                        // 取出Account
+                        let patternAccount = "Account=(.*)"
+                        let account = result.match(pattern: patternAccount, index: 1)
+                        let utfAccount = account.first!
+                        print("account=\((utfAccount as NSString).removingPercentEncoding!)")
+                        
+                        if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
+                            // 存入plist
+                            let dict = ["id":id.first!, "account":utfAccount]
+                            PlistManager.standard.array.append(dict)
+                            session.stopRunning()
+                        }
+                        
+                        _ = navigationController?.popToRootViewController(animated: true)
+                    }else {
+                        print("二维码不符")
                     }
-                    
-                    _ = navigationController?.popToRootViewController(animated: true)
-                }else {
-                    print("二维码不符")
                 }
-                
-                
+ 
             }else {
                 print("扫描失败")
             }

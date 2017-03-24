@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
         
         self.navigationItem.title = "球球辅助"
         // 导航栏右按钮
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "增加", style: .plain, target: self, action: #selector(pushAddPage))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pushAddPage))
         
         // 导航栏左按钮
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "清空", style: .plain, target: self, action: #selector(clear))
@@ -66,6 +66,7 @@ class MainViewController: UIViewController {
         
     }
     
+    /// 获取每小时变动的key
     func getKey() {
         Alamofire.request("http://xzfuli.cn/#").responseData { (response) in
             let str = String.init(data: response.data!, encoding: .utf8)!
@@ -89,7 +90,7 @@ class MainViewController: UIViewController {
             Alamofire.request(postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
                 
                 let jsonDic = try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String : Any];
-                let code = jsonDic["code"] as! NSNumber
+                let code = jsonDic["code"] as! Int
                 let msg = jsonDic["msg"] as! String
                 print(code, msg);
                 
@@ -149,4 +150,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    /// 左划删除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        PlistManager.standard.array.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
+    }
+    /// 修改Delete按钮文字为"删除"
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
+    }
+    
+    
 }

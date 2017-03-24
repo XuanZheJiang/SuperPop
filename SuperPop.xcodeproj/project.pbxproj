@@ -20,6 +20,8 @@
 		FA71328A1E6588DC00D1BF04 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132891E6588DC00D1BF04 /* CameraViewController.swift */; };
 		FA71328C1E658C1200D1BF04 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71328B1E658C1200D1BF04 /* Config.swift */; };
 		FA71328E1E658C3100D1BF04 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71328D1E658C3100D1BF04 /* UIViewExtension.swift */; };
+		FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D25391E85451E00AD0A36 /* LinkTextField.swift */; };
+		FA9D253C1E8547DA00AD0A36 /* AddLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D253B1E8547DA00AD0A36 /* AddLinkButton.swift */; };
 		FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE89E911E65A4C100116C2B /* StringExtension.swift */; };
 		FAE89E941E65A63500116C2B /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE89E931E65A63500116C2B /* HomeCell.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,8 @@
 		FA7132891E6588DC00D1BF04 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		FA71328B1E658C1200D1BF04 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FA71328D1E658C3100D1BF04 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		FA9D25391E85451E00AD0A36 /* LinkTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkTextField.swift; sourceTree = "<group>"; };
+		FA9D253B1E8547DA00AD0A36 /* AddLinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLinkButton.swift; sourceTree = "<group>"; };
 		FAE89E911E65A4C100116C2B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		FAE89E931E65A63500116C2B /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +160,8 @@
 				FA7132751E65840700D1BF04 /* AppDelegate.swift */,
 				FA7132771E65840700D1BF04 /* MainViewController.swift */,
 				FA7132871E65884900D1BF04 /* AddViewController.swift */,
+				FA9D25391E85451E00AD0A36 /* LinkTextField.swift */,
+				FA9D253B1E8547DA00AD0A36 /* AddLinkButton.swift */,
 				FA7132891E6588DC00D1BF04 /* CameraViewController.swift */,
 				FAE89E931E65A63500116C2B /* HomeCell.swift */,
 				FA121E911E6662700027451E /* PlistManager.swift */,
@@ -377,6 +383,8 @@
 				FA71328E1E658C3100D1BF04 /* UIViewExtension.swift in Sources */,
 				FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */,
 				FAE89E941E65A63500116C2B /* HomeCell.swift in Sources */,
+				FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */,
+				FA9D253C1E8547DA00AD0A36 /* AddLinkButton.swift in Sources */,
 				FA121E921E6662700027451E /* PlistManager.swift in Sources */,
 				FA7132781E65840700D1BF04 /* MainViewController.swift in Sources */,
 				FA71328A1E6588DC00D1BF04 /* CameraViewController.swift in Sources */,

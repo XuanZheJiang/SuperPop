@@ -12,9 +12,9 @@ import Alamofire
 
 class AddViewController: UIViewController {
 
-    var shareLinkTF: UITextField!
-    var addBtn: UIButton!
-    var lineImageView: UIImageView!
+    var lollyLinkTF: LinkTextField!
+    var eggLinkTF: LinkTextField!
+    var addBtn: AddLinkButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,46 +23,36 @@ class AddViewController: UIViewController {
         self.navigationItem.title = "增加帐号"
         
         // 导航栏右按钮
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "相机", style: .plain, target: self, action: #selector(pushCameraPage))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "相机", style: .plain, target: self, action: #selector(pushCameraPage))
         
-        // 推广链接输入框
-        shareLinkTF = UITextField()
-        shareLinkTF.text = "http://"
-        shareLinkTF.placeholder = "请输入推广链接"
-        shareLinkTF.clearButtonMode = .whileEditing
-        shareLinkTF.font = UIFont.systemFont(ofSize: 18)
-        shareLinkTF.autocorrectionType = .no
-        shareLinkTF.autocapitalizationType = .none
-        view.addSubview(shareLinkTF)
-        shareLinkTF.snp.makeConstraints { (make) in
+        // 棒棒糖推广链接输入框
+        lollyLinkTF = LinkTextField()
+        lollyLinkTF.text = "http://t.cn/RtqVl3m"
+        lollyLinkTF.placeholder = "请输入棒棒糖推广链接"
+        view.addSubview(lollyLinkTF)
+        lollyLinkTF.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(200)
             make.centerX.equalToSuperview()
             make.width.equalTo(Screen.width - 40)
             make.height.equalTo(40)
         }
         
-        // 输入框底线
-        lineImageView = UIImageView()
-        lineImageView.image = #imageLiteral(resourceName: "line")
-        view.addSubview(lineImageView)
-        lineImageView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self.shareLinkTF)
-            make.bottom.equalTo(self.shareLinkTF)
-            make.height.equalTo(1)
-            make.width.equalTo(self.shareLinkTF)
+        // 龙蛋推广链接输入框
+        eggLinkTF = LinkTextField()
+        eggLinkTF.text = ""
+        eggLinkTF.placeholder = "请输入龙蛋推广链接"
+        view.addSubview(eggLinkTF)
+        eggLinkTF.snp.makeConstraints { (make) in
+            make
         }
         
         // 增加按钮
-        addBtn = UIButton(type: .custom)
-        addBtn.layer.cornerRadius = 5
-        addBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        addBtn = AddLinkButton(type: .custom)
         addBtn.setTitle("增加", for: .normal)
-        addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        addBtn.setTitleColor(UIColor.white, for: .normal)
         addBtn.addTarget(self, action: #selector(addAccount), for: .touchUpInside)
         view.addSubview(addBtn)
         addBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(self.shareLinkTF.snp.bottom).offset(100)
+            make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(100)
             make.centerX.equalToSuperview()
             make.height.equalTo(40)
             make.width.equalTo(60)
@@ -72,7 +62,7 @@ class AddViewController: UIViewController {
     
     func addAccount() {
         
-        let parameters = ["turl":shareLinkTF.text!]
+        let parameters = ["turl":lollyLinkTF.text!]
         Alamofire.request("http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { (response) in
             
             let result = String.init(data: response.data!, encoding: .utf8)
