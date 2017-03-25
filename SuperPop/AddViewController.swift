@@ -37,15 +37,6 @@ class AddViewController: UIViewController {
             make.height.equalTo(40)
         }
         
-        // 龙蛋推广链接输入框
-        eggLinkTF = LinkTextField()
-        eggLinkTF.text = ""
-        eggLinkTF.placeholder = "请输入龙蛋推广链接"
-        view.addSubview(eggLinkTF)
-        eggLinkTF.snp.makeConstraints { (make) in
-            
-        }
-        
         // 增加按钮
         addBtn = AddLinkButton(type: .custom)
         addBtn.setTitle("增加", for: .normal)
@@ -63,9 +54,10 @@ class AddViewController: UIViewController {
     func addAccount() {
         
         let parameters = ["turl":lollyLinkTF.text!]
-        Alamofire.request("http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseData { (response) in
+        Alamofire.request("http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
             
             let result = String.init(data: response.data!, encoding: .utf8)
+//            print(response.result.value)
             var dict = [String:String]()
             
             // 取出id

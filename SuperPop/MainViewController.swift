@@ -9,12 +9,12 @@
 import UIKit
 import SnapKit
 import Alamofire
+import SwiftyJSON
 
 class MainViewController: UIViewController {
 
     var tableView: UITableView!
     var startBtn: UIButton!
-    
     var linkArray: [[String:String]] {
         get {
             return PlistManager.standard.array
@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
     }
     
     var isSuccessful = false
+    var AFManager: SessionManager!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,11 @@ class MainViewController: UIViewController {
         
         // 导航栏左按钮
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "清空", style: .plain, target: self, action: #selector(clear))
+        
+        // 配置超时config
+        let configTimeout = URLSessionConfiguration.default
+        configTimeout.timeoutIntervalForRequest = 3
+        AFManager = SessionManager(configuration: configTimeout)
         
         // 初始化tableView
         tableView = UITableView()
@@ -68,15 +75,24 @@ class MainViewController: UIViewController {
     
     /// 获取每小时变动的key
     func getKey() {
-        Alamofire.request("http://xzfuli.cn/#").responseData { (response) in
-            let str = String.init(data: response.data!, encoding: .utf8)!
+        AFManager.request("http://xzfuli.cn/#").responseString { (response) in
             
-            let pattern = "key':'(.*)'"
-            let result = str.match(pattern: pattern, index: 1)
-            let resultFirst = result.first
-            
-            if let resultFirst = resultFirst {
-                self.startClick(key: resultFirst)
+            switch response.result {
+            case .success(let value):
+                print(value)
+                let pattern = "key':'(.*)'"
+                let keys = value.match(pattern: pattern, index: 1)
+                let key = keys.first
+                
+                if let key = key {
+                    self.startClick(key: key)
+                }
+            case .failure(let error):
+                print("getKey---\(error)")
+                let failAlert = UIAlertController(title: "错误", message: "网络超时", preferredStyle: .alert)
+                let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                failAlert.addAction(failAction)
+                self.present(failAlert, animated: true, completion: nil)
             }
         }
     }
@@ -86,13 +102,16 @@ class MainViewController: UIViewController {
         
         for dict in linkArray {
             
-            let parameters2 = ["type":"2", "id":dict["id"]! as String, "key":key]
-            Alamofire.request(postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            let parameters2 = ["type":"5", "id":dict["id"]! as String, "key":key]
+            AFManager.request(postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
                 
-                let jsonDic = try! JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as! [String : Any];
-                let code = jsonDic["code"] as! Int
-                let msg = jsonDic["msg"] as! String
-                print(code, msg);
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    print(json)
+                case .failure(let error):
+                    print("post---\(error)")
+                }
                 
             })
         }
