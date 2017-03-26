@@ -23,8 +23,16 @@ class HomeCell: UITableViewCell {
     var lollyImageView: UIImageView!
     var eggImageView: UIImageView!
     
-    var bgGroup = [#imageLiteral(resourceName: "bgRed"), #imageLiteral(resourceName: "bgGreen"), #imageLiteral(resourceName: "bgLightGreen"), #imageLiteral(resourceName: "bgPurple"), #imageLiteral(resourceName: "bgDarkPuple")]
-    let randomNum = arc4random_uniform(5)
+    var bgGroup = [#imageLiteral(resourceName: "bgRed"),
+                   #imageLiteral(resourceName: "bgGreen"),
+                   #imageLiteral(resourceName: "bgLightGreen"),
+                   #imageLiteral(resourceName: "bgPurple"),
+                   #imageLiteral(resourceName: "bgDarkPuple"),
+                   #imageLiteral(resourceName: "bgGray"),
+                   #imageLiteral(resourceName: "bgPink"),
+                   #imageLiteral(resourceName: "bgYellow"),
+                   #imageLiteral(resourceName: "bgLigntBlue")]
+    let randomNum = arc4random_uniform(9)
     
     
     
@@ -32,11 +40,14 @@ class HomeCell: UITableViewCell {
         didSet {
             switch status {
             case .default:
-                self.lollyImageView.isHidden = false
+                self.lollyImageView.isHidden = true
+                self.eggImageView.isHidden = true
             case .successful:
                 self.lollyImageView.isHidden = false
+                self.eggImageView.isHidden = false
             case .failure:
-                self.lollyImageView.isHidden = false
+                self.lollyImageView.isHidden = true
+                self.eggImageView.isHidden = true
             }
         }
     }
@@ -73,7 +84,7 @@ class HomeCell: UITableViewCell {
         
         // lolly
         lollyImageView = UIImageView()
-        lollyImageView.isHidden = false
+        lollyImageView.isHidden = true
         lollyImageView.image = #imageLiteral(resourceName: "lolly")
         containerViewImage.addSubview(lollyImageView)
         lollyImageView.snp.makeConstraints { (make) in
@@ -84,7 +95,7 @@ class HomeCell: UITableViewCell {
         
         // egg
         eggImageView = UIImageView()
-        eggImageView.isHidden = false
+        eggImageView.isHidden = true
         eggImageView.image = #imageLiteral(resourceName: "egg")
         containerViewImage.addSubview(eggImageView)
         eggImageView.snp.makeConstraints { (make) in

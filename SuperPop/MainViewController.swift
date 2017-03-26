@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
 
     var tableView: UITableView!
     var startBtn: UIButton!
+    var removeAllBtn: UIButton!
     var linkArray: [[String:String]] {
         get {
             return PlistManager.standard.array
@@ -76,23 +77,31 @@ class MainViewController: UIViewController {
         tableView.frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
         tableView.register(HomeCell.classForCoder(), forCellReuseIdentifier: "HomeCell")
         tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
+        tableView.contentInset = UIEdgeInsetsMake(10, 0, 74, 0)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         
         // 启动按钮
-        startBtn = UIButton(type: .custom)
+        startBtn = UIButton()
         startBtn.setBackgroundImage(#imageLiteral(resourceName: "fly"), for: .normal)
         view.addSubview(startBtn)
         startBtn.snp.makeConstraints { (make) in
-            make.width.height.equalTo(50)
+            make.width.height.equalTo(Screen.width / 6)
             make.right.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-10)
         }
         startBtn.layoutIfNeeded()
         startBtn.layer.cornerRadius = startBtn.s_width / 2
         startBtn.addTarget(self, action: #selector(getKey), for: .touchUpInside)
+        
+        // 清空按钮
+//        removeAllBtn = UIButton()
+//        startBtn.setBackgroundImage(nil, for: .normal)
+//        view.addSubview(removeAllBtn)
+//        removeAllBtn.snp.makeConstraints { (make) in
+//            make.width.height.equalTo(<#T##other: ConstraintRelatableTarget##ConstraintRelatableTarget#>)
+//        }
         
         if linkArray.count == 0 {
             startBtn.isEnabled = false
@@ -106,7 +115,7 @@ class MainViewController: UIViewController {
             
             switch response.result {
             case .success(let value):
-                print(value)
+//                print(value)
                 let pattern = "key':'(.*)'"
                 let keys = value.match(pattern: pattern, index: 1)
                 let key = keys.first
@@ -136,14 +145,14 @@ class MainViewController: UIViewController {
                 case .success(let value):
                     let json = JSON(value)
                     print(json)
+                    self.isSuccessful = true
+                    self.tableView.reloadData()
                 case .failure(let error):
                     print("post---\(error)")
                 }
                 
             })
         }
-        self.isSuccessful = true
-        tableView.reloadData()
     }
     
     

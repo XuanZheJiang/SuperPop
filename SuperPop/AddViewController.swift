@@ -71,8 +71,8 @@ class AddViewController: UIViewController {
             let pattern2 = "Account=(.*)\" target"
             let account = result?.match(pattern: pattern2, index: 1)
             if let account = account?.first {
-                print("account=\(account)")
-                dict["account"] = account
+                print("account=\(account.removingPercentEncoding)")
+                dict["account"] = account.removingPercentEncoding
             }
             
             // 存入plist
@@ -81,6 +81,10 @@ class AddViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }else {
                 print("推广链接有误")
+                let failAlert = UIAlertController(title: "错误", message: "推广链接有误", preferredStyle: .alert)
+                let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                failAlert.addAction(failAction)
+                self.present(failAlert, animated: true, completion: nil)
             }
         }
         
