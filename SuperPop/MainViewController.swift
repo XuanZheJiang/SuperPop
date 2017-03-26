@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Alamofire
 import SwiftyJSON
+import BTNavigationDropdownMenu
 
 class MainViewController: UIViewController {
 
@@ -23,14 +24,39 @@ class MainViewController: UIViewController {
     
     var isSuccessful = false
     var AFManager: SessionManager!
-    
+    let items = ["手动增加", "二维码扫描增加"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "球球辅助"
+        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "添加帐号", items: items as [AnyObject] )
+        self.navigationItem.titleView = menu
+        menu.cellBackgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        menu.cellTextLabelColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        menu.cellSeparatorColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        menu.cellSelectionColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        menu.checkMarkImage = nil
+        menu.selectedCellTextLabelColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        menu.animationDuration = 0.3
+        menu.cellTextLabelFont = UIFont.systemFont(ofSize: 16)
+        menu.navigationBarTitleFont = UIFont.systemFont(ofSize: 17)
+        menu.shouldChangeTitleText = false
+        
+        menu.didSelectItemAtIndexHandler = { [weak self] index in
+            switch index {
+            case 0:
+                self?.present(AddViewController(), animated: true, completion: nil)
+            default:
+                self?.present(CameraViewController(), animated: true, completion: nil)
+            }
+        }
+        
+        
         // 导航栏右按钮
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pushAddPage))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pushAddPage))
         
         // 导航栏左按钮
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "清空", style: .plain, target: self, action: #selector(clear))
@@ -137,6 +163,7 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.isSuccessful = false
         tableView.reloadData()
         if linkArray.count > 0 {

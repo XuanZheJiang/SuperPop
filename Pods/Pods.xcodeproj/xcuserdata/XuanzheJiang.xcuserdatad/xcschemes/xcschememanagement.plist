@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>BTNavigationDropdownMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-SuperPop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,12 +32,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>25E1A144BF4903020844A0EFF8E10ECB</key>
+		<key>13A6A3F2164541C20C8DC15B5E1021D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38C40862D300612FE69ED19AA9C81061</key>
+		<key>14FC70A52B83462F0F555F7DDA7432AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>20E137D28F38797DBB58F0E7B927085A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -42,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>89158AC1C41600AC01342F4E25F303B1</key>
+		<key>FD23F1DA220A44C7E84F356B64871271</key>
 		<dict>
 			<key>primary</key>
 			<true/>
