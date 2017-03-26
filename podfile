@@ -8,6 +8,6 @@ target 'SuperPop' do
   pod 'Alamofire'
   pod 'SnapKit'
   pod 'SwiftyJSON'
-#  pod 'AEXML'
+  pod 'AEXML'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
 end
