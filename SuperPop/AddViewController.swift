@@ -13,7 +13,7 @@ import Alamofire
 class AddViewController: UIViewController {
 
     var lollyLinkTF: LinkTextField!
-    var addBtn: AddLinkButton!
+    var addBtn: BaseButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +30,21 @@ class AddViewController: UIViewController {
         lollyLinkTF.placeholder = "请输入棒棒糖推广链接"
         view.addSubview(lollyLinkTF)
         lollyLinkTF.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(200)
+            make.top.equalToSuperview().offset(150)
             make.centerX.equalToSuperview()
             make.width.equalTo(Screen.width - 40)
             make.height.equalTo(40)
         }
         
         // 增加按钮
-        addBtn = AddLinkButton(type: .custom)
-        addBtn.setTitle("增加", for: .normal)
+        addBtn = BaseButton()
+        addBtn.setBackgroundImage(#imageLiteral(resourceName: "Hook"), for: .normal)
         addBtn.addTarget(self, action: #selector(addAccount), for: .touchUpInside)
         view.addSubview(addBtn)
         addBtn.snp.makeConstraints { (make) in
-            make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(100)
+            make.width.height.equalTo(Screen.width / 6)
+            make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(50)
             make.centerX.equalToSuperview()
-            make.height.equalTo(40)
-            make.width.equalTo(60)
         }
         
     }
@@ -71,7 +70,7 @@ class AddViewController: UIViewController {
             let pattern2 = "Account=(.*)\" target"
             let account = result?.match(pattern: pattern2, index: 1)
             if let account = account?.first {
-                print("account=\(account.removingPercentEncoding)")
+                print("account=\(account.removingPercentEncoding!)")
                 dict["account"] = account.removingPercentEncoding
             }
             

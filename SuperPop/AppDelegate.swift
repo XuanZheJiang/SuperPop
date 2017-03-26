@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
         
         let mainNC = UINavigationController(rootViewController: MainViewController())
-        
+        print(Screen.width / 6)
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         window?.backgroundColor = UIColor.white

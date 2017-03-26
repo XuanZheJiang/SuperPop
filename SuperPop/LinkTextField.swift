@@ -18,6 +18,7 @@ class LinkTextField: UITextField {
         
         self.clearButtonMode = .whileEditing
         self.font = UIFont.systemFont(ofSize: 18)
+        self.textColor = UIColor.white
         self.autocorrectionType = .no
         self.autocapitalizationType = .none
         

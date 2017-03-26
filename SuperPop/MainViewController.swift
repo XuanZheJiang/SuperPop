@@ -15,8 +15,8 @@ import BTNavigationDropdownMenu
 class MainViewController: UIViewController {
 
     var tableView: UITableView!
-    var startBtn: UIButton!
-    var removeAllBtn: UIButton!
+    var startBtn: BaseButton!
+    var removeAllBtn: BaseButton!
     var linkArray: [[String:String]] {
         get {
             return PlistManager.standard.array
@@ -29,11 +29,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bgNavi"), for: .default)
         self.navigationController?.navigationBar.shadowImage = #imageLiteral(resourceName: "line")
-        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
         
         let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "添加帐号", items: items as [AnyObject] )
         self.navigationItem.titleView = menu
@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pushAddPage))
         
         // 导航栏左按钮
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "清空", style: .plain, target: self, action: #selector(clear))
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "清空", style: .plain, target: self, action: #selector(clear))
         
         // 配置超时config
         let configTimeout = URLSessionConfiguration.default
@@ -83,25 +83,26 @@ class MainViewController: UIViewController {
         view.addSubview(tableView)
         
         // 启动按钮
-        startBtn = UIButton()
+        startBtn = BaseButton()
         startBtn.setBackgroundImage(#imageLiteral(resourceName: "fly"), for: .normal)
+        startBtn.addTarget(self, action: #selector(getKey), for: .touchUpInside)
         view.addSubview(startBtn)
         startBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(Screen.width / 6)
-            make.right.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-20)
         }
-        startBtn.layoutIfNeeded()
-        startBtn.layer.cornerRadius = startBtn.s_width / 2
-        startBtn.addTarget(self, action: #selector(getKey), for: .touchUpInside)
         
         // 清空按钮
-//        removeAllBtn = UIButton()
-//        startBtn.setBackgroundImage(nil, for: .normal)
-//        view.addSubview(removeAllBtn)
-//        removeAllBtn.snp.makeConstraints { (make) in
-//            make.width.height.equalTo(<#T##other: ConstraintRelatableTarget##ConstraintRelatableTarget#>)
-//        }
+        removeAllBtn = BaseButton()
+        removeAllBtn.setBackgroundImage(#imageLiteral(resourceName: "deleteAll"), for: .normal)
+        removeAllBtn.addTarget(self, action: #selector(clearAll), for: .touchUpInside)
+        view.addSubview(removeAllBtn)
+        removeAllBtn.snp.makeConstraints { (make) in
+            make.width.height.equalTo(Screen.width / 6)
+            make.left.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(-20)
+        }
         
         if linkArray.count == 0 {
             startBtn.isEnabled = false
@@ -164,7 +165,7 @@ class MainViewController: UIViewController {
     }
     
     // 清空plist
-    func clear() {
+    func clearAll() {
         PlistManager.standard.clear()
         tableView.reloadData()
         startBtn.isEnabled = false
