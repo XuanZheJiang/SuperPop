@@ -105,7 +105,7 @@ extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
                             session.stopRunning()
                         }
                         
-                        _ = navigationController?.popToRootViewController(animated: true)
+                        self.dismiss(animated: true, completion: nil)
                     }else {
                         print("二维码不符")
                     }

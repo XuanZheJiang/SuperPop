@@ -13,7 +13,6 @@ import Alamofire
 class AddViewController: UIViewController {
 
     var lollyLinkTF: LinkTextField!
-    var eggLinkTF: LinkTextField!
     var addBtn: AddLinkButton!
     
     override func viewDidLoad() {
@@ -79,7 +78,7 @@ class AddViewController: UIViewController {
             // 存入plist
             if dict.count == 2 {
                 PlistManager.standard.array.append(dict)
-                _ = self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }else {
                 print("推广链接有误")
             }

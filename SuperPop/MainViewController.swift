@@ -29,17 +29,19 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bgNavi"), for: .default)
+        self.navigationController?.navigationBar.shadowImage = #imageLiteral(resourceName: "line")
+        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
         
         let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "添加帐号", items: items as [AnyObject] )
         self.navigationItem.titleView = menu
-        menu.cellBackgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        menu.cellBackgroundColor = UIColor.colorFrom(hexString: "5A657A")
         menu.cellTextLabelColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        menu.cellSeparatorColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        menu.cellSelectionColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        menu.cellSeparatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        menu.cellSelectionColor = UIColor.colorFrom(hexString: "515E7C")
         menu.checkMarkImage = nil
-        menu.selectedCellTextLabelColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        menu.selectedCellTextLabelColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         menu.animationDuration = 0.3
         menu.cellTextLabelFont = UIFont.systemFont(ofSize: 16)
         menu.navigationBarTitleFont = UIFont.systemFont(ofSize: 17)
@@ -70,21 +72,21 @@ class MainViewController: UIViewController {
         tableView = UITableView()
         // 去掉tableView多余的空白行分割线
         tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
+        tableView.backgroundColor = UIColor.clear
         tableView.frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
         tableView.register(HomeCell.classForCoder(), forCellReuseIdentifier: "HomeCell")
+        tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
         
         // 启动按钮
         startBtn = UIButton(type: .custom)
-        startBtn.setTitleColor(UIColor.white, for: .normal)
-        startBtn.setTitle("启动", for: .normal)
-        startBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        startBtn.setBackgroundImage(#imageLiteral(resourceName: "fly"), for: .normal)
         view.addSubview(startBtn)
         startBtn.snp.makeConstraints { (make) in
-            make.width.height.equalTo(Screen.width / 6)
+            make.width.height.equalTo(50)
             make.right.equalToSuperview().offset(-10)
             make.bottom.equalToSuperview().offset(-10)
         }
@@ -93,7 +95,6 @@ class MainViewController: UIViewController {
         startBtn.addTarget(self, action: #selector(getKey), for: .touchUpInside)
         
         if linkArray.count == 0 {
-            startBtn.backgroundColor = UIColor.gray
             startBtn.isEnabled = false
         }
         
@@ -157,7 +158,6 @@ class MainViewController: UIViewController {
     func clear() {
         PlistManager.standard.clear()
         tableView.reloadData()
-        startBtn.backgroundColor = UIColor.gray
         startBtn.isEnabled = false
     }
 
@@ -167,7 +167,6 @@ class MainViewController: UIViewController {
         self.isSuccessful = false
         tableView.reloadData()
         if linkArray.count > 0 {
-            startBtn.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
             startBtn.isEnabled = true
         }
     }
@@ -177,7 +176,7 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
