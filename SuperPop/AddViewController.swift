@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Alamofire
+import PKHUD
 
 class AddViewController: UIViewController {
 
@@ -50,6 +51,7 @@ class AddViewController: UIViewController {
     }
     
     func addAccount() {
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 60)
         
         let parameters = ["turl":lollyLinkTF.text!]
         Alamofire.request("http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
@@ -77,6 +79,7 @@ class AddViewController: UIViewController {
             // 存入plist
             if dict.count == 2 {
                 PlistManager.standard.array.append(dict)
+                HUD.hide()
                 self.dismiss(animated: true, completion: nil)
             }else {
                 print("推广链接有误")

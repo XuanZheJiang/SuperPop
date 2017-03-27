@@ -2,6 +2,7 @@ PODS:
   - AEXML (4.1.0)
   - Alamofire (4.2.0)
   - BTNavigationDropdownMenu (0.4.1)
+  - PKHUD (4.2.0)
   - SnapKit (3.1.2)
   - SwiftyJSON (3.1.4)
 
@@ -9,6 +10,7 @@ DEPENDENCIES:
   - AEXML
   - Alamofire
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
+  - PKHUD (~> 4.0)
   - SnapKit
   - SwiftyJSON
 
@@ -26,9 +28,10 @@ SPEC CHECKSUMS:
   AEXML: 647fbb051280f3fb38a1a7caa62b0344055a851c
   Alamofire: aa2e09d871c9160ac53c90e83c68064a94e3dfbe
   BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
+  PKHUD: 48af884cf00c2213b0313b739d914e6cab1c0f5e
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 461e1bd100647df8e203b2a07c018057ae59f770
+PODFILE CHECKSUM: c6a098b3525026a05e2b4dcdd1e1e82427d7d749
 
 COCOAPODS: 1.1.1

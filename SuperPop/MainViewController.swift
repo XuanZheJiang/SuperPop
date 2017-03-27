@@ -11,6 +11,7 @@ import SnapKit
 import Alamofire
 import SwiftyJSON
 import BTNavigationDropdownMenu
+import PKHUD
 
 class MainViewController: UIViewController {
 
@@ -84,7 +85,7 @@ class MainViewController: UIViewController {
         
         // 启动按钮
         startBtn = BaseButton()
-        startBtn.setBackgroundImage(#imageLiteral(resourceName: "fly"), for: .normal)
+        startBtn.setBackgroundImage(#imageLiteral(resourceName: "Newfly"), for: .normal)
         startBtn.addTarget(self, action: #selector(getKey), for: .touchUpInside)
         view.addSubview(startBtn)
         startBtn.snp.makeConstraints { (make) in
@@ -95,7 +96,7 @@ class MainViewController: UIViewController {
         
         // 清空按钮
         removeAllBtn = BaseButton()
-        removeAllBtn.setBackgroundImage(#imageLiteral(resourceName: "deleteAll"), for: .normal)
+        removeAllBtn.setBackgroundImage(#imageLiteral(resourceName: "NewdeleteAll"), for: .normal)
         removeAllBtn.addTarget(self, action: #selector(clearAll), for: .touchUpInside)
         view.addSubview(removeAllBtn)
         removeAllBtn.snp.makeConstraints { (make) in
@@ -112,6 +113,7 @@ class MainViewController: UIViewController {
     
     /// 获取每小时变动的key
     func getKey() {
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 60)
         AFManager.request("http://xzfuli.cn/#").responseString { (response) in
             
             switch response.result {
@@ -126,6 +128,7 @@ class MainViewController: UIViewController {
                 }
             case .failure(let error):
                 print("getKey---\(error)")
+                HUD.hide()
                 let failAlert = UIAlertController(title: "错误", message: "网络超时", preferredStyle: .alert)
                 let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 failAlert.addAction(failAction)
@@ -147,6 +150,7 @@ class MainViewController: UIViewController {
                     let json = JSON(value)
                     print(json)
                     self.isSuccessful = true
+                    HUD.hide()
                     self.tableView.reloadData()
                 case .failure(let error):
                     print("post---\(error)")

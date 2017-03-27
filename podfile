@@ -9,5 +9,6 @@ target 'SuperPop' do
   pod 'SnapKit'
   pod 'SwiftyJSON'
   pod 'AEXML'
+  pod 'PKHUD', '~> 4.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
 end
