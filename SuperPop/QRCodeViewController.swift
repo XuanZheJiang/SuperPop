@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import PKHUD
 
 class QRCodeViewController: AddViewController {
 
@@ -74,12 +75,14 @@ class QRCodeViewController: AddViewController {
     }
     
     func prepareCamera() {
+        
         // Input
         device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         do {
             input = try AVCaptureDeviceInput(device: device)
         } catch {
             print("Input失败")
+            return
         }
         
         // Output
@@ -110,12 +113,12 @@ class QRCodeViewController: AddViewController {
         preview.frame.size = CGSize(width: 200, height: 200)
         preview.frame.origin = CGPoint(x: Screen.width / 2 - preview.frame.width / 2, y: Screen.height / 2 - preview.frame.height / 2)
         preview.cornerRadius = 5
-//        view.layer.insertSublayer(preview, at: 1)
         view.layer.addSublayer(preview)
         session.startRunning()
     }
     
 }
+
 
 // MARK: - AVCaptureMetadataOutputObjectsDelegate
 extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {

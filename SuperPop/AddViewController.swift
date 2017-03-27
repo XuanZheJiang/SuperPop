@@ -29,11 +29,12 @@ class AddViewController: UIViewController {
         
         // dismissBtn
         dismissBtn = BaseButton()
-        dismissBtn.setBackgroundImage(#imageLiteral(resourceName: "dismiss"), for: .normal)
+        dismissBtn.setImage(#imageLiteral(resourceName: "dismiss"), for: .normal)
         dismissBtn.addTarget(self, action: #selector(self.dismissAction), for: .touchUpInside)
+        dismissBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
         view.addSubview(dismissBtn)
         dismissBtn.snp.makeConstraints { (make) in
-            make.width.height.equalTo(25)
+            make.width.height.equalTo(50)
             make.top.equalToSuperview().offset(30)
             make.right.equalToSuperview().offset(-20)
         }

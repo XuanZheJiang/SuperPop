@@ -26,11 +26,12 @@ class MainViewController: UIViewController {
     
     var isSuccessful = false
     var AFManager: SessionManager!
-    let items = ["手动增加", "二维码扫描增加"]
+    let items = ["手动增加", "二维码扫描增加", "相册扫描二维码"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bgNavi"), for: .default)
@@ -53,10 +54,14 @@ class MainViewController: UIViewController {
             switch index {
             case 0:
                 self?.present(InputCodeViewController(), animated: true, completion: nil)
-            default:
+            case 1:
                 self?.present(QRCodeViewController(), animated: true, completion: nil)
+            default:
+                self?.openPhotoPicker()
             }
         }
+        
+        
         
         
         // 导航栏右按钮
@@ -104,16 +109,20 @@ class MainViewController: UIViewController {
             make.left.equalToSuperview().offset(20)
             make.bottom.equalToSuperview().offset(-20)
         }
-        
-        if linkArray.count == 0 {
-            startBtn.isEnabled = false
-        }
-        
+
+    }
+    
+    func openPhotoPicker() {
+        let photoPickerVC = UIImagePickerController()
+        photoPickerVC.sourceType = .photoLibrary
+        photoPickerVC.delegate = self
+        self.present(photoPickerVC, animated: true, completion: nil)
     }
     
     /// 获取每小时变动的key
     func getKey() {
-        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 60)
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 15)
+        
         AFManager.request("http://xzfuli.cn/#").responseString { (response) in
             
             switch response.result {
@@ -149,8 +158,13 @@ class MainViewController: UIViewController {
                 case .success(let value):
                     let json = JSON(value)
                     print(json)
+                    
+                    HUD.hide({ (value) in
+                        print(value)
+                        HUD.flash(.label(json["msg"].stringValue), delay: 2.0)
+                    })
                     self.isSuccessful = true
-                    HUD.hide()
+                    
                     self.tableView.reloadData()
                 case .failure(let error):
                     print("post---\(error)")
@@ -172,17 +186,24 @@ class MainViewController: UIViewController {
     func clearAll() {
         PlistManager.standard.clear()
         tableView.reloadData()
+    }
+    
+    func startBtnTrue() {
         startBtn.isEnabled = false
     }
 
+    func startBtnFalse() {
+        startBtn.isEnabled = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startBtnTrue), name: NSNotification.Name.init("PlistCountZero"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.startBtnFalse), name: NSNotification.Name.init("PlistCountNotZero"), object: nil)
         self.isSuccessful = false
         tableView.reloadData()
-        if linkArray.count > 0 {
-            startBtn.isEnabled = true
-        }
     }
 }
 
@@ -221,4 +242,58 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // 取出选中图片
+        let pickerImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let imageData = UIImagePNGRepresentation(pickerImage)!
+        let ciImage = CIImage(data: imageData)!
+        
+        // 创建探测器
+        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyLow])!
+        let feature = detector.features(in: ciImage)
+        if let results = feature.first as? CIQRCodeFeature {
+            if let result = results.messageString {
+                print(result)
+                if result.characters.count >= 28 {
+                    let patternDomain = "http://www.battleofballs.com"
+                    let toIndex = result.index(result.startIndex, offsetBy: 28)
+                    let subString = result.substring(to: toIndex)
+                    
+                    if patternDomain == subString {
+                        
+                        // 取出id
+                        let patternId = "id=(\\d{6,10})"
+                        let id = result.match(pattern: patternId, index: 1)
+                        print("id=\(id.first!)")
+                        
+                        // 取出Account
+                        let patternAccount = "Account=(.*)"
+                        let account = result.match(pattern: patternAccount, index: 1)
+                        let utfAccount = account.first!
+                        print("account=\((utfAccount as NSString).removingPercentEncoding!)")
+                        
+                        if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
+                            // 存入plist
+                            let dict = ["id":id.first!, "account":utfAccount]
+                            PlistManager.standard.array.append(dict)
+                            self.dismiss(animated: true, completion: nil)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        
+                    }else {
+                        HUD.flash(.label("二维码不符"))
+                    }
+                }
+            }
+        }else {
+            HUD.flash(.label("不是二维码"))
+        }
+        
+        
+    }
 }
