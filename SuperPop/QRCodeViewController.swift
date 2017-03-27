@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class CameraViewController: UIViewController {
+class QRCodeViewController: AddViewController {
 
     var device: AVCaptureDevice!
     var input: AVCaptureInput!
@@ -17,11 +17,63 @@ class CameraViewController: UIViewController {
     var session: AVCaptureSession!
     var preview: AVCaptureVideoPreviewLayer!
     
+    var topLeftView: UIImageView!
+    var topRightView: UIImageView!
+    var bottomLeftView: UIImageView!
+    var bottomRightView: UIImageView!
+    var containerView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
-        self.navigationItem.title = "扫描"
+        prepareUI()
+        prepareCamera()
+    }
+    
+    func prepareUI() {
         
+        self.headerView.image = #imageLiteral(resourceName: "headerQR")
+        self.headerView.frame.size.width = 156
+        
+        containerView = UIView()
+        view.addSubview(containerView)
+        containerView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(218)
+        }
+        
+//        var imageItems = [#imageLiteral(resourceName: "topLeft"), #imageLiteral(resourceName: "topRight"), #imageLiteral(resourceName: "bottomLeft"), #imageLiteral(resourceName: "bottomRight")]
+//        var viewItems = [topLeftView, topRightView, bottomLeftView, bottomRightView]
+//        
+//        for i in 0...3 {
+//            viewItems[i] = UIImageView(image: imageItems[i])
+//            containerView.addSubview(viewItems[i]!)
+//        }
+        topLeftView = UIImageView(image: #imageLiteral(resourceName: "topLeft"))
+        topRightView = UIImageView(image: #imageLiteral(resourceName: "topRight"))
+        bottomLeftView = UIImageView(image: #imageLiteral(resourceName: "bottomLeft"))
+        bottomRightView = UIImageView(image: #imageLiteral(resourceName: "bottomRight"))
+        
+        containerView.addSubview(topLeftView)
+        containerView.addSubview(topRightView)
+        containerView.addSubview(bottomLeftView)
+        containerView.addSubview(bottomRightView)
+        
+        topLeftView.snp.makeConstraints { (make) in
+            make.top.left.equalToSuperview()
+        }
+        topRightView.snp.makeConstraints { (make) in
+            make.top.right.equalToSuperview()
+        }
+        bottomLeftView.snp.makeConstraints { (make) in
+            make.bottom.left.equalToSuperview()
+        }
+        bottomRightView.snp.makeConstraints { (make) in
+            make.bottom.right.equalToSuperview()
+        }
+        
+    }
+    
+    func prepareCamera() {
         // Input
         device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         do {
@@ -56,21 +108,17 @@ class CameraViewController: UIViewController {
         preview = AVCaptureVideoPreviewLayer(session: session)
         preview.videoGravity = AVLayerVideoGravityResizeAspectFill
         preview.frame.size = CGSize(width: 200, height: 200)
-        preview.frame.origin = CGPoint(x: Screen.width / 2 - preview.frame.width / 2, y: 150)
-        view.layer.insertSublayer(preview, at: 0)
-        
+        preview.frame.origin = CGPoint(x: Screen.width / 2 - preview.frame.width / 2, y: Screen.height / 2 - preview.frame.height / 2)
+        preview.cornerRadius = 5
+//        view.layer.insertSublayer(preview, at: 1)
+        view.layer.addSublayer(preview)
         session.startRunning()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-
 }
 
 // MARK: - AVCaptureMetadataOutputObjectsDelegate
-extension CameraViewController: AVCaptureMetadataOutputObjectsDelegate {
+extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         

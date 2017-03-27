@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D23D17C1711B684A6CD5FC94 /* Pods_SuperPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */; };
 		FA08F71A1E87B81A00F59CD2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */; };
+		FA08F71C1E88FD2100F59CD2 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */; };
 		FA121E921E6662700027451E /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121E911E6662700027451E /* PlistManager.swift */; };
 		FA121E9A1E6866A10027451E /* SuperPopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121E991E6866A10027451E /* SuperPopTests.swift */; };
 		FA121EA81E686EB80027451E /* SuperPopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121EA71E686EB80027451E /* SuperPopUITests.swift */; };
@@ -17,8 +18,8 @@
 		FA71327B1E65840700D1BF04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7132791E65840700D1BF04 /* Main.storyboard */; };
 		FA71327D1E65840700D1BF04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA71327C1E65840700D1BF04 /* Assets.xcassets */; };
 		FA7132801E65840700D1BF04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA71327E1E65840700D1BF04 /* LaunchScreen.storyboard */; };
-		FA7132881E65884900D1BF04 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132871E65884900D1BF04 /* AddViewController.swift */; };
-		FA71328A1E6588DC00D1BF04 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132891E6588DC00D1BF04 /* CameraViewController.swift */; };
+		FA7132881E65884900D1BF04 /* InputCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132871E65884900D1BF04 /* InputCodeViewController.swift */; };
+		FA71328A1E6588DC00D1BF04 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132891E6588DC00D1BF04 /* QRCodeViewController.swift */; };
 		FA71328C1E658C1200D1BF04 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71328B1E658C1200D1BF04 /* Config.swift */; };
 		FA71328E1E658C3100D1BF04 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71328D1E658C3100D1BF04 /* UIViewExtension.swift */; };
 		FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D25391E85451E00AD0A36 /* LinkTextField.swift */; };
@@ -49,6 +50,7 @@
 		5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperPop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D583FB2929B289265FD25723 /* Pods-SuperPop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPop.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPop/Pods-SuperPop.release.xcconfig"; sourceTree = "<group>"; };
 		FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FA121E911E6662700027451E /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
 		FA121E971E6866A10027451E /* SuperPopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperPopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA121E991E6866A10027451E /* SuperPopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPopTests.swift; sourceTree = "<group>"; };
@@ -63,8 +65,8 @@
 		FA71327C1E65840700D1BF04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA71327F1E65840700D1BF04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA7132811E65840700D1BF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA7132871E65884900D1BF04 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		FA7132891E6588DC00D1BF04 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		FA7132871E65884900D1BF04 /* InputCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputCodeViewController.swift; sourceTree = "<group>"; };
+		FA7132891E6588DC00D1BF04 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		FA71328B1E658C1200D1BF04 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FA71328D1E658C3100D1BF04 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		FA9D25391E85451E00AD0A36 /* LinkTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkTextField.swift; sourceTree = "<group>"; };
@@ -161,8 +163,9 @@
 			children = (
 				FA7132751E65840700D1BF04 /* AppDelegate.swift */,
 				FA7132771E65840700D1BF04 /* MainViewController.swift */,
-				FA7132871E65884900D1BF04 /* AddViewController.swift */,
-				FA7132891E6588DC00D1BF04 /* CameraViewController.swift */,
+				FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */,
+				FA7132871E65884900D1BF04 /* InputCodeViewController.swift */,
+				FA7132891E6588DC00D1BF04 /* QRCodeViewController.swift */,
 				FA9D25391E85451E00AD0A36 /* LinkTextField.swift */,
 				FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */,
 				FAE89E931E65A63500116C2B /* HomeCell.swift */,
@@ -390,10 +393,11 @@
 				FA9D253C1E8547DA00AD0A36 /* BaseButton.swift in Sources */,
 				FA121E921E6662700027451E /* PlistManager.swift in Sources */,
 				FA7132781E65840700D1BF04 /* MainViewController.swift in Sources */,
-				FA71328A1E6588DC00D1BF04 /* CameraViewController.swift in Sources */,
+				FA71328A1E6588DC00D1BF04 /* QRCodeViewController.swift in Sources */,
+				FA08F71C1E88FD2100F59CD2 /* AddViewController.swift in Sources */,
 				FA71328C1E658C1200D1BF04 /* Config.swift in Sources */,
 				FA7132761E65840700D1BF04 /* AppDelegate.swift in Sources */,
-				FA7132881E65884900D1BF04 /* AddViewController.swift in Sources */,
+				FA7132881E65884900D1BF04 /* InputCodeViewController.swift in Sources */,
 				FA08F71A1E87B81A00F59CD2 /* UIColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

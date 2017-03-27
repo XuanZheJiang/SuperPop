@@ -52,9 +52,9 @@ class MainViewController: UIViewController {
         menu.didSelectItemAtIndexHandler = { [weak self] index in
             switch index {
             case 0:
-                self?.present(AddViewController(), animated: true, completion: nil)
+                self?.present(InputCodeViewController(), animated: true, completion: nil)
             default:
-                self?.present(CameraViewController(), animated: true, completion: nil)
+                self?.present(QRCodeViewController(), animated: true, completion: nil)
             }
         }
         
@@ -164,7 +164,7 @@ class MainViewController: UIViewController {
     
     // 导航到增加页
     func pushAddPage() {
-        let addVC = AddViewController()
+        let addVC = InputCodeViewController()
         self.navigationController?.pushViewController(addVC, animated: true)
     }
     
