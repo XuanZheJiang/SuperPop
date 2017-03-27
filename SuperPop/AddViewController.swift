@@ -13,28 +13,61 @@ import PKHUD
 
 class AddViewController: UIViewController {
 
+    var headerView: UIImageView!
+    var carefulView: UIImageView!
     var lollyLinkTF: LinkTextField!
     var addBtn: BaseButton!
+    
+    var dismissBtn: BaseButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
         
-        self.navigationItem.title = "增加帐号"
+        // dismissBtn
+        dismissBtn = BaseButton()
+        dismissBtn.setBackgroundImage(#imageLiteral(resourceName: "dismiss"), for: .normal)
+        dismissBtn.addTarget(self, action: #selector(self.dismissAction), for: .touchUpInside)
+        view.addSubview(dismissBtn)
+        dismissBtn.snp.makeConstraints { (make) in
+            make.width.height.equalTo(25)
+            make.top.equalToSuperview().offset(30)
+            make.right.equalToSuperview().offset(-20)
+        }
         
-        // 导航栏右按钮
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "相机", style: .plain, target: self, action: #selector(pushCameraPage))
+        // headerView
+        headerView = UIImageView()
+        headerView.image = #imageLiteral(resourceName: "headerT")
+        view.addSubview(headerView)
+        headerView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(64)
+            make.left.equalToSuperview().offset(20)
+            make.width.equalTo(125)
+            make.height.equalTo(36)
+        }
+        
+        // 注意字样
+        carefulView = UIImageView()
+        carefulView.image = #imageLiteral(resourceName: "careful")
+        view.addSubview(carefulView)
+        carefulView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.headerView.snp.bottom).offset(64)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(261)
+            make.height.equalTo(53)
+        }
         
         // 棒棒糖推广链接输入框
         lollyLinkTF = LinkTextField()
+        #if DEBUG
         lollyLinkTF.text = "http://t.cn/RtqVl3m"
-        lollyLinkTF.placeholder = "请输入棒棒糖推广链接"
+        #endif
         view.addSubview(lollyLinkTF)
         lollyLinkTF.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(150)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(Screen.width - 40)
-            make.height.equalTo(40)
+            make.top.equalTo(self.carefulView.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
         }
         
         // 增加按钮
@@ -50,8 +83,12 @@ class AddViewController: UIViewController {
         
     }
     
+    func dismissAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func addAccount() {
-        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 60)
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
         
         let parameters = ["turl":lollyLinkTF.text!]
         Alamofire.request("http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
@@ -83,6 +120,7 @@ class AddViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }else {
                 print("推广链接有误")
+                HUD.hide()
                 let failAlert = UIAlertController(title: "错误", message: "推广链接有误", preferredStyle: .alert)
                 let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 failAlert.addAction(failAction)
@@ -92,13 +130,7 @@ class AddViewController: UIViewController {
         
     }
     
-    func pushCameraPage() {
-        let cameraVC = CameraViewController()
-        self.navigationController?.pushViewController(cameraVC, animated: true)
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
     }
 }

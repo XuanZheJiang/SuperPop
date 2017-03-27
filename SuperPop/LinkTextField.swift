@@ -7,31 +7,31 @@
 //
 
 import UIKit
-import SnapKit
 
 class LinkTextField: UITextField {
-
-    var lineImageView: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.clearButtonMode = .whileEditing
         self.font = UIFont.systemFont(ofSize: 18)
-        self.textColor = UIColor.white
+        self.placeholder = "棒棒糖推广链接"
+        self.textColor = UIColor.colorFrom(hexString: "637291")
         self.autocorrectionType = .no
         self.autocapitalizationType = .none
-        
-        // 输入框底线
-        lineImageView = UIImageView()
-        lineImageView.image = #imageLiteral(resourceName: "line")
-        self.addSubview(lineImageView)
-        lineImageView.snp.makeConstraints { (make) in
-            make.centerX.equalTo(self)
-            make.bottom.equalTo(self)
-            make.height.equalTo(1)
-            make.width.equalTo(self)
-        }
+        self.background = #imageLiteral(resourceName: "bgTF")
+    }
+    
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.origin.x + 15, y: bounds.origin.y, width: bounds.size.width - 15, height: bounds.size.height)
+    }
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.origin.x + 15, y: bounds.origin.y - 2, width: bounds.size.width - 15, height: bounds.size.height)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.origin.x + 15, y: bounds.origin.y - 2, width: bounds.size.width - 15, height: bounds.size.height)
     }
     
     required init?(coder aDecoder: NSCoder) {
