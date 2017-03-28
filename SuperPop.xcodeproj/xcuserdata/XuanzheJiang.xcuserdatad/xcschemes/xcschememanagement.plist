@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>SuperPopToday.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>FA7132711E65840700D1BF04</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA74F6331E8A63C300A10AC4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -19,11 +19,14 @@ class PlistManager {
     }
     
     private init() {
-        array = NSArray(contentsOfFile: filePath) as? [[String:String]] ?? [[String:String]]()
+//        array = NSArray(contentsOfFile: filePath) as? [[String:String]] ?? [[String:String]]()
+        array = NSArray(contentsOf: Path.groupURL!) as? [[String : String]] ?? [[String:String]]()
+        
     }
     
     private func writePlist() {
-        (array as NSArray).write(toFile: filePath, atomically: true)
+//        (array as NSArray).write(toFile: Path.groupURL!, atomically: true)
+        (array as NSArray).write(to: Path.groupURL!, atomically: true)
     }
     
     /// 清空plist

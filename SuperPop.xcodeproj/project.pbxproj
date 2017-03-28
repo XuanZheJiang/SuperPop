@@ -25,6 +25,14 @@
 		FA74F6291E8A1AD000A10AC4 /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74F6281E8A1AD000A10AC4 /* PhotoPickerViewController.swift */; };
 		FA74F62B1E8A2E0B00A10AC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74F62A1E8A2E0B00A10AC4 /* BaseViewController.swift */; };
 		FA74F62D1E8A336E00A10AC4 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74F62C1E8A336E00A10AC4 /* BaseTableView.swift */; };
+		FA74F6361E8A63C300A10AC4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA74F6351E8A63C300A10AC4 /* NotificationCenter.framework */; };
+		FA74F6391E8A63C300A10AC4 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74F6381E8A63C300A10AC4 /* TodayViewController.swift */; };
+		FA74F63C1E8A63C300A10AC4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA74F63A1E8A63C300A10AC4 /* MainInterface.storyboard */; };
+		FA74F6401E8A63C300A10AC4 /* SuperPopToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FA74F6341E8A63C300A10AC4 /* SuperPopToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FA74F64C1E8AC20300A10AC4 /* Hook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F64A1E8AC20300A10AC4 /* Hook@2x.png */; };
+		FA74F64D1E8AC20300A10AC4 /* Hook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F64B1E8AC20300A10AC4 /* Hook@3x.png */; };
+		FA74F6501E8AC29300A10AC4 /* Newfly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F64E1E8AC29300A10AC4 /* Newfly@2x.png */; };
+		FA74F6511E8AC29300A10AC4 /* Newfly@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F64F1E8AC29300A10AC4 /* Newfly@3x.png */; };
 		FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D25391E85451E00AD0A36 /* LinkTextField.swift */; };
 		FA9D253C1E8547DA00AD0A36 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */; };
 		FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE89E911E65A4C100116C2B /* StringExtension.swift */; };
@@ -46,7 +54,28 @@
 			remoteGlobalIDString = FA7132711E65840700D1BF04;
 			remoteInfo = SuperPop;
 		};
+		FA74F63E1E8A63C300A10AC4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA71326A1E65840700D1BF04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA74F6331E8A63C300A10AC4;
+			remoteInfo = SuperPopToday;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FA74F6441E8A63C300A10AC4 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				FA74F6401E8A63C300A10AC4 /* SuperPopToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2C849FE31E5BAC17EE731C23 /* Pods-SuperPop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPop/Pods-SuperPop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +104,17 @@
 		FA74F6281E8A1AD000A10AC4 /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		FA74F62A1E8A2E0B00A10AC4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA74F62C1E8A336E00A10AC4 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		FA74F6341E8A63C300A10AC4 /* SuperPopToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SuperPopToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA74F6351E8A63C300A10AC4 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		FA74F6381E8A63C300A10AC4 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		FA74F63B1E8A63C300A10AC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		FA74F63D1E8A63C300A10AC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA74F6451E8A78A700A10AC4 /* SuperPop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperPop.entitlements; sourceTree = "<group>"; };
+		FA74F6461E8A78B900A10AC4 /* SuperPopToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperPopToday.entitlements; sourceTree = "<group>"; };
+		FA74F64A1E8AC20300A10AC4 /* Hook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hook@2x.png"; sourceTree = "<group>"; };
+		FA74F64B1E8AC20300A10AC4 /* Hook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hook@3x.png"; sourceTree = "<group>"; };
+		FA74F64E1E8AC29300A10AC4 /* Newfly@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Newfly@2x.png"; sourceTree = "<group>"; };
+		FA74F64F1E8AC29300A10AC4 /* Newfly@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Newfly@3x.png"; sourceTree = "<group>"; };
 		FA9D25391E85451E00AD0A36 /* LinkTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkTextField.swift; sourceTree = "<group>"; };
 		FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		FAE89E911E65A4C100116C2B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -104,6 +144,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA74F6311E8A63C300A10AC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA74F6361E8A63C300A10AC4 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -111,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */,
+				FA74F6351E8A63C300A10AC4 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -148,6 +197,7 @@
 				FA7132741E65840700D1BF04 /* SuperPop */,
 				FA121E981E6866A10027451E /* SuperPopTests */,
 				FA121EA61E686EB80027451E /* SuperPopUITests */,
+				FA74F6371E8A63C300A10AC4 /* SuperPopToday */,
 				FA7132731E65840700D1BF04 /* Products */,
 				95860C6A2DAAC661840B3E1A /* Pods */,
 				30842AE0B69BD203D62B6105 /* Frameworks */,
@@ -160,6 +210,7 @@
 				FA7132721E65840700D1BF04 /* SuperPop.app */,
 				FA121E971E6866A10027451E /* SuperPopTests.xctest */,
 				FA121EA51E686EB70027451E /* SuperPopUITests.xctest */,
+				FA74F6341E8A63C300A10AC4 /* SuperPopToday.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +218,7 @@
 		FA7132741E65840700D1BF04 /* SuperPop */ = {
 			isa = PBXGroup;
 			children = (
+				FA74F6451E8A78A700A10AC4 /* SuperPop.entitlements */,
 				FA74F62F1E8A35E100A10AC4 /* Config&Extension */,
 				FA74F62E1E8A35A800A10AC4 /* BaseControl */,
 				FA7132771E65840700D1BF04 /* MainViewController.swift */,
@@ -205,6 +257,21 @@
 				FAE89E911E65A4C100116C2B /* StringExtension.swift */,
 			);
 			name = "Config&Extension";
+			sourceTree = "<group>";
+		};
+		FA74F6371E8A63C300A10AC4 /* SuperPopToday */ = {
+			isa = PBXGroup;
+			children = (
+				FA74F64A1E8AC20300A10AC4 /* Hook@2x.png */,
+				FA74F64B1E8AC20300A10AC4 /* Hook@3x.png */,
+				FA74F64E1E8AC29300A10AC4 /* Newfly@2x.png */,
+				FA74F64F1E8AC29300A10AC4 /* Newfly@3x.png */,
+				FA74F6461E8A78B900A10AC4 /* SuperPopToday.entitlements */,
+				FA74F6381E8A63C300A10AC4 /* TodayViewController.swift */,
+				FA74F63A1E8A63C300A10AC4 /* MainInterface.storyboard */,
+				FA74F63D1E8A63C300A10AC4 /* Info.plist */,
+			);
+			path = SuperPopToday;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,15 +323,34 @@
 				FA7132701E65840700D1BF04 /* Resources */,
 				C4F5727DDCFB45B64C658FA6 /* [CP] Embed Pods Frameworks */,
 				718CA870A38F05A53C9FBBCE /* [CP] Copy Pods Resources */,
+				FA74F6441E8A63C300A10AC4 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FA74F63F1E8A63C300A10AC4 /* PBXTargetDependency */,
 			);
 			name = SuperPop;
 			productName = SuperPop;
 			productReference = FA7132721E65840700D1BF04 /* SuperPop.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FA74F6331E8A63C300A10AC4 /* SuperPopToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA74F6431E8A63C300A10AC4 /* Build configuration list for PBXNativeTarget "SuperPopToday" */;
+			buildPhases = (
+				FA74F6301E8A63C300A10AC4 /* Sources */,
+				FA74F6311E8A63C300A10AC4 /* Frameworks */,
+				FA74F6321E8A63C300A10AC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SuperPopToday;
+			productName = SuperPopToday;
+			productReference = FA74F6341E8A63C300A10AC4 /* SuperPopToday.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -272,7 +358,7 @@
 		FA71326A1E65840700D1BF04 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = JGCM;
 				TargetAttributes = {
@@ -292,6 +378,21 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = Y6SZS4JQ7Q;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					FA74F6331E8A63C300A10AC4 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = Y6SZS4JQ7Q;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -311,6 +412,7 @@
 				FA7132711E65840700D1BF04 /* SuperPop */,
 				FA121E961E6866A10027451E /* SuperPopTests */,
 				FA121EA41E686EB70027451E /* SuperPopUITests */,
+				FA74F6331E8A63C300A10AC4 /* SuperPopToday */,
 			);
 		};
 /* End PBXProject section */
@@ -337,6 +439,18 @@
 				FA7132801E65840700D1BF04 /* LaunchScreen.storyboard in Resources */,
 				FA71327D1E65840700D1BF04 /* Assets.xcassets in Resources */,
 				FA71327B1E65840700D1BF04 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA74F6321E8A63C300A10AC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA74F6511E8AC29300A10AC4 /* Newfly@3x.png in Resources */,
+				FA74F63C1E8A63C300A10AC4 /* MainInterface.storyboard in Resources */,
+				FA74F64C1E8AC20300A10AC4 /* Hook@2x.png in Resources */,
+				FA74F64D1E8AC20300A10AC4 /* Hook@3x.png in Resources */,
+				FA74F6501E8AC29300A10AC4 /* Newfly@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +544,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA74F6301E8A63C300A10AC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA74F6391E8A63C300A10AC4 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -442,6 +564,11 @@
 			isa = PBXTargetDependency;
 			target = FA7132711E65840700D1BF04 /* SuperPop */;
 			targetProxy = FA121EAA1E686EB80027451E /* PBXContainerItemProxy */;
+		};
+		FA74F63F1E8A63C300A10AC4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA74F6331E8A63C300A10AC4 /* SuperPopToday */;
+			targetProxy = FA74F63E1E8A63C300A10AC4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -460,6 +587,14 @@
 				FA71327F1E65840700D1BF04 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FA74F63A1E8A63C300A10AC4 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA74F63B1E8A63C300A10AC4 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -622,13 +757,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SuperPop/SuperPop.entitlements;
 				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
 				INFOPLIST_FILE = SuperPop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "201f304c-018a-443b-8b21-c5d9fb5b8c10";
+				PROVISIONING_PROFILE = "5b025b5c-4f61-45fa-85e3-bc41254a1a4c";
 				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_qiuqiu_2017_2_26;
 				SWIFT_VERSION = 3.0;
 			};
@@ -640,6 +776,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SuperPop/SuperPop.entitlements;
 				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
 				INFOPLIST_FILE = SuperPop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -649,6 +786,44 @@
 				PROVISIONING_PROFILE = "201f304c-018a-443b-8b21-c5d9fb5b8c10";
 				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_qiuqiu_2017_2_26;
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		FA74F6411E8A63C300A10AC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SuperPopToday/SuperPopToday.entitlements;
+				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
+				INFOPLIST_FILE = SuperPopToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "a9e3ce36-8dee-458d-bc23-500c5384707f";
+				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_SuperPopToday_20170328;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		FA74F6421E8A63C300A10AC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = SuperPopToday/SuperPopToday.entitlements;
+				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
+				INFOPLIST_FILE = SuperPopToday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST.Today;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d56d00ee-58f2-4bc6-b03d-064bba40df52";
+				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_SuperPopToday_20170328;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -687,6 +862,15 @@
 			buildConfigurations = (
 				FA7132851E65840700D1BF04 /* Debug */,
 				FA7132861E65840700D1BF04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA74F6431E8A63C300A10AC4 /* Build configuration list for PBXNativeTarget "SuperPopToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA74F6411E8A63C300A10AC4 /* Debug */,
+				FA74F6421E8A63C300A10AC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -25,6 +25,15 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let arrayURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile")
+        
+        let str = "蒋轩哲d"
+        do {
+            try str.write(to: arrayURL!, atomically: true, encoding: String.Encoding.utf8)
+        } catch {
+            print(error)
+        }
+        
         // 配置超时config
         let configTimeout = URLSessionConfiguration.default
         configTimeout.timeoutIntervalForRequest = 3

@@ -77,7 +77,7 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
         let feature = detector.features(in: ciImage)
         if let results = feature.first as? CIQRCodeFeature {
             if let result = results.messageString {
-                print(result)
+//                print(result)
                 if result.characters.count >= 28 {
                     let patternDomain = "http://www.battleofballs.com"
                     let toIndex = result.index(result.startIndex, offsetBy: 28)
@@ -88,13 +88,13 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
                         // 取出id
                         let patternId = "id=(\\d{6,10})"
                         let id = result.match(pattern: patternId, index: 1)
-                        print("id=\(id.first!)")
+//                        print("id=\(id.first!)")
                         
                         // 取出Account
                         let patternAccount = "Account=(.*)"
                         let account = result.match(pattern: patternAccount, index: 1)
                         let utfAccount = account.first!
-                        print("account=\((utfAccount as NSString).removingPercentEncoding!)")
+//                        print("account=\((utfAccount as NSString).removingPercentEncoding!)")
                         
                         if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
                             // 存入plist

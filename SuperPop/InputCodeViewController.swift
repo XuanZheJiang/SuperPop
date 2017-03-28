@@ -76,7 +76,7 @@ class InputCodeViewController: AddViewController {
             let pattern = "id=(\\d{6,10})"
             let id = result?.match(pattern: pattern, index: 1)
             if let id = id?.first {
-                print("id=\(id)")
+//                print("id=\(id)")
                 dict["id"] = id
             }
 
@@ -84,7 +84,7 @@ class InputCodeViewController: AddViewController {
             let pattern2 = "Account=(.*)\" target"
             let account = result?.match(pattern: pattern2, index: 1)
             if let account = account?.first {
-                print("account=\(account.removingPercentEncoding!)")
+//                print("account=\(account.removingPercentEncoding!)")
                 dict["account"] = account.removingPercentEncoding
             }
             

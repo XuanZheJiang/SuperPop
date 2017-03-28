@@ -12,9 +12,8 @@ let postUrl = "http://xzfuli.cn/index.php?a=api_qiuqiu"
 let filePath = NSHomeDirectory() + "/Documents/profile.plist"
 /// 常用路径
 struct Path {
-    static let documents = NSHomeDirectory() + "/Documents/"
-    static let cache = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, .userDomainMask, true).first ?? ""
-    static let linkPath = Bundle.main.path(forResource: "link.plist", ofType: nil)!
+    static let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
+    
 }
 
 /// 常用字体字号
