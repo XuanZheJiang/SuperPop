@@ -12,7 +12,6 @@ class BaseButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
     }
     
 //    func point(inside point: CGPoint, withEvent event: UIEvent) -> Bool {

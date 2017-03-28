@@ -10,65 +10,20 @@ import UIKit
 import SnapKit
 import Alamofire
 import SwiftyJSON
-import BTNavigationDropdownMenu
 import PKHUD
 
-class MainViewController: UIViewController {
+class MainViewController: BaseViewController {
 
-    var tableView: UITableView!
+    var tableView: BaseTableView!
     var startBtn: BaseButton!
     var removeAllBtn: BaseButton!
-    var linkArray: [[String:String]] {
-        get {
-            return PlistManager.standard.array
-        }
-    }
     
     var isSuccessful = false
     var AFManager: SessionManager!
-    let items = ["手动增加", "二维码扫描增加", "相册扫描二维码"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
-        
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bgNavi"), for: .default)
-        self.navigationController?.navigationBar.shadowImage = #imageLiteral(resourceName: "line")
-        
-        let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "添加帐号", items: items as [AnyObject] )
-        self.navigationItem.titleView = menu
-        menu.cellBackgroundColor = UIColor.colorFrom(hexString: "5A657A")
-        menu.cellTextLabelColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        menu.cellSeparatorColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        menu.cellSelectionColor = UIColor.colorFrom(hexString: "515E7C")
-        menu.checkMarkImage = nil
-        menu.selectedCellTextLabelColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        menu.animationDuration = 0.3
-        menu.cellTextLabelFont = UIFont.systemFont(ofSize: 16)
-        menu.navigationBarTitleFont = UIFont.systemFont(ofSize: 17)
-        menu.shouldChangeTitleText = false
-        
-        menu.didSelectItemAtIndexHandler = { [weak self] index in
-            switch index {
-            case 0:
-                self?.present(InputCodeViewController(), animated: true, completion: nil)
-            case 1:
-                self?.present(QRCodeViewController(), animated: true, completion: nil)
-            default:
-                self?.openPhotoPicker()
-            }
-        }
-        
-        
-        
-        
-        // 导航栏右按钮
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(pushAddPage))
-        
-        // 导航栏左按钮
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "清空", style: .plain, target: self, action: #selector(clear))
         
         // 配置超时config
         let configTimeout = URLSessionConfiguration.default
@@ -76,14 +31,9 @@ class MainViewController: UIViewController {
         AFManager = SessionManager(configuration: configTimeout)
         
         // 初始化tableView
-        tableView = UITableView()
-        // 去掉tableView多余的空白行分割线
-        tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor.clear
+        tableView = BaseTableView()
         tableView.frame = CGRect(x: 0, y: 0, width: Screen.width, height: Screen.height)
         tableView.register(HomeCell.classForCoder(), forCellReuseIdentifier: "HomeCell")
-        tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsetsMake(10, 0, 74, 0)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
@@ -110,15 +60,24 @@ class MainViewController: UIViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
 
+        
     }
     
-    func openPhotoPicker() {
-        let photoPickerVC = UIImagePickerController()
-        photoPickerVC.sourceType = .photoLibrary
-        photoPickerVC.delegate = self
-        self.present(photoPickerVC, animated: true, completion: nil)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if PlistManager.standard.array.count > 0 {
+            startBtn.isEnabled = true
+            removeAllBtn.isEnabled = true
+        }else {
+            startBtn.isEnabled = false
+            removeAllBtn.isEnabled = false
+        }
+        
+        self.isSuccessful = false
+        tableView.reloadData()
     }
-    
+
     /// 获取每小时变动的key
     func getKey() {
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 15)
@@ -149,7 +108,7 @@ class MainViewController: UIViewController {
     // 启动
     func startClick(key: String) {
         
-        for dict in linkArray {
+        for dict in PlistManager.standard.array {
             
             let parameters2 = ["type":"5", "id":dict["id"]! as String, "key":key]
             AFManager.request(postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
@@ -174,37 +133,14 @@ class MainViewController: UIViewController {
         }
     }
     
-    
-    
-    // 导航到增加页
-    func pushAddPage() {
-        let addVC = InputCodeViewController()
-        self.navigationController?.pushViewController(addVC, animated: true)
-    }
-    
     // 清空plist
     func clearAll() {
         PlistManager.standard.clear()
-        tableView.reloadData()
-    }
-    
-    func startBtnTrue() {
         startBtn.isEnabled = false
-    }
-
-    func startBtnFalse() {
-        startBtn.isEnabled = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(self.startBtnTrue), name: NSNotification.Name.init("PlistCountZero"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.startBtnFalse), name: NSNotification.Name.init("PlistCountNotZero"), object: nil)
-        self.isSuccessful = false
+        removeAllBtn.isEnabled = false
         tableView.reloadData()
     }
+    
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
@@ -215,12 +151,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return linkArray.count
+        return PlistManager.standard.array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        cell.accountL.text = linkArray[indexPath.row]["account"]
+        cell.accountL.text = PlistManager.standard.array[indexPath.row]["account"]
         
         if isSuccessful {
             cell.status = .successful
@@ -231,12 +167,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    /// 左划删除
+    // 左划删除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         PlistManager.standard.array.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .left)
+        
+        if PlistManager.standard.array.count == 0 {
+            startBtn.isEnabled = false
+            removeAllBtn.isEnabled = false
+        }
     }
-    /// 修改Delete按钮文字为"删除"
+    // 修改Delete按钮文字为"删除"
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "删除"
     }
@@ -244,56 +185,4 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
-extension MainViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        // 取出选中图片
-        let pickerImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let imageData = UIImagePNGRepresentation(pickerImage)!
-        let ciImage = CIImage(data: imageData)!
-        
-        // 创建探测器
-        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyLow])!
-        let feature = detector.features(in: ciImage)
-        if let results = feature.first as? CIQRCodeFeature {
-            if let result = results.messageString {
-                print(result)
-                if result.characters.count >= 28 {
-                    let patternDomain = "http://www.battleofballs.com"
-                    let toIndex = result.index(result.startIndex, offsetBy: 28)
-                    let subString = result.substring(to: toIndex)
-                    
-                    if patternDomain == subString {
-                        
-                        // 取出id
-                        let patternId = "id=(\\d{6,10})"
-                        let id = result.match(pattern: patternId, index: 1)
-                        print("id=\(id.first!)")
-                        
-                        // 取出Account
-                        let patternAccount = "Account=(.*)"
-                        let account = result.match(pattern: patternAccount, index: 1)
-                        let utfAccount = account.first!
-                        print("account=\((utfAccount as NSString).removingPercentEncoding!)")
-                        
-                        if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
-                            // 存入plist
-                            let dict = ["id":id.first!, "account":utfAccount]
-                            PlistManager.standard.array.append(dict)
-                            self.dismiss(animated: true, completion: nil)
-                            self.dismiss(animated: true, completion: nil)
-                        }
-                        
-                    }else {
-                        HUD.flash(.label("二维码不符"))
-                    }
-                }
-            }
-        }else {
-            HUD.flash(.label("不是二维码"))
-        }
-        
-        
-    }
-}
+

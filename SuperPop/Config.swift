@@ -34,7 +34,8 @@ struct Screen {
 
 /// 全局通知名称
 struct NotificationName {
-    static let profileChanged = Notification.Name("PROFILE_CHANGED")
+    static let PlistCountZero = Notification.Name("PlistCountZero")
+    static let PlistCountNonZero = Notification.Name("PlistCountNonZero")
 }
 
 /// 第三方开发平台 AppKey
