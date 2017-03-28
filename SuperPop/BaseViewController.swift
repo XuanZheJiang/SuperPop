@@ -13,11 +13,18 @@ import PKHUD
 class BaseViewController: UIViewController {
 
     let items = ["手动增加", "二维码扫描增加", "相册扫描二维码"]
+    var noCountImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
+        noCountImageView = UIImageView(image: #imageLiteral(resourceName: "NoCountT"))
+        noCountImageView.frame.size = CGSize(width: 148, height: 29)
+        noCountImageView.center.x = view.center.x
+        noCountImageView.frame.origin.y = 100
+        view.addSubview(noCountImageView)
+        
+        self.view.layer.contents = #imageLiteral(resourceName: "back").cgImage
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white];
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)

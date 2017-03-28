@@ -67,9 +67,11 @@ class MainViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         if PlistManager.standard.array.count > 0 {
+            noCountImageView.isHidden = true
             startBtn.isEnabled = true
             removeAllBtn.isEnabled = true
         }else {
+            noCountImageView.isHidden = false
             startBtn.isEnabled = false
             removeAllBtn.isEnabled = false
         }
@@ -116,10 +118,10 @@ class MainViewController: BaseViewController {
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    print(json)
+//                    print(json)
                     
                     HUD.hide({ (value) in
-                        print(value)
+//                        print(value)
                         HUD.flash(.label(json["msg"].stringValue), delay: 2.0)
                     })
                     self.isSuccessful = true
@@ -136,6 +138,7 @@ class MainViewController: BaseViewController {
     // 清空plist
     func clearAll() {
         PlistManager.standard.clear()
+        noCountImageView.isHidden = false
         startBtn.isEnabled = false
         removeAllBtn.isEnabled = false
         tableView.reloadData()
@@ -173,6 +176,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deleteRows(at: [indexPath], with: .left)
         
         if PlistManager.standard.array.count == 0 {
+            noCountImageView.isHidden = false
             startBtn.isEnabled = false
             removeAllBtn.isEnabled = false
         }

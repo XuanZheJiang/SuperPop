@@ -49,6 +49,9 @@ class QRCodeViewController: AddViewController {
 //            viewItems[i] = UIImageView(image: imageItems[i])
 //            containerView.addSubview(viewItems[i]!)
 //        }
+        
+        
+        
         topLeftView = UIImageView(image: #imageLiteral(resourceName: "topLeft"))
         topRightView = UIImageView(image: #imageLiteral(resourceName: "topRight"))
         bottomLeftView = UIImageView(image: #imageLiteral(resourceName: "bottomLeft"))

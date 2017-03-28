@@ -16,7 +16,7 @@ class AddViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "back"))
+        self.view.layer.contents = #imageLiteral(resourceName: "back").cgImage
         
         // headerView
         headerView = UIImageView()

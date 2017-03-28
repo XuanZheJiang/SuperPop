@@ -19,14 +19,12 @@ class PlistManager {
     }
     
     private init() {
-        
         array = NSArray(contentsOfFile: filePath) as? [[String:String]] ?? [[String:String]]()
     }
     
     private func writePlist() {
         (array as NSArray).write(toFile: filePath, atomically: true)
     }
-    
     
     /// 清空plist
     func clear() {
