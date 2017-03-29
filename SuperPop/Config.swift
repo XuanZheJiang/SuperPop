@@ -8,19 +8,24 @@
 
 import UIKit
 
-let postUrl = "http://xzfuli.cn/index.php?a=api_qiuqiu"
-let filePath = NSHomeDirectory() + "/Documents/profile.plist"
+/// 网络请求
+struct POST {
+    /// 获取棒棒糖
+    static let postUrl = "http://xzfuli.cn/index.php?a=api_qiuqiu"
+    /// 解析短链接
+    static let shortUrl = "http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/"
+}
+
 /// 常用路径
 struct Path {
-    static let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
-    
+    static let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")    
 }
 
 /// 常用字体字号
 struct Font {
     
     ///
-    static let tiny: UIFont! = UIFont(name: "PingFangSC-Regular", size: 13) //why use "!"
+    static let tiny: UIFont! = UIFont(name: "PingFangSC-Regular", size: 13)
     
 }
 
@@ -32,18 +37,18 @@ struct Screen {
 }
 
 /// 全局通知名称
-struct NotificationName {
-    static let PlistCountZero = Notification.Name("PlistCountZero")
-    static let PlistCountNonZero = Notification.Name("PlistCountNonZero")
-}
+//struct NotificationName {
+//    static let PlistCountZero = Notification.Name("PlistCountZero")
+//    static let PlistCountNonZero = Notification.Name("PlistCountNonZero")
+//}
 
 /// 第三方开发平台 AppKey
-struct AppKey {
-    static let wechat = ""
-}
+//struct AppKey {
+//    static let wechat = ""
+//}
 
 /// 第三方开发平台 AppSecret
-struct AppSecret {
-    
-}
+//struct AppSecret {
+//    
+//}
 

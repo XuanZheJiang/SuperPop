@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Fuzi.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>PKHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01FD4FF957259A048BBCD838565A07D7</key>
+		<key>3E765B8AB74C35B1FEF51FA254D5C734</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>457D931E45D844C66317D326BE697322</key>
+		<key>479335284A3755CAFC16A5D98745912E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5E953D17C0A5420BFB3E74888891637A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,7 +67,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8872858DAA3B4C36222C44043799D78</key>
+		<key>A998FE8D7F53CA468D2DBEDE1BABC760</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -133,7 +133,7 @@ class MainViewController: BaseViewController {
         for dict in PlistManager.standard.array {
             
             let parameters2 = ["type":"5", "id":dict["id"]! as String, "key":key]
-            AFManager.request(postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            AFManager.request(POST.postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
                 
                 switch response.result {
                 case .success(let value):

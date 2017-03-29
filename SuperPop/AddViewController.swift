@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import PKHUD
 
 class AddViewController: UIViewController {
     
@@ -41,6 +42,7 @@ class AddViewController: UIViewController {
     }
     
     func dismissAction() {
+        HUD.hide()
         self.dismiss(animated: true, completion: nil)
     }
 

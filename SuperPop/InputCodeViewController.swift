@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Alamofire
 import PKHUD
+import Fuzi
 
 class InputCodeViewController: AddViewController {
 
@@ -63,46 +64,74 @@ class InputCodeViewController: AddViewController {
     
     
     func addAccount() {
-        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 10)
+        HUD.allowsInteraction = true
         
         let parameters = ["turl":lollyLinkTF.text!]
-        Alamofire.request("http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/", method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+        Alamofire.request(POST.shortUrl, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseString { (response) in
             
-            let result = String.init(data: response.data!, encoding: .utf8)
-//            print(response.result.value)
-            var dict = [String:String]()
-            
-            // 取出id
-            let pattern = "id=(\\d{6,10})"
-            let id = result?.match(pattern: pattern, index: 1)
-            if let id = id?.first {
-//                print("id=\(id)")
-                dict["id"] = id
-            }
-
-            // 取出Account
-            let pattern2 = "Account=(.*)\" target"
-            let account = result?.match(pattern: pattern2, index: 1)
-            if let account = account?.first {
-//                print("account=\(account.removingPercentEncoding!)")
-                dict["account"] = account.removingPercentEncoding
-            }
-            
-            // 存入plist
-            if dict.count == 2 {
-                PlistManager.standard.array.append(dict)
-                HUD.hide()
-                self.dismiss(animated: true, completion: nil)
-            }else {
-                print("推广链接有误")
-                HUD.hide()
-                let failAlert = UIAlertController(title: "错误", message: "推广链接有误", preferredStyle: .alert)
+            switch response.result {
+            case .success(let value):
+                do {
+                    let doc = try HTMLDocument(string: value)
+                    if let ele = doc.firstChild(css: "a") {
+                        self.save(url: ele.stringValue)
+                    }else {
+                        HUD.hide()
+                        let failAlert = UIAlertController(title: "错误", message: "推广链接有误", preferredStyle: .alert)
+                        let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        failAlert.addAction(failAction)
+                        self.present(failAlert, animated: true, completion: nil)
+                    }
+                }catch {
+                    let failAlert = UIAlertController(title: "错误", message: "解析失败请重试", preferredStyle: .alert)
+                    let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    failAlert.addAction(failAction)
+                    self.present(failAlert, animated: true, completion: nil)
+                }
+                
+            case .failure(_):
+                let failAlert = UIAlertController(title: "错误", message: "解析失败请重试", preferredStyle: .alert)
                 let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 failAlert.addAction(failAction)
                 self.present(failAlert, animated: true, completion: nil)
             }
+            
         }
         
+    }
+    
+    func save(url: String?) {
+        var dict = [String:String]()
+        
+        // 取出id
+        let pattern = "id=(\\d{6,10})"
+        let id = url?.match(pattern: pattern, index: 1)
+        if let id = id?.first {
+//            print("id=\(id)")
+            dict["id"] = id
+        }
+        
+        // 取出Account
+        let pattern2 = "Account=(.*)"
+        let account = url?.match(pattern: pattern2, index: 1)
+        if let account = account?.first {
+//            print("account=\(account.removingPercentEncoding!)")
+            dict["account"] = account.removingPercentEncoding
+        }
+        
+        // 存入plist
+        if dict.count == 2 {
+            PlistManager.standard.array.append(dict)
+            HUD.hide()
+            self.dismiss(animated: true, completion: nil)
+        }else {
+            HUD.hide()
+            let failAlert = UIAlertController(title: "错误", message: "推广链接有误", preferredStyle: .alert)
+            let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            failAlert.addAction(failAction)
+            self.present(failAlert, animated: true, completion: nil)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
