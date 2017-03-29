@@ -9,16 +9,18 @@
 import UIKit
 import BTNavigationDropdownMenu
 import PKHUD
+import MessageUI
 
 class BaseViewController: UIViewController {
 
-    let items = ["手动增加", "二维码扫描增加", "相册扫描二维码"]
+    let items = ["手动录入", "二维码扫描", "相册二维码录入", "意见反馈"]
     var noCountImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(self.shareAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
         
         noCountImageView = UIImageView(image: #imageLiteral(resourceName: "NoCountT"))
         noCountImageView.frame.size = CGSize(width: 148, height: 29)
@@ -53,18 +55,44 @@ class BaseViewController: UIViewController {
                 self?.present(InputCodeViewController(), animated: true, completion: nil)
             case 1:
                 self?.present(QRCodeViewController(), animated: true, completion: nil)
-            default:
+            case 2:
                 let photoPickerVC = PhotoPickerViewController()
                 photoPickerVC.sourceType = .photoLibrary
                 photoPickerVC.delegate = self
                 self?.present(photoPickerVC, animated: true, completion: nil)
+            case 3:
+                self?.emailAction()
+            default:
+                break
             }
         }
         
     }
+    
+    func emailAction() -> Void {
+        // 首先要判断设备具不具备发送邮件功能
+        if MFMailComposeViewController.canSendMail() {
+            let controller = MFMailComposeViewController()
+            controller.setSubject("意见反馈")
+            controller.mailComposeDelegate = self
+            controller.setToRecipients(["jgcm@live.cn"])
+//            controller.setMessageBody("\(versionL.text!)", isHTML: false)
+            self.present(controller, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController.init(title: "打开邮箱失败", message: "未设置邮箱账户", preferredStyle: .alert)
+            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 
     func shareAction() {
-        
+        let shareURL = URL(string: "https://itunes.apple.com/us/app/TangShop/id1145725777")!
+        let shareString = "https://itunes.apple.com/us/app/TangShop/id1145725777"
+        let shareTitle = "SuperPop"
+        let shareImage = #imageLiteral(resourceName: "egg")
+        let items = [shareString, shareURL, shareTitle, shareImage] as [Any]
+        let shareVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        self.present(shareVC, animated: true, completion: nil)
     }
     
 }
@@ -121,4 +149,13 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
         
         
     }
+}
+
+extension BaseViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
