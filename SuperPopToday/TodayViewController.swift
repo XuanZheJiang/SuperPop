@@ -20,7 +20,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
         if let array = NSArray(contentsOf: groupURL!) {
             countNumL.text = "\(array.count)个帐号"
-            print(array.count)
+//            print(array.count)
         }
         
         
@@ -33,7 +33,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
-//        self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+//        self.extensionContext?.widgetLargestAvailableDisplayMode = .compact
 //    }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {

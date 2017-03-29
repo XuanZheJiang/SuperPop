@@ -62,6 +62,8 @@ class MainViewController: BaseViewController {
         removeAllBtn = BaseButton()
         removeAllBtn.setBackgroundImage(#imageLiteral(resourceName: "NewdeleteAll"), for: .normal)
         removeAllBtn.addTarget(self, action: #selector(clearAll), for: .touchUpInside)
+        removeAllBtn.transform = CGAffineTransform.identity
+        
         view.addSubview(removeAllBtn)
         removeAllBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(Screen.width / 6)
@@ -70,6 +72,15 @@ class MainViewController: BaseViewController {
         }
 
         
+    }
+
+    // 清空plist
+    func clearAll() {
+        PlistManager.standard.clear()
+        noCountImageView.isHidden = false
+        startBtn.isEnabled = false
+        removeAllBtn.isEnabled = false
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,15 +153,6 @@ class MainViewController: BaseViewController {
                 
             })
         }
-    }
-    
-    // 清空plist
-    func clearAll() {
-        PlistManager.standard.clear()
-        noCountImageView.isHidden = false
-        startBtn.isEnabled = false
-        removeAllBtn.isEnabled = false
-        tableView.reloadData()
     }
     
 }
