@@ -36,7 +36,7 @@ class MainViewController: BaseViewController {
         
         // 配置超时config
         let configTimeout = URLSessionConfiguration.default
-        configTimeout.timeoutIntervalForRequest = 3
+        configTimeout.timeoutIntervalForRequest = 15
         AFManager = SessionManager(configuration: configTimeout)
         
         // 初始化tableView
@@ -115,6 +115,12 @@ class MainViewController: BaseViewController {
                 
                 if let key = key {
                     self.startClick(key: key)
+                    print("key = \(key)")
+                }else {
+                    let failAlert = UIAlertController(title: "错误", message: "处理失败请重试", preferredStyle: .alert)
+                    let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    failAlert.addAction(failAction)
+                    self.present(failAlert, animated: true, completion: nil)
                 }
             case .failure(let error):
                 print("getKey---\(error)")
@@ -142,13 +148,17 @@ class MainViewController: BaseViewController {
                     
                     HUD.hide({ (value) in
 //                        print(value)
-                        HUD.flash(.label(json["msg"].stringValue), delay: 2.0)
+                        HUD.flash(.label(json["msg"].stringValue), delay: 1.5)
                     })
                     self.isSuccessful = true
                     
                     self.tableView.reloadData()
                 case .failure(let error):
                     print("post---\(error)")
+                    let failAlert = UIAlertController(title: "错误", message: "网络超时", preferredStyle: .alert)
+                    let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    failAlert.addAction(failAction)
+                    self.present(failAlert, animated: true, completion: nil)
                 }
                 
             })

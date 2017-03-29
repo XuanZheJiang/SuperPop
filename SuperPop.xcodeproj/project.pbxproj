@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D23D17C1711B684A6CD5FC94 /* Pods_SuperPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */; };
+		DB4CBF5EB4DD658CF6217674 /* Pods_SuperPopToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E64DF81A70DFD9D03894064 /* Pods_SuperPopToday.framework */; };
 		FA08F71A1E87B81A00F59CD2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */; };
 		FA08F71C1E88FD2100F59CD2 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */; };
 		FA121E921E6662700027451E /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121E911E6662700027451E /* PlistManager.swift */; };
@@ -33,6 +34,8 @@
 		FA74F64D1E8AC20300A10AC4 /* Hook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F64B1E8AC20300A10AC4 /* Hook@3x.png */; };
 		FA74F6501E8AC29300A10AC4 /* Newfly@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F64E1E8AC29300A10AC4 /* Newfly@2x.png */; };
 		FA74F6511E8AC29300A10AC4 /* Newfly@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F64F1E8AC29300A10AC4 /* Newfly@3x.png */; };
+		FA74F65C1E8BE3C500A10AC4 /* singleHook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F65A1E8BE3C500A10AC4 /* singleHook@2x.png */; };
+		FA74F65D1E8BE3C500A10AC4 /* singleHook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F65B1E8BE3C500A10AC4 /* singleHook@3x.png */; };
 		FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D25391E85451E00AD0A36 /* LinkTextField.swift */; };
 		FA9D253C1E8547DA00AD0A36 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */; };
 		FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE89E911E65A4C100116C2B /* StringExtension.swift */; };
@@ -78,8 +81,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1697DF43718E2ADEC97909AB /* Pods-SuperPopToday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPopToday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPopToday/Pods-SuperPopToday.debug.xcconfig"; sourceTree = "<group>"; };
 		2C849FE31E5BAC17EE731C23 /* Pods-SuperPop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPop/Pods-SuperPop.debug.xcconfig"; sourceTree = "<group>"; };
+		47159BD51ACB950E8D8F8C12 /* Pods-SuperPopToday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPopToday.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPopToday/Pods-SuperPopToday.release.xcconfig"; sourceTree = "<group>"; };
 		5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperPop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E64DF81A70DFD9D03894064 /* Pods_SuperPopToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperPopToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D583FB2929B289265FD25723 /* Pods-SuperPop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPop.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPop/Pods-SuperPop.release.xcconfig"; sourceTree = "<group>"; };
 		FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +121,10 @@
 		FA74F64B1E8AC20300A10AC4 /* Hook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Hook@3x.png"; sourceTree = "<group>"; };
 		FA74F64E1E8AC29300A10AC4 /* Newfly@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Newfly@2x.png"; sourceTree = "<group>"; };
 		FA74F64F1E8AC29300A10AC4 /* Newfly@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Newfly@3x.png"; sourceTree = "<group>"; };
+		FA74F6521E8BBB9000A10AC4 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/SuperPop-duncqkbleodtkkfdanvxarmutxty/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		FA74F6541E8BBBD900A10AC4 /* Pods_SuperPop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_SuperPop.framework; path = "../../Library/Developer/Xcode/DerivedData/SuperPop-duncqkbleodtkkfdanvxarmutxty/Build/Products/Debug-iphonesimulator/Pods_SuperPop.framework"; sourceTree = "<group>"; };
+		FA74F65A1E8BE3C500A10AC4 /* singleHook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "singleHook@2x.png"; sourceTree = "<group>"; };
+		FA74F65B1E8BE3C500A10AC4 /* singleHook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "singleHook@3x.png"; sourceTree = "<group>"; };
 		FA9D25391E85451E00AD0A36 /* LinkTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkTextField.swift; sourceTree = "<group>"; };
 		FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		FAE89E911E65A4C100116C2B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA74F6361E8A63C300A10AC4 /* NotificationCenter.framework in Frameworks */,
+				DB4CBF5EB4DD658CF6217674 /* Pods_SuperPopToday.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,8 +169,11 @@
 		30842AE0B69BD203D62B6105 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA74F6541E8BBBD900A10AC4 /* Pods_SuperPop.framework */,
+				FA74F6521E8BBB9000A10AC4 /* Alamofire.framework */,
 				5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */,
 				FA74F6351E8A63C300A10AC4 /* NotificationCenter.framework */,
+				9E64DF81A70DFD9D03894064 /* Pods_SuperPopToday.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -169,6 +183,8 @@
 			children = (
 				2C849FE31E5BAC17EE731C23 /* Pods-SuperPop.debug.xcconfig */,
 				D583FB2929B289265FD25723 /* Pods-SuperPop.release.xcconfig */,
+				1697DF43718E2ADEC97909AB /* Pods-SuperPopToday.debug.xcconfig */,
+				47159BD51ACB950E8D8F8C12 /* Pods-SuperPopToday.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -264,6 +280,8 @@
 			children = (
 				FA74F64A1E8AC20300A10AC4 /* Hook@2x.png */,
 				FA74F64B1E8AC20300A10AC4 /* Hook@3x.png */,
+				FA74F65A1E8BE3C500A10AC4 /* singleHook@2x.png */,
+				FA74F65B1E8BE3C500A10AC4 /* singleHook@3x.png */,
 				FA74F64E1E8AC29300A10AC4 /* Newfly@2x.png */,
 				FA74F64F1E8AC29300A10AC4 /* Newfly@3x.png */,
 				FA74F6461E8A78B900A10AC4 /* SuperPopToday.entitlements */,
@@ -339,9 +357,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA74F6431E8A63C300A10AC4 /* Build configuration list for PBXNativeTarget "SuperPopToday" */;
 			buildPhases = (
+				D0C56476457A7A7878E94C99 /* [CP] Check Pods Manifest.lock */,
 				FA74F6301E8A63C300A10AC4 /* Sources */,
 				FA74F6311E8A63C300A10AC4 /* Frameworks */,
 				FA74F6321E8A63C300A10AC4 /* Resources */,
+				570FB3658AB18118B9916B77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -447,6 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA74F6511E8AC29300A10AC4 /* Newfly@3x.png in Resources */,
+				FA74F65C1E8BE3C500A10AC4 /* singleHook@2x.png in Resources */,
+				FA74F65D1E8BE3C500A10AC4 /* singleHook@3x.png in Resources */,
 				FA74F63C1E8A63C300A10AC4 /* MainInterface.storyboard in Resources */,
 				FA74F64C1E8AC20300A10AC4 /* Hook@2x.png in Resources */,
 				FA74F64D1E8AC20300A10AC4 /* Hook@3x.png in Resources */,
@@ -457,6 +479,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		570FB3658AB18118B9916B77 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperPopToday/Pods-SuperPopToday-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5FFCC216F28F8F37D87D2F2F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -500,6 +537,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SuperPop/Pods-SuperPop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0C56476457A7A7878E94C99 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -791,6 +843,7 @@
 		};
 		FA74F6411E8A63C300A10AC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1697DF43718E2ADEC97909AB /* Pods-SuperPopToday.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = SuperPopToday/SuperPopToday.entitlements;
@@ -810,6 +863,7 @@
 		};
 		FA74F6421E8A63C300A10AC4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 47159BD51ACB950E8D8F8C12 /* Pods-SuperPopToday.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = SuperPopToday/SuperPopToday.entitlements;

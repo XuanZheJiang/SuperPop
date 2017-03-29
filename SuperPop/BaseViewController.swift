@@ -18,6 +18,8 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(self.shareAction))
+        
         noCountImageView = UIImageView(image: #imageLiteral(resourceName: "NoCountT"))
         noCountImageView.frame.size = CGSize(width: 148, height: 29)
         noCountImageView.center.x = view.center.x
@@ -61,6 +63,10 @@ class BaseViewController: UIViewController {
         
     }
 
+    func shareAction() {
+        
+    }
+    
 }
 
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate

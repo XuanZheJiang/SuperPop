@@ -65,7 +65,7 @@ class InputCodeViewController: AddViewController {
     
     func addAccount() {
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 10)
-        HUD.allowsInteraction = true
+        
         
         let parameters = ["turl":lollyLinkTF.text!]
         Alamofire.request(POST.shortUrl, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseString { (response) in
@@ -84,6 +84,7 @@ class InputCodeViewController: AddViewController {
                         self.present(failAlert, animated: true, completion: nil)
                     }
                 }catch {
+                    HUD.hide()
                     let failAlert = UIAlertController(title: "错误", message: "解析失败请重试", preferredStyle: .alert)
                     let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     failAlert.addAction(failAction)
@@ -91,7 +92,8 @@ class InputCodeViewController: AddViewController {
                 }
                 
             case .failure(_):
-                let failAlert = UIAlertController(title: "错误", message: "解析失败请重试", preferredStyle: .alert)
+                HUD.hide()
+                let failAlert = UIAlertController(title: "错误", message: "启动失败请重试", preferredStyle: .alert)
                 let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 failAlert.addAction(failAction)
                 self.present(failAlert, animated: true, completion: nil)

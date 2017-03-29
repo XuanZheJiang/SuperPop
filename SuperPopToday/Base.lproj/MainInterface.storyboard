@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,28 +19,50 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100个帐号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Eo-Ab-SJy">
-                                <rect key="frame" x="30" y="0.5" width="142" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <rect key="frame" x="26" y="10" width="118.5" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="y3j-or-Ttv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tMT-mK-quZ">
-                                <rect key="frame" x="232" y="-10" width="58" height="58"/>
+                                <rect key="frame" x="295" y="30" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Bnt-vM-7Sh"/>
+                                    <constraint firstAttribute="width" constant="50" id="UK7-Me-ddL"/>
+                                </constraints>
                                 <state key="normal" backgroundImage="Newfly.png"/>
                                 <connections>
                                     <action selector="flyAction:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="cBr-Ez-sj2"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEt-se-b76">
+                                <rect key="frame" x="26" y="46" width="254" height="54"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Y2h-UY-ozc">
+                                <rect key="frame" x="310" y="45" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="4Eo-Ab-SJy" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="10" id="0Oh-0a-KOo"/>
+                            <constraint firstItem="Y2h-UY-ozc" firstAttribute="centerX" secondItem="tMT-mK-quZ" secondAttribute="centerX" id="2i0-Nn-bee"/>
                             <constraint firstAttribute="trailing" secondItem="tMT-mK-quZ" secondAttribute="trailing" constant="30" id="47G-RY-H72"/>
-                            <constraint firstItem="4Eo-Ab-SJy" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="h6m-YK-lP6"/>
+                            <constraint firstItem="tMT-mK-quZ" firstAttribute="leading" secondItem="tEt-se-b76" secondAttribute="trailing" constant="15" id="8uM-YG-XkL"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="tEt-se-b76" secondAttribute="bottom" constant="10" id="8yr-Ws-rwn"/>
+                            <constraint firstItem="tEt-se-b76" firstAttribute="top" secondItem="4Eo-Ab-SJy" secondAttribute="bottom" id="9fG-xp-UNN"/>
+                            <constraint firstItem="4Eo-Ab-SJy" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="10" id="9nT-kP-nLn"/>
+                            <constraint firstItem="tEt-se-b76" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="26" id="a0W-70-hPF"/>
+                            <constraint firstItem="Y2h-UY-ozc" firstAttribute="centerY" secondItem="tMT-mK-quZ" secondAttribute="centerY" id="nCZ-Qf-dnq"/>
                             <constraint firstItem="tMT-mK-quZ" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="ozp-3P-JHn"/>
-                            <constraint firstItem="4Eo-Ab-SJy" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="30" id="uRY-r7-DFf"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -47,15 +70,17 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="37"/>
+                    <size key="freeformSize" width="375" height="110"/>
                     <connections>
+                        <outlet property="activitySmall" destination="Y2h-UY-ozc" id="8I0-K5-Xhe"/>
                         <outlet property="countNumL" destination="4Eo-Ab-SJy" id="7bU-KW-goC"/>
                         <outlet property="flyBtn" destination="tMT-mK-quZ" id="ec8-ea-j8E"/>
+                        <outlet property="logInfoL" destination="tEt-se-b76" id="mHE-2B-zLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-248" y="-129"/>
+            <point key="canvasLocation" x="-248.80000000000001" y="-129.53523238380811"/>
         </scene>
     </scenes>
     <resources>

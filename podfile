@@ -12,3 +12,9 @@ target 'SuperPop' do
   pod 'PKHUD', '~> 4.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
 end
+
+target 'SuperPopToday' do
+  use_frameworks!
+  pod 'SwiftyJSON'  
+  pod 'Alamofire'
+end
