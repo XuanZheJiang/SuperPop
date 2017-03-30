@@ -76,7 +76,7 @@ class BaseViewController: UIViewController {
             controller.setSubject("意见反馈")
             controller.mailComposeDelegate = self
             controller.setToRecipients(["jgcm@live.cn"])
-//            controller.setMessageBody("\(versionL.text!)", isHTML: false)
+            controller.addAttachmentData(DeviceInfoManager.default.toFormat(), mimeType: "text/plain", fileName: "DeviceInfo.txt")
             self.present(controller, animated: true, completion: nil)
         } else {
             let alert = UIAlertController.init(title: "打开邮箱失败", message: "未设置邮箱账户", preferredStyle: .alert)

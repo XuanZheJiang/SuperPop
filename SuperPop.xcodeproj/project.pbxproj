@@ -38,6 +38,7 @@
 		FA74F65D1E8BE3C500A10AC4 /* singleHook@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA74F65B1E8BE3C500A10AC4 /* singleHook@3x.png */; };
 		FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D25391E85451E00AD0A36 /* LinkTextField.swift */; };
 		FA9D253C1E8547DA00AD0A36 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */; };
+		FADDCACF1E8C90A200FED88C /* DeviceInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADDCACE1E8C90A200FED88C /* DeviceInfoManager.swift */; };
 		FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE89E911E65A4C100116C2B /* StringExtension.swift */; };
 		FAE89E941E65A63500116C2B /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE89E931E65A63500116C2B /* HomeCell.swift */; };
 /* End PBXBuildFile section */
@@ -127,6 +128,7 @@
 		FA74F65B1E8BE3C500A10AC4 /* singleHook@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "singleHook@3x.png"; sourceTree = "<group>"; };
 		FA9D25391E85451E00AD0A36 /* LinkTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkTextField.swift; sourceTree = "<group>"; };
 		FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		FADDCACE1E8C90A200FED88C /* DeviceInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfoManager.swift; sourceTree = "<group>"; };
 		FAE89E911E65A4C100116C2B /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		FAE89E931E65A63500116C2B /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -243,6 +245,7 @@
 				FA74F6281E8A1AD000A10AC4 /* PhotoPickerViewController.swift */,
 				FAE89E931E65A63500116C2B /* HomeCell.swift */,
 				FA121E911E6662700027451E /* PlistManager.swift */,
+				FADDCACE1E8C90A200FED88C /* DeviceInfoManager.swift */,
 				FA7132751E65840700D1BF04 /* AppDelegate.swift */,
 				FA7132791E65840700D1BF04 /* Main.storyboard */,
 				FA71327C1E65840700D1BF04 /* Assets.xcassets */,
@@ -580,6 +583,7 @@
 				FA71328E1E658C3100D1BF04 /* UIViewExtension.swift in Sources */,
 				FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */,
 				FAE89E941E65A63500116C2B /* HomeCell.swift in Sources */,
+				FADDCACF1E8C90A200FED88C /* DeviceInfoManager.swift in Sources */,
 				FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */,
 				FA9D253C1E8547DA00AD0A36 /* BaseButton.swift in Sources */,
 				FA74F62B1E8A2E0B00A10AC4 /* BaseViewController.swift in Sources */,
