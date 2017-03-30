@@ -115,9 +115,10 @@ class MainViewController: BaseViewController {
                 
                 if let key = key {
                     self.startClick(key: key)
-                    print("key = \(key)")
+//                    print("key = \(key)")
                 }else {
-                    let failAlert = UIAlertController(title: "错误", message: "处理失败请重试", preferredStyle: .alert)
+                    HUD.hide()
+                    let failAlert = UIAlertController(title: "提示", message: "网站升级中...", preferredStyle: .alert)
                     let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     failAlert.addAction(failAction)
                     self.present(failAlert, animated: true, completion: nil)

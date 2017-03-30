@@ -84,7 +84,6 @@ class HomeCell: UITableViewCell {
         
         // lolly
         lollyImageView = UIImageView()
-        lollyImageView.isHidden = true
         lollyImageView.image = #imageLiteral(resourceName: "lolly")
         containerViewImage.addSubview(lollyImageView)
         lollyImageView.snp.makeConstraints { (make) in
@@ -95,7 +94,6 @@ class HomeCell: UITableViewCell {
         
         // egg
         eggImageView = UIImageView()
-        eggImageView.isHidden = true
         eggImageView.image = #imageLiteral(resourceName: "egg")
         containerViewImage.addSubview(eggImageView)
         eggImageView.snp.makeConstraints { (make) in

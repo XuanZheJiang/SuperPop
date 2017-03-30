@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(self.shareAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
         
         noCountImageView = UIImageView(image: #imageLiteral(resourceName: "NoCountT"))
         noCountImageView.frame.size = CGSize(width: 148, height: 29)
@@ -139,12 +139,12 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
                         }
                         
                     }else {
-                        HUD.flash(.label("二维码不符"))
+                        HUD.flash(.label("二维码不符"), delay: 0.5)
                     }
                 }
             }
         }else {
-            HUD.flash(.label("不是二维码"))
+            HUD.flash(.label("没有找到二维码"), delay: 0.5)
         }
         
         

@@ -22,14 +22,15 @@ class LinkTextField: UITextField {
         self.background = #imageLiteral(resourceName: "bgTF")
     }
     
+    // 修改placeholder的起始位置
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: bounds.origin.x + 15, y: bounds.origin.y, width: bounds.size.width - 15, height: bounds.size.height)
     }
-    
+    // 修改显示文本的起始位置
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: bounds.origin.x + 15, y: bounds.origin.y - 2, width: bounds.size.width - 15, height: bounds.size.height)
     }
-    
+    // 修改编辑时的起始位置
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: bounds.origin.x + 15, y: bounds.origin.y - 2, width: bounds.size.width - 15, height: bounds.size.height)
     }

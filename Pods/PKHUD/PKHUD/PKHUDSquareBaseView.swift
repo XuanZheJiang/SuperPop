@@ -35,7 +35,7 @@ open class PKHUDSquareBaseView: UIView {
 
     open let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.alpha = 0.85
+        imageView.alpha = 1.00
         imageView.clipsToBounds = true
         imageView.contentMode = .center
         return imageView

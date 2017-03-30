@@ -62,7 +62,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 }else {
                     self.activitySmall.stopAnimating()
                     self.flyBtn.isEnabled = true
-                    self.logInfoL.text = "处理失败请重试"
+                    self.logInfoL.text = "网站升级中..."
                 }
                 
             case .failure(let error):

@@ -11,6 +11,7 @@ import SnapKit
 import Alamofire
 import PKHUD
 import Fuzi
+import Device
 
 class InputCodeViewController: AddViewController {
 
@@ -29,7 +30,11 @@ class InputCodeViewController: AddViewController {
         carefulView.image = #imageLiteral(resourceName: "careful")
         view.addSubview(carefulView)
         carefulView.snp.makeConstraints { (make) in
-            make.top.equalTo(self.headerView.snp.bottom).offset(64)
+            if Device.size() == Size.screen4Inch {
+                make.top.equalTo(self.headerView.snp.bottom).offset(15)
+            }else {
+                make.top.equalTo(self.headerView.snp.bottom).offset(64)
+            }
             make.centerX.equalToSuperview()
             make.width.equalTo(261)
             make.height.equalTo(53)
@@ -40,6 +45,7 @@ class InputCodeViewController: AddViewController {
         #if DEBUG
         lollyLinkTF.text = "http://t.cn/RtqVl3m"
         #endif
+        lollyLinkTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
         view.addSubview(lollyLinkTF)
         lollyLinkTF.snp.makeConstraints { (make) in
             make.top.equalTo(self.carefulView.snp.bottom).offset(20)
@@ -55,13 +61,24 @@ class InputCodeViewController: AddViewController {
         view.addSubview(addBtn)
         addBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(Screen.width / 6)
-            make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(50)
+            if Device.size() == Size.screen4Inch {
+                make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(10)
+            }else {
+                make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(50)
+            }
             make.centerX.equalToSuperview()
         }
         
     }
     
-    
+    // 密码输入框文字监听
+    func textChange() -> Void {
+        if lollyLinkTF.text!.characters.count > 0 {
+            addBtn.isEnabled = true
+        } else {
+            addBtn.isEnabled = false
+        }
+    }
     
     func addAccount() {
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 10)

@@ -120,7 +120,13 @@ class QRCodeViewController: AddViewController {
         session.startRunning()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        session.startRunning()
+    }
+    
 }
+
+
 
 
 // MARK: - AVCaptureMetadataOutputObjectsDelegate
@@ -158,17 +164,18 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                             PlistManager.standard.array.append(dict)
                             session.stopRunning()
                         }
-                        
+                        session.stopRunning()
                         self.dismiss(animated: true, completion: nil)
                     }else {
-                        print("二维码不符")
+                        HUD.flash(.label("二维码不符"), delay: 0.5)
+                        session.stopRunning()
                     }
                 }
  
             }else {
-                print("扫描失败")
+                HUD.flash(.label("扫描失败"), delay: 0.5)
+                session.stopRunning()
             }
-            session.stopRunning()
         }
         
     }
