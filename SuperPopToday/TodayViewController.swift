@@ -32,12 +32,23 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 10.0, *) {
+            
+        } else {
+            countNumL.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            logInfoL.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        }
+        
         let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
         if let array = NSArray(contentsOf: groupURL!) {
             countNumL.text = "\(array.count)个帐号"
             self.arr = array as! [[String : String]]
         }
 
+    }
+    
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
     }
     
     @IBAction func flyAction(_ sender: UIButton) {
@@ -105,9 +116,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
 
-    
-
-    
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         
         // Perform any setup necessary in order to update the view.

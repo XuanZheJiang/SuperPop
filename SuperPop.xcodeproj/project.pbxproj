@@ -856,7 +856,7 @@
 				CODE_SIGN_ENTITLEMENTS = SuperPopToday/SuperPopToday.entitlements;
 				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
 				INFOPLIST_FILE = SuperPopToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -877,7 +877,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
 				INFOPLIST_FILE = SuperPopToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
