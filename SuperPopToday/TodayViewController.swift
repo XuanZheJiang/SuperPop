@@ -42,6 +42,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
         if let array = NSArray(contentsOf: groupURL!) {
             countNumL.text = "\(array.count)个帐号"
+            flyBtn.isEnabled = true
             self.arr = array as! [[String : String]]
         }
 
@@ -50,10 +51,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
-    
+        
     @IBAction func flyAction(_ sender: UIButton) {
-        self.logInfoL.text = ""
+        
+        guard arr.count > 0 else { return }
         self.activitySmall.startAnimating()
+        self.logInfoL.text = ""
         self.flyBtn.isEnabled = false
         getKey()
     }
