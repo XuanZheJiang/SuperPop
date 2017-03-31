@@ -25,15 +25,6 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let arrayURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile")
-        
-        let str = "蒋轩哲d"
-        do {
-            try str.write(to: arrayURL!, atomically: true, encoding: String.Encoding.utf8)
-        } catch {
-            print(error)
-        }
-        
         // 配置超时config
         let configTimeout = URLSessionConfiguration.default
         configTimeout.timeoutIntervalForRequest = 15
@@ -123,8 +114,8 @@ class MainViewController: BaseViewController {
                     failAlert.addAction(failAction)
                     self.present(failAlert, animated: true, completion: nil)
                 }
-            case .failure(let error):
-                print("getKey---\(error)")
+            case .failure(_):
+//                print("getKey---\(error)")
                 HUD.hide()
                 let failAlert = UIAlertController(title: "错误", message: "网络超时", preferredStyle: .alert)
                 let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -154,8 +145,8 @@ class MainViewController: BaseViewController {
                     self.isSuccessful = true
                     
                     self.tableView.reloadData()
-                case .failure(let error):
-                    print("post---\(error)")
+                case .failure(_):
+//                    print("post---\(error)")
                     let failAlert = UIAlertController(title: "错误", message: "网络超时", preferredStyle: .alert)
                     let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     failAlert.addAction(failAction)

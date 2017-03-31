@@ -84,7 +84,7 @@ class QRCodeViewController: AddViewController {
         do {
             input = try AVCaptureDeviceInput(device: device)
         } catch {
-            print("Input失败")
+//            print("Input失败")
             return
         }
         
@@ -99,13 +99,13 @@ class QRCodeViewController: AddViewController {
         if session.canAddInput(input) {
             session.addInput(input)
         }else {
-            print("session add input fail")
+//            print("session add input fail")
         }
         
         if session.canAddOutput(output) {
             session.addOutput(output)
         }else {
-            print("session add output fail")
+//            print("session add output fail")
         }
         // 这行必须放在session初始化后，不然会crash
         output.metadataObjectTypes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code]

@@ -13,7 +13,7 @@ import MessageUI
 
 class BaseViewController: UIViewController {
 
-    let items = ["手动录入", "二维码扫描", "相册二维码录入", "意见反馈"]
+    let items = ["手动录入", "二维码扫描", "相册二维码录入", "意见反馈", "评价"]
     var noCountImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -61,13 +61,21 @@ class BaseViewController: UIViewController {
                 self?.present(photoPickerVC, animated: true, completion: nil)
             case 3:
                 self?.emailAction()
+            case 4:
+                self?.evaluation()
             default:
                 break
             }
         }
         
     }
+    // 评价
+    func evaluation() {
+        let url = "itms-apps://itunes.apple.com/app/id1221806149?action=write-review"
+        UIApplication.shared.openURL(URL.init(string: url)!)
+    }
     
+    // 邮件反馈
     func emailAction() -> Void {
         // 首先要判断设备具不具备发送邮件功能
         if MFMailComposeViewController.canSendMail() {
@@ -84,11 +92,12 @@ class BaseViewController: UIViewController {
         }
     }
 
+    // 分享
     func shareAction() {
-        let shareURL = URL(string: "https://itunes.apple.com/us/app/TangShop/id1145725777")!
-        let shareString = "https://itunes.apple.com/us/app/TangShop/id1145725777"
-        let shareTitle = "SuperPop"
-        let shareImage = #imageLiteral(resourceName: "egg")
+        let shareURL = URL(string: "https://itunes.apple.com/us/app/slpop/id1221806149?l=zh&ls=1&mt=8")!
+        let shareString = "https://itunes.apple.com/us/app/slpop/id1221806149?l=zh&ls=1&mt=8"
+        let shareTitle = "SLPop"
+        let shareImage = #imageLiteral(resourceName: "shareIcon")
         let items = [shareString, shareURL, shareTitle, shareImage] as [Any]
         let shareVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         self.present(shareVC, animated: true, completion: nil)

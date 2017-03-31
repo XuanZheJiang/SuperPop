@@ -65,8 +65,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     self.logInfoL.text = "网站升级中..."
                 }
                 
-            case .failure(let error):
-                print("getKey---\(error)")
+            case .failure(_):
+//                print("getKey---\(error)")
                 self.activitySmall.stopAnimating()
                 self.flyBtn.isEnabled = true
                 self.logInfoL.text = "网络超时"
@@ -93,8 +93,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: { 
                         self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "Newfly.png"), for: .normal)
                     })
-                case .failure(let error):
-                    print("post---\(error)")
+                case .failure(_):
+//                    print("post---\(error)")
                     self.flyBtn.isEnabled = true
                     self.activitySmall.stopAnimating()
                     self.logInfoL.text = "网络超时"
