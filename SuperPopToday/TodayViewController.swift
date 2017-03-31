@@ -37,6 +37,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             countNumL.text = "\(array.count)个帐号"
             self.arr = array as! [[String : String]]
         }
+
     }
     
     @IBAction func flyAction(_ sender: UIButton) {

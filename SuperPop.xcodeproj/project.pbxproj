@@ -835,14 +835,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = SuperPop/SuperPop.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
 				INFOPLIST_FILE = SuperPop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "201f304c-018a-443b-8b21-c5d9fb5b8c10";
-				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_qiuqiu_2017_2_26;
+				PROVISIONING_PROFILE = "2549a3c4-723b-4e16-9004-c1a53a32364e";
+				PROVISIONING_PROFILE_SPECIFIER = Pro_Dis_SLPop_20170331;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -855,7 +856,7 @@
 				CODE_SIGN_ENTITLEMENTS = SuperPopToday/SuperPopToday.entitlements;
 				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
 				INFOPLIST_FILE = SuperPopToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -873,14 +874,15 @@
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = SuperPopToday/SuperPopToday.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = Y6SZS4JQ7Q;
 				INFOPLIST_FILE = SuperPopToday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d56d00ee-58f2-4bc6-b03d-064bba40df52";
-				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_SuperPopToday_20170328;
+				PROVISIONING_PROFILE = "bd03b8c5-0308-4b9c-86e8-b41ef8308602";
+				PROVISIONING_PROFILE_SPECIFIER = Pro_Dis_SLPop_Today_20170331;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
