@@ -20,7 +20,6 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "share"), style: .plain, target: self, action: #selector(self.shareAction))
-//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareAction))
         
         noCountImageView = UIImageView(image: #imageLiteral(resourceName: "NoCountT"))
         noCountImageView.frame.size = CGSize(width: 148, height: 29)

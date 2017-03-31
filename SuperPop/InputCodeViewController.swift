@@ -31,7 +31,7 @@ class InputCodeViewController: AddViewController {
         view.addSubview(carefulView)
         carefulView.snp.makeConstraints { (make) in
             if Device.size() == Size.screen4Inch {
-                make.top.equalTo(self.headerView.snp.bottom).offset(15)
+                make.top.equalTo(self.headerView.snp.bottom).offset(30)
             }else {
                 make.top.equalTo(self.headerView.snp.bottom).offset(64)
             }
@@ -62,7 +62,7 @@ class InputCodeViewController: AddViewController {
         addBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(Screen.width / 6)
             if Device.size() == Size.screen4Inch {
-                make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(10)
+                make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(20)
             }else {
                 make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(50)
             }
