@@ -36,6 +36,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         if #available(iOS 10.0, *) {
             
         } else {
+            activitySmall.activityIndicatorViewStyle = .white
             countNumL.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             logInfoL.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
@@ -78,7 +79,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 }else {
                     self.activitySmall.stopAnimating()
                     self.flyBtn.isEnabled = true
-                    self.logInfoL.text = "网站升级中..."
+                    self.logInfoL.text = "此时提交人数多，请稍后再试。"
                 }
                 
             case .failure(_):

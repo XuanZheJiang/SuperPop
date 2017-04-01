@@ -115,7 +115,7 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
         let ciImage = CIImage(data: imageData)!
         
         // 创建探测器
-        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyLow])!
+        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy:CIDetectorAccuracyHigh])!
         let feature = detector.features(in: ciImage)
         if let results = feature.first as? CIQRCodeFeature {
             if let result = results.messageString {
