@@ -10,6 +10,7 @@ import UIKit
 import NotificationCenter
 import Alamofire
 import SwiftyJSON
+import SnapKit
 
 /// 网络请求
 struct POST {
