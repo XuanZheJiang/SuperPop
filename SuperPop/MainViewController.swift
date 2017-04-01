@@ -67,11 +67,19 @@ class MainViewController: BaseViewController {
 
     // 清空plist
     func clearAll() {
-        PlistManager.standard.clear()
-        noCountImageView.isHidden = false
-        startBtn.isEnabled = false
-        removeAllBtn.isEnabled = false
-        tableView.reloadData()
+        
+        let alert = UIAlertController(title: "警告", message: "确定清空所有帐号？", preferredStyle: .alert)
+        let cancle = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let action = UIAlertAction(title: "确定", style: .destructive) { (action) in
+            PlistManager.standard.clear()
+            self.noCountImageView.isHidden = false
+            self.startBtn.isEnabled = false
+            self.removeAllBtn.isEnabled = false
+            self.tableView.reloadData()
+        }
+        alert.addAction(cancle)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
