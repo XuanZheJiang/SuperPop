@@ -54,13 +54,13 @@ class HomeCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         contentView.backgroundColor = UIColor.clear
         self.backgroundColor = UIColor.clear
         self.selectionStyle = .none
         
         // containerView
         containerViewImage = UIImageView()
+        containerViewImage.isUserInteractionEnabled = true
         containerViewImage.image = bgGroup[Int(randomNum)]
         contentView.addSubview(containerViewImage)
         containerViewImage.snp.makeConstraints { (make) in
@@ -72,14 +72,12 @@ class HomeCell: UITableViewCell {
         
         
         // 帐号Label
-        accountL = UILabel()
+        accountL = BaseLabel()
         containerViewImage.addSubview(accountL)
-        accountL.font = UIFont.systemFont(ofSize: 18)
-        accountL.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         accountL.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(50)
             make.centerY.equalToSuperview().offset(-2)
-            make.height.equalTo(20)
+            make.height.equalTo(40)
         }
         
         // lolly

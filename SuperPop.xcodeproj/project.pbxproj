@@ -14,6 +14,7 @@
 		FA121E921E6662700027451E /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121E911E6662700027451E /* PlistManager.swift */; };
 		FA121E9A1E6866A10027451E /* SuperPopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121E991E6866A10027451E /* SuperPopTests.swift */; };
 		FA121EA81E686EB80027451E /* SuperPopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121EA71E686EB80027451E /* SuperPopUITests.swift */; };
+		FA6F06AD1E9089ED00A5D632 /* BaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6F06AC1E9089ED00A5D632 /* BaseLabel.swift */; };
 		FA7132761E65840700D1BF04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132751E65840700D1BF04 /* AppDelegate.swift */; };
 		FA7132781E65840700D1BF04 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132771E65840700D1BF04 /* MainViewController.swift */; };
 		FA71327B1E65840700D1BF04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7132791E65840700D1BF04 /* Main.storyboard */; };
@@ -97,6 +98,7 @@
 		FA121EA51E686EB70027451E /* SuperPopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SuperPopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA121EA71E686EB80027451E /* SuperPopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPopUITests.swift; sourceTree = "<group>"; };
 		FA121EA91E686EB80027451E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA6F06AC1E9089ED00A5D632 /* BaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
 		FA7132721E65840700D1BF04 /* SuperPop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperPop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7132751E65840700D1BF04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA7132771E65840700D1BF04 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				FA9D253B1E8547DA00AD0A36 /* BaseButton.swift */,
 				FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */,
 				FA9D25391E85451E00AD0A36 /* LinkTextField.swift */,
+				FA6F06AC1E9089ED00A5D632 /* BaseLabel.swift */,
 			);
 			name = BaseControl;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA71328E1E658C3100D1BF04 /* UIViewExtension.swift in Sources */,
+				FA6F06AD1E9089ED00A5D632 /* BaseLabel.swift in Sources */,
 				FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */,
 				FAE89E941E65A63500116C2B /* HomeCell.swift in Sources */,
 				FADDCACF1E8C90A200FED88C /* DeviceInfoManager.swift in Sources */,

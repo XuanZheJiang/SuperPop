@@ -43,7 +43,7 @@ class InputCodeViewController: AddViewController {
         // 棒棒糖推广链接输入框
         lollyLinkTF = LinkTextField()
         #if DEBUG
-//        lollyLinkTF.text = "http://t.cn/RtqVl3m"
+        lollyLinkTF.text = "http://t.cn/RtqVl3m"
         #endif
         lollyLinkTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
         view.addSubview(lollyLinkTF)
