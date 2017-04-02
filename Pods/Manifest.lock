@@ -3,6 +3,9 @@ PODS:
   - BTNavigationDropdownMenu (0.4.1)
   - Device (3.0.0)
   - Fuzi (1.0.1)
+  - JCore (1.1.1)
+  - JPush (3.0.2):
+    - JCore (~> 1.1.1)
   - PKHUD (4.2.0)
   - ReachabilitySwift (3)
   - SnapKit (3.1.2)
@@ -13,6 +16,7 @@ DEPENDENCIES:
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
   - Device (~> 3.0.0)
   - Fuzi (~> 1.0.0)
+  - JPush
   - PKHUD (~> 4.0)
   - ReachabilitySwift
   - SnapKit
@@ -33,11 +37,13 @@ SPEC CHECKSUMS:
   BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
   Device: ac43019cfd38fc4e95c608e27ff8a6fe7ea15240
   Fuzi: 851403654bac55675aaeed815d0c8a1d3e3d3e8b
+  JCore: 2210a789c8efb7dc2a46b1c24d2209b995b18ad2
+  JPush: 01a693fafe51b93eafc2e368bbc7a7cc07e12ce4
   PKHUD: 48af884cf00c2213b0313b739d914e6cab1c0f5e
   ReachabilitySwift: f5b9bb30a0777fac8f09ce8b067e32faeb29bb64
   SnapKit: 12b24f569cb7c143acc9c22b9d91b23e7b1c84a2
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 9e11081de238327d2a944e002a2a55ef055bdce1
+PODFILE CHECKSUM: af2d233360c81babdfa1cb1de1f3909e6611a2a4
 
 COCOAPODS: 1.2.0

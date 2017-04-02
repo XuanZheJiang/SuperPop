@@ -99,6 +99,7 @@
 		FA121EA71E686EB80027451E /* SuperPopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperPopUITests.swift; sourceTree = "<group>"; };
 		FA121EA91E686EB80027451E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA6F06AC1E9089ED00A5D632 /* BaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseLabel.swift; sourceTree = "<group>"; };
+		FA6F06AE1E90DE4100A5D632 /* SLPopHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SLPopHeader.h; sourceTree = "<group>"; };
 		FA7132721E65840700D1BF04 /* SuperPop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperPop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7132751E65840700D1BF04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA7132771E65840700D1BF04 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 				FA71327C1E65840700D1BF04 /* Assets.xcassets */,
 				FA71327E1E65840700D1BF04 /* LaunchScreen.storyboard */,
 				FA7132811E65840700D1BF04 /* Info.plist */,
+				FA6F06AE1E90DE4100A5D632 /* SLPopHeader.h */,
 			);
 			path = SuperPop;
 			sourceTree = "<group>";
@@ -406,6 +408,9 @@
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -825,8 +830,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5b025b5c-4f61-45fa-85e3-bc41254a1a4c";
-				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_qiuqiu_2017_2_26;
+				PROVISIONING_PROFILE = "41d3a1c5-f503-4001-b07d-0a8db245b043";
+				PROVISIONING_PROFILE_SPECIFIER = Pro_Dev_APNs_SLPop_20170402;
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/SuperPop/SLPopHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -846,8 +852,9 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JGCM.qiuqiuPOST;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2549a3c4-723b-4e16-9004-c1a53a32364e";
-				PROVISIONING_PROFILE_SPECIFIER = Pro_Dis_SLPop_20170331;
+				PROVISIONING_PROFILE = "674eb608-8b93-4c44-ab3a-665a885fd2da";
+				PROVISIONING_PROFILE_SPECIFIER = Pro_Dis_APNs_SLPop_20170402;
+				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/SuperPop/SLPopHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -117,7 +117,7 @@ class MainViewController: BaseViewController {
 //                    print("key = \(key)")
                 }else {
                     HUD.hide()
-                    let failAlert = UIAlertController(title: "提示", message: "此时提交人数多，请稍后再试。", preferredStyle: .alert)
+                    let failAlert = UIAlertController(title: "提示", message: "当前时间段处于提交高峰期，请过几分钟重新提交。", preferredStyle: .alert)
                     let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     failAlert.addAction(failAction)
                     self.present(failAlert, animated: true, completion: nil)

@@ -43,12 +43,8 @@ struct Screen {
 //}
 
 /// 第三方开发平台 AppKey
-//struct AppKey {
-//    static let wechat = ""
-//}
-
-/// 第三方开发平台 AppSecret
-//struct AppSecret {
-//    
-//}
+struct AppKey {
+    /// 极光推送
+    static let JPush = "313d9d29c51b39da1fc1d75d"
+}
 

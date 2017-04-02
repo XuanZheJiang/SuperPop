@@ -79,7 +79,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 }else {
                     self.activitySmall.stopAnimating()
                     self.flyBtn.isEnabled = true
-                    self.logInfoL.text = "此时提交人数多，请稍后再试。"
+                    self.logInfoL.text = "当前时间段处于提交高峰期，请过几分钟重新提交。"
                 }
                 
             case .failure(_):
