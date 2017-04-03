@@ -16,6 +16,10 @@ struct POST {
     static let shortUrl = "http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/"
 }
 
+struct Color {
+    static let naviColor = UIColor.colorFrom(hexString: "5B667B")
+}
+
 /// 常用路径
 struct Path {
     static let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
@@ -23,8 +27,6 @@ struct Path {
 
 /// 常用字体字号
 struct Font {
-    
-    ///
     static let tiny: UIFont! = UIFont(name: "PingFangSC-Regular", size: 13)
     
 }

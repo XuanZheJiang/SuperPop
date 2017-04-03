@@ -57,6 +57,9 @@ class BaseViewController: UIViewController {
             case 2:
                 let photoPickerVC = PhotoPickerViewController()
                 photoPickerVC.sourceType = .photoLibrary
+                photoPickerVC.navigationBar.barTintColor = Color.naviColor
+                photoPickerVC.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                photoPickerVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
                 photoPickerVC.delegate = self
                 self?.present(photoPickerVC, animated: true, completion: nil)
             case 3:
