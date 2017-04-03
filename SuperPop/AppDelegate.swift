@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         
         // 注册极光推送
         JPUSHService.register(forRemoteNotificationTypes: UIUserNotificationType.alert.rawValue | UIUserNotificationType.badge.rawValue | UIUserNotificationType.sound.rawValue, categories: nil)
-        JPUSHService.setup(withOption: launchOptions, appKey: AppKey.JPush, channel: "AppStore", apsForProduction: false)
+        JPUSHService.setup(withOption: launchOptions, appKey: AppKey.JPush, channel: "AppStore", apsForProduction: true)
         
         // 监听极光自定义消息推送
         NotificationCenter.default.addObserver(self, selector: #selector(networkDidReceiveMessage(notifi:)), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
