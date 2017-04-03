@@ -113,10 +113,10 @@ class QRCodeViewController: AddViewController {
         // Preview
         preview = AVCaptureVideoPreviewLayer(session: session)
         preview.videoGravity = AVLayerVideoGravityResizeAspectFill
-        preview.frame.size = CGSize(width: 200, height: 200)
-        preview.frame.origin = CGPoint(x: Screen.width / 2 - preview.frame.width / 2, y: Screen.height / 2 - preview.frame.height / 2)
+        preview.frame = CGRect(x: 9, y: 9, width: 200, height: 200)
         preview.cornerRadius = 5
-        view.layer.addSublayer(preview)
+//        view.layer.addSublayer(preview)
+        containerView.layer.insertSublayer(preview, at: 4)
         session.startRunning()
     }
     
@@ -125,9 +125,6 @@ class QRCodeViewController: AddViewController {
     }
     
 }
-
-
-
 
 // MARK: - AVCaptureMetadataOutputObjectsDelegate
 extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {

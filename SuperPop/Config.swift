@@ -18,7 +18,7 @@ struct POST {
 
 /// 常用路径
 struct Path {
-    static let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")    
+    static let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
 }
 
 /// 常用字体字号
