@@ -11,27 +11,23 @@ import Foundation
 class PlistManager {
     
     static let standard = PlistManager()
+    
     var array: [[String:String]] {
-        
         didSet {
             writePlist()
         }
     }
     
     private init() {
-//        array = NSArray(contentsOfFile: filePath) as? [[String:String]] ?? [[String:String]]()
         array = NSArray(contentsOf: Path.groupURL!) as? [[String : String]] ?? [[String:String]]()
-        
     }
     
     private func writePlist() {
-//        (array as NSArray).write(toFile: Path.groupURL!, atomically: true)
         (array as NSArray).write(to: Path.groupURL!, atomically: true)
     }
     
-    /// 清空plist
+    // 清空plist
     func clear() {
         array.removeAll()
     }
-
 }

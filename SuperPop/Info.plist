@@ -37,6 +37,10 @@
 	<string>请允许本程序访问您的相机，随后您也可以在系统设置中随时修改。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>请允许本程序读取您的相册，随后您也可以在系统设置中随时修改。</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

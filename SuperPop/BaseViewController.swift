@@ -62,17 +62,12 @@ class BaseViewController: UIViewController {
             case 3:
                 self?.emailAction()
             case 4:
-                self?.evaluation()
+                UpdateManager.evaluation()
             default:
                 break
             }
         }
         
-    }
-    // 评价
-    func evaluation() {
-        let url = "itms-apps://itunes.apple.com/app/id1221806149?action=write-review"
-        UIApplication.shared.openURL(URL.init(string: url)!)
     }
     
     // 邮件反馈

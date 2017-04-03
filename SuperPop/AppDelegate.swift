@@ -9,46 +9,76 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        Thread.sleep(forTimeInterval: 0.5)
-        let mainNC = UINavigationController(rootViewController: MainViewController())
         
+        let mainNC = UINavigationController(rootViewController: MainViewController())
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         window?.backgroundColor = UIColor.white
         window?.rootViewController = mainNC
         window?.makeKeyAndVisible()
         
+        // 注册极光推送
+        JPUSHService.register(forRemoteNotificationTypes: UIUserNotificationType.alert.rawValue | UIUserNotificationType.badge.rawValue | UIUserNotificationType.sound.rawValue, categories: nil)
+        JPUSHService.setup(withOption: launchOptions, appKey: AppKey.JPush, channel: "AppStore", apsForProduction: false)
+        
+        // 监听极光自定义消息推送
+        NotificationCenter.default.addObserver(self, selector: #selector(networkDidReceiveMessage(notifi:)), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
+        #if DEBUG
+        #else
+            JPUSHService.setLogOFF()
+        #endif
         return true
     }
+    
+    // 处理极光自定义消息推送
+    func networkDidReceiveMessage(notifi: Notification) {
+        
+        if let content = notifi.userInfo?["content"] as? String, let extras = notifi.userInfo?["extras"] as? NSDictionary {
+            let alert = UIAlertController(title: extras["title"] as? String ?? "通知", message: content, preferredStyle: .alert)
+            let cancel = UIAlertAction(title: "知道了", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    // 从APNs获取deviceToken上传到极光
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        JPUSHService.registerDeviceToken(deviceToken)
+    }
+    
+    // 处理APNs消息
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        JPUSHService.handleRemoteNotification(userInfo)
 
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        let alert = UIAlertController(title: "🎉版本更新", message: "不去看看有什么新功能吗？", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "没兴趣", style: .cancel, handler: nil)
+        let determine = UIAlertAction(title: "看看呗", style: .default) { (alert) in
+            // 不用延时会警告"_BSMachError: port 9403"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+                UpdateManager.JumpToAppStore()
+            })
+        }
+        alert.addAction(cancel)
+        alert.addAction(determine)
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        completionHandler(.newData)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        JPUSHService.resetBadge()
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
+    
+    func applicationWillResignActive(_ application: UIApplication) { }
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
+    func applicationWillEnterForeground(_ application: UIApplication) { }
 
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
+    func applicationDidBecomeActive(_ application: UIApplication) { }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
+    func applicationWillTerminate(_ application: UIApplication) { }
 }
-

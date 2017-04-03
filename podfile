@@ -9,6 +9,7 @@ end
 
 target 'SuperPop' do
   shared_pods
+  pod 'JPush'
   pod 'ReachabilitySwift'
   pod 'Device', '~> 3.0.0'
   pod 'Fuzi', '~> 1.0.0'  
