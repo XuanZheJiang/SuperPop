@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Device
+import PKHUD
 
 class FeedbackViewController: AddViewController {
 
@@ -56,7 +57,7 @@ class FeedbackViewController: AddViewController {
         addBtn = BaseButton()
         addBtn.isEnabled = false
         addBtn.setBackgroundImage(#imageLiteral(resourceName: "Hook"), for: .normal)
-        addBtn.addTarget(self, action: #selector(addAccount), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(feedbackPush), for: .touchUpInside)
         view.addSubview(addBtn)
         addBtn.snp.makeConstraints { (make) in
             if Device.size() == Size.screen4Inch {
@@ -70,8 +71,29 @@ class FeedbackViewController: AddViewController {
     
     }
     
-    func addAccount() {
-        print(123)
+    func feedbackPush() {
+        self.view.endEditing(true)
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
+        CloudKitManager.toFeedback(content: feedbackTextView.text) { (error) in
+            if error != nil {
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    HUD.flash(.label("网络不给力，请稍后再试"), delay: 1.0)
+                }
+            }else {
+                DispatchQueue.main.async {
+                    self.feedbackTextView.text = ""
+                    HUD.hide()
+                    HUD.flash(.label("反馈成功，感谢您的宝贵意见"), delay: 1.0)
+                }
+                
+            }
+        }
+        
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 

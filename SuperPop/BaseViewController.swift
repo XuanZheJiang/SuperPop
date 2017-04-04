@@ -72,23 +72,6 @@ class BaseViewController: UIViewController {
         }
         
     }
-    
-    // 邮件反馈
-    func emailAction() -> Void {
-        // 首先要判断设备具不具备发送邮件功能
-        if MFMailComposeViewController.canSendMail() {
-            let controller = MFMailComposeViewController()
-            controller.setSubject("意见反馈")
-            controller.mailComposeDelegate = self
-            controller.setToRecipients(["jgcm@live.cn"])
-            controller.addAttachmentData(DeviceInfoManager.default.toFormat(), mimeType: "text/plain", fileName: "DeviceInfo.txt")
-            self.present(controller, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController.init(title: "打开邮箱失败", message: "未设置邮箱账户", preferredStyle: .alert)
-            alert.addAction(UIAlertAction.init(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-    }
 
     // 分享
     func shareAction() {

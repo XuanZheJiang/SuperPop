@@ -10,6 +10,8 @@
 		D23D17C1711B684A6CD5FC94 /* Pods_SuperPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */; };
 		DB4CBF5EB4DD658CF6217674 /* Pods_SuperPopToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E64DF81A70DFD9D03894064 /* Pods_SuperPopToday.framework */; };
 		FA0237991E937A5C00F48E14 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0237981E937A5C00F48E14 /* FeedbackViewController.swift */; };
+		FA02379B1E938C6A00F48E14 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA02379A1E938C6A00F48E14 /* CloudKit.framework */; };
+		FA02379D1E93900100F48E14 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA02379C1E93900100F48E14 /* CloudKitManager.swift */; };
 		FA08F71A1E87B81A00F59CD2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */; };
 		FA08F71C1E88FD2100F59CD2 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */; };
 		FA121E921E6662700027451E /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121E911E6662700027451E /* PlistManager.swift */; };
@@ -92,6 +94,8 @@
 		9E64DF81A70DFD9D03894064 /* Pods_SuperPopToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperPopToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D583FB2929B289265FD25723 /* Pods-SuperPop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPop.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPop/Pods-SuperPop.release.xcconfig"; sourceTree = "<group>"; };
 		FA0237981E937A5C00F48E14 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		FA02379A1E938C6A00F48E14 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FA02379C1E93900100F48E14 /* CloudKitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FA121E911E6662700027451E /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D23D17C1711B684A6CD5FC94 /* Pods_SuperPop.framework in Frameworks */,
+				FA02379B1E938C6A00F48E14 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +183,7 @@
 		30842AE0B69BD203D62B6105 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA02379A1E938C6A00F48E14 /* CloudKit.framework */,
 				FA74F6541E8BBBD900A10AC4 /* Pods_SuperPop.framework */,
 				FA74F6521E8BBB9000A10AC4 /* Alamofire.framework */,
 				5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */,
@@ -255,6 +261,7 @@
 				FA121E911E6662700027451E /* PlistManager.swift */,
 				FADDCACE1E8C90A200FED88C /* DeviceInfoManager.swift */,
 				FAE7F8071E92194500C7286F /* UpdateManager.swift */,
+				FA02379C1E93900100F48E14 /* CloudKitManager.swift */,
 				FA7132751E65840700D1BF04 /* AppDelegate.swift */,
 				FA7132791E65840700D1BF04 /* Main.storyboard */,
 				FA71327C1E65840700D1BF04 /* Assets.xcassets */,
@@ -420,6 +427,9 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -608,6 +618,7 @@
 				FA74F62B1E8A2E0B00A10AC4 /* BaseViewController.swift in Sources */,
 				FA121E921E6662700027451E /* PlistManager.swift in Sources */,
 				FA7132781E65840700D1BF04 /* MainViewController.swift in Sources */,
+				FA02379D1E93900100F48E14 /* CloudKitManager.swift in Sources */,
 				FA74F6291E8A1AD000A10AC4 /* PhotoPickerViewController.swift in Sources */,
 				FAE7F8081E92194500C7286F /* UpdateManager.swift in Sources */,
 				FA71328A1E6588DC00D1BF04 /* QRCodeViewController.swift in Sources */,

@@ -17,7 +17,7 @@ class DeviceInfoManager {
     
     fileprivate init() { }
     
-    fileprivate let appName = "SuperPop"
+    fileprivate let appName = "SLPop"
     fileprivate let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "appVersionIsNil"
     fileprivate let osVersion = UIDevice.current.systemVersion
     fileprivate let language = Locale.current.identifier
@@ -77,9 +77,9 @@ class DeviceInfoManager {
         return Reachability()?.currentReachabilityString ?? "knownNetwork"
     }
     
-    func toFormat() -> Data {
+    func toFormat() -> String {
         let info = "appName: \(appName)\n" + "appVersion: \(appVersion)\n" + "osVersion: \(osVersion)\n\n" + "deviceVersion: \(deviceVersion)\n" + "device: \(device)\n" + "language: \(language)\n" + "timeZone: \(timeZone)\n" + "carrier: \(carrier)\n" + "netWork: \(netWork)\n"
-        return info.data(using: .utf8)!
+        return info
     }
     
 }
