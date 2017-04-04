@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D23D17C1711B684A6CD5FC94 /* Pods_SuperPop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */; };
 		DB4CBF5EB4DD658CF6217674 /* Pods_SuperPopToday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E64DF81A70DFD9D03894064 /* Pods_SuperPopToday.framework */; };
+		FA0237991E937A5C00F48E14 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0237981E937A5C00F48E14 /* FeedbackViewController.swift */; };
 		FA08F71A1E87B81A00F59CD2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */; };
 		FA08F71C1E88FD2100F59CD2 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */; };
 		FA121E921E6662700027451E /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA121E911E6662700027451E /* PlistManager.swift */; };
@@ -90,6 +91,7 @@
 		5F341CF691B96EC34A634CE9 /* Pods_SuperPop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperPop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E64DF81A70DFD9D03894064 /* Pods_SuperPopToday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SuperPopToday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D583FB2929B289265FD25723 /* Pods-SuperPop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperPop.release.xcconfig"; path = "Pods/Target Support Files/Pods-SuperPop/Pods-SuperPop.release.xcconfig"; sourceTree = "<group>"; };
+		FA0237981E937A5C00F48E14 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		FA08F7191E87B81A00F59CD2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FA08F71B1E88FD2100F59CD2 /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		FA121E911E6662700027451E /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				FA7132871E65884900D1BF04 /* InputCodeViewController.swift */,
 				FA7132891E6588DC00D1BF04 /* QRCodeViewController.swift */,
 				FA74F6281E8A1AD000A10AC4 /* PhotoPickerViewController.swift */,
+				FA0237981E937A5C00F48E14 /* FeedbackViewController.swift */,
 				FAE89E931E65A63500116C2B /* HomeCell.swift */,
 				FA121E911E6662700027451E /* PlistManager.swift */,
 				FADDCACE1E8C90A200FED88C /* DeviceInfoManager.swift */,
@@ -597,6 +600,7 @@
 				FA71328E1E658C3100D1BF04 /* UIViewExtension.swift in Sources */,
 				FA6F06AD1E9089ED00A5D632 /* BaseLabel.swift in Sources */,
 				FAE89E921E65A4C100116C2B /* StringExtension.swift in Sources */,
+				FA0237991E937A5C00F48E14 /* FeedbackViewController.swift in Sources */,
 				FAE89E941E65A63500116C2B /* HomeCell.swift in Sources */,
 				FADDCACF1E8C90A200FED88C /* DeviceInfoManager.swift in Sources */,
 				FA9D253A1E85451E00AD0A36 /* LinkTextField.swift in Sources */,

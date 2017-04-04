@@ -63,7 +63,7 @@ class BaseViewController: UIViewController {
                 photoPickerVC.delegate = self
                 self?.present(photoPickerVC, animated: true, completion: nil)
             case 3:
-                self?.emailAction()
+                self?.present(FeedbackViewController(), animated: true, completion: nil)
             case 4:
                 UpdateManager.evaluation()
             default:
