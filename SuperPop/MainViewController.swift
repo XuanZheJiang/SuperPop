@@ -123,7 +123,7 @@ class MainViewController: BaseViewController {
                     let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     failAlert.addAction(failAction)
                     self.present(failAlert, animated: true, completion: nil)
-                }       
+                }
             })
         }
     }

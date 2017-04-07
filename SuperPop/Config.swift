@@ -15,6 +15,7 @@ struct POST {
     static let newUrl = "http://www.pipaw.com/www/helperapi/ajax"
     /// 解析短链接
     static let shortUrl = "http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/"
+    static let changeShort = "http://dwz.cn/create.php"
 }
 
 struct Color {

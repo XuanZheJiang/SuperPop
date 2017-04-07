@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import PKHUD
+import Alamofire
+import SwiftyJSON
 
 class QRCodeViewController: AddViewController {
 
@@ -138,41 +140,58 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                 let result = meta.stringValue!
                 
                 if result.characters.count >= 28 {
-                    let patternDomain = "http://www.battleofballs.com"
-                    let toIndex = result.index(result.startIndex, offsetBy: 28)
-                    let subString = result.substring(to: toIndex)
                     
-                    if patternDomain == subString {
-                        
-                        // 取出id
-                        let patternId = "id=(\\d{6,10})"
-                        let id = result.match(pattern: patternId, index: 1)
-//                        print("id=\(id.first!)")
-                        
-                        // 取出Account
-                        let patternAccount = "Account=(.*)"
-                        let account = result.match(pattern: patternAccount, index: 1)
-                        let utfAccount = account.first!
-//                        print("account=\((utfAccount as NSString).removingPercentEncoding!)")
-                        
-                        if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
-                            // 存入plist
-                            let dict = ["id":id.first!, "account":utfAccount]
-                            PlistManager.standard.array.append(dict)
-                            session.stopRunning()
+                    session.stopRunning()
+                    Alamofire.request(URL(string: POST.changeShort)!, method: .post, parameters: ["url":result, "access_type":"web"], encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+                        switch response.result {
+                        case .success(let value):
+                            
+                            let json = JSON(value)
+                            
+                            let patternDomain = "http://www.battleofballs.com"
+                            let toIndex = result.index(result.startIndex, offsetBy: 28)
+                            let subString = result.substring(to: toIndex)
+                            
+                            if patternDomain == subString {
+                                
+                                // 取出id
+                                let patternId = "id=(\\d{6,10})"
+                                let id = result.match(pattern: patternId, index: 1)
+                                
+                                // 取出Account
+                                let patternAccount = "Account=(.*)"
+                                let account = result.match(pattern: patternAccount, index: 1)
+                                let utfAccount = account.first!
+                                
+                                if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
+                                    // 存入plist
+                                    let dict = ["id":id.first!, "account":utfAccount, "url":json["tinyurl"].stringValue]
+                                        PlistManager.standard.array.append(dict)
+                                        self.dismiss(animated: true, completion: nil)
+                                }else {
+                                    self.session.stopRunning()
+                                }
+                            }else {
+                                self.session.stopRunning()
+                                HUD.flash(.label("二维码不符"), delay: 0.5)
+                            }
+                            
+                        case .failure( _):
+                            self.session.stopRunning()
+                            HUD.flash(.label("网络超时\n二维码解析失败"), delay: 1.0)
                         }
-                        session.stopRunning()
-                        self.dismiss(animated: true, completion: nil)
-                    }else {
-                        HUD.flash(.label("二维码不符"), delay: 0.5)
-                        session.stopRunning()
+                        
                     }
+                    /////////////////////
+                }else {
+                    HUD.flash(.label("二维码不符"), delay: 1.0)
                 }
- 
             }else {
-                HUD.flash(.label("扫描失败"), delay: 0.5)
                 session.stopRunning()
+                HUD.flash(.label("扫描失败"), delay: 0.5)
             }
+        }else {
+            session.stopRunning()
         }
         
     }
