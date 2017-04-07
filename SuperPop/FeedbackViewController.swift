@@ -74,7 +74,17 @@ class FeedbackViewController: AddViewController {
     func feedbackPush() {
         self.view.endEditing(true)
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
-        CloudKitManager.toFeedback(content: feedbackTextView.text) { (error) in
+        
+        CloudKitManager.toFeedback(content: feedbackTextView.text) { (record, error) in
+            
+            if record == nil {
+                DispatchQueue.main.async {
+                    HUD.hide()
+                    HUD.flash(.label("iCloud没有登录，请登录后再试"), delay: 1.0)
+                }
+                return
+            }
+            
             if error != nil {
                 DispatchQueue.main.async {
                     HUD.hide()

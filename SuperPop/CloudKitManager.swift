@@ -12,7 +12,7 @@ import CloudKit
 class CloudKitManager {
     
     
-    class func toFeedback(content: String, callBack: @escaping (_ error: Error?) -> Void) {
+    class func toFeedback(content: String, callBack: @escaping (_ record: CKRecord?, _ error: Error?) -> Void) {
         let publicDataBase = CKContainer.default().publicCloudDatabase
         
         let store = CKRecord(recordType: "Feedback")
@@ -21,7 +21,7 @@ class CloudKitManager {
         store.setObject(DeviceInfoManager.default.toFormat() as CKRecordValue?, forKey: "device")
         
         publicDataBase.save(store) { (record, error) in
-            callBack(error)
+            callBack(record, error)
         }
     }
 }
