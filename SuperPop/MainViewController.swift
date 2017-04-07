@@ -105,11 +105,11 @@ class MainViewController: BaseViewController {
         
         for dict in PlistManager.standard.array {
             
-            let parameters2 = ["url":dict["url"]!, "game_id":"61619"]
-            AFManager.request(POST.newUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            let parameters = ["c_href":dict["url"]!, "POST":"一键领取5个棒棒糖和30个龙蛋"]
+            AFManager.request(POST.newUrl, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseString(completionHandler: { (response) in
+//                let str = String.init(data: response.data!, encoding: .utf8)!
                 
                 switch response.result {
-                    
                 case .success( _):
                     HUD.hide({ ( _) in
                         HUD.flash(.label("提交成功\n请打开游戏查看是否到账。"), delay: 1.5)

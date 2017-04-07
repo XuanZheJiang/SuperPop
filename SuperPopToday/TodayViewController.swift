@@ -15,7 +15,7 @@ import SnapKit
 /// 网络请求
 struct POSTToday {
     /// 获取棒棒糖
-    static let newUrl = "http://www.pipaw.com/www/helperapi/ajax"
+    static let newUrl = "http://www.qqgonglue.com/"
 }
 
 class TodayViewController: UIViewController, NCWidgetProviding {
@@ -66,17 +66,17 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         for dict in arr {
             
-            let parameters2 = ["url":dict["url"]!, "game_id":"61619"]
-            Alamofire.request(POSTToday.newUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            let parameters = ["c_href":dict["url"]!, "POST":"一键领取5个棒棒糖和30个龙蛋"]
+            Alamofire.request(POSTToday.newUrl, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseString(completionHandler: { (response) in
                 
                 switch response.result {
                 case .success( _):
                     self.logInfoL.text = "提交成功\n请打开游戏查看是否到账。"
                     self.activitySmall.stopAnimating()
-                    self.flyBtn.isEnabled = true
                     self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "singleHook.png"), for: .normal)
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
                         self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "Newfly.png"), for: .normal)
+                        self.flyBtn.isEnabled = true
                         self.logInfoL.text = ""
                     })
                 case .failure( _):

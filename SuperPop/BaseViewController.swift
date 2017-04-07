@@ -105,7 +105,7 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
 //                print(result)
                 if result.characters.count >= 28 {
                     
-                    Alamofire.request(URL(string: POST.changeShort)!, method: .post, parameters: ["url":result, "access_type":"web"], encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+                    Alamofire.request(URL(string: POST.changeShort)!, method: .post, parameters: ["url":result, "type":"2"], encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
                         switch response.result {
                         case .success(let value):
                             let json = JSON(value)
@@ -127,7 +127,7 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
                                 
                                 if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
                                     // 存入plist
-                                    let dict = ["id":id.first!, "account":utfAccount, "url":json["tinyurl"].stringValue]
+                                    let dict = ["id":id.first!, "account":utfAccount, "url":json["list"].stringValue]
                                     PlistManager.standard.array.append(dict)
                                     self.dismiss(animated: true, completion: nil)
                                     self.dismiss(animated: true, completion: nil)

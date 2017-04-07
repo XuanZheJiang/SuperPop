@@ -11,11 +11,10 @@ import UIKit
 /// 网络请求
 struct POST {
     /// 获取棒棒糖
-    static let postUrl = "http://xzfuli.cn/index.php?a=api_qiuqiu"
-    static let newUrl = "http://www.pipaw.com/www/helperapi/ajax"
+    static let newUrl = "http://www.qqgonglue.com/"
     /// 解析短链接
     static let shortUrl = "http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/"
-    static let changeShort = "http://dwz.cn/create.php"
+    static let changeShort = "http://www.alifeifei.net/index.php?m=index&a=urlCreate"
 }
 
 struct Color {
