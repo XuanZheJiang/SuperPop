@@ -20,10 +20,12 @@ class PlistManager {
     
     private init() {
         array = NSArray(contentsOf: Path.groupURL!) as? [[String : String]] ?? [[String:String]]()
+//        array = NSArray.init(contentsOf: URL.init(string: Path.doc)!) as? [[String : String]] ?? [[String:String]]()
     }
     
     private func writePlist() {
         (array as NSArray).write(to: Path.groupURL!, atomically: true)
+//        (array as NSArray).write(to: URL.init(string: Path.doc)!, atomically: true)
     }
     
     // 清空plist

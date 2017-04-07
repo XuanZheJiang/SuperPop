@@ -13,11 +13,9 @@ import SwiftyJSON
 import SnapKit
 
 /// 网络请求
-struct POST {
+struct POSTToday {
     /// 获取棒棒糖
-    static let postUrl = "http://xzfuli.cn/index.php?a=api_qiuqiu"
-    /// 解析短链接
-    static let shortUrl = "http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/"
+    static let newUrl = "http://www.pipaw.com/www/helperapi/ajax"
 }
 
 class TodayViewController: UIViewController, NCWidgetProviding {
@@ -60,61 +58,34 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         self.activitySmall.startAnimating()
         self.logInfoL.text = ""
         self.flyBtn.isEnabled = false
-        getKey()
-    }
-    
-    /// 获取每小时变动的key
-    func getKey() {
-        
-        Alamofire.request("http://xzfuli.cn/#").responseString { (response) in
-            
-            switch response.result {
-            case .success(let value):
-                let pattern = "key':'(.*)'"
-                let keys = value.match(pattern: pattern, index: 1)
-                let key = keys.first
-                
-                if let key = key {
-                    self.startClick(key: key)
-                }else {
-                    self.activitySmall.stopAnimating()
-                    self.flyBtn.isEnabled = true
-                    self.logInfoL.text = "当前时间段处于提交高峰期，请过几分钟重新提交。"
-                }
-                
-            case .failure(_):
-//                print("getKey---\(error)")
-                self.activitySmall.stopAnimating()
-                self.flyBtn.isEnabled = true
-                self.logInfoL.text = "网络超时"
-            }
-        }
+        startClick()
     }
     
     // 启动
-    func startClick(key: String) {
+    func startClick() {
         
         for dict in arr {
             
-            let parameters2 = ["type":"5", "id":dict["id"]! as String, "key":key]
-            Alamofire.request(POST.postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            let parameters2 = ["url":dict["url"]!, "game_id":"61619"]
+            Alamofire.request(POSTToday.newUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
                 
                 switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    let msg = json["msg"].stringValue
-                    self.logInfoL.text = msg
+                case .success( _):
+                    self.logInfoL.text = "提交成功\n请打开游戏查看是否到账。"
                     self.activitySmall.stopAnimating()
                     self.flyBtn.isEnabled = true
                     self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "singleHook.png"), for: .normal)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: { 
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
                         self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "Newfly.png"), for: .normal)
+                        self.logInfoL.text = ""
                     })
-                case .failure(_):
-//                    print("post---\(error)")
+                case .failure( _):
                     self.flyBtn.isEnabled = true
                     self.activitySmall.stopAnimating()
-                    self.logInfoL.text = "网络超时"
+                    self.logInfoL.text = "网络不太稳定,请稍后重试"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { 
+                        self.logInfoL.text = ""
+                    })
                 }
                 
             })

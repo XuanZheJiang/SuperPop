@@ -41,7 +41,7 @@ class MainViewController: BaseViewController {
         // 启动按钮
         startBtn = BaseButton()
         startBtn.setBackgroundImage(#imageLiteral(resourceName: "Newfly"), for: .normal)
-        startBtn.addTarget(self, action: #selector(getKey), for: .touchUpInside)
+        startBtn.addTarget(self, action: #selector(startClick), for: .touchUpInside)
         view.addSubview(startBtn)
         startBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(Screen.width / 6)
@@ -98,69 +98,32 @@ class MainViewController: BaseViewController {
         self.isSuccessful = false
         tableView.reloadData()
     }
-
-    /// 获取每小时变动的key
-    func getKey() {
-        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 15)
-        
-        AFManager.request("http://xzfuli.cn/#").responseString { (response) in
-            
-            switch response.result {
-            case .success(let value):
-//                print(value)
-                let pattern = "key':'(.*)'"
-                let keys = value.match(pattern: pattern, index: 1)
-                let key = keys.first
-                
-                if let key = key {
-                    self.startClick(key: key)
-//                    print("key = \(key)")
-                }else {
-                    HUD.hide()
-                    let failAlert = UIAlertController(title: "提示", message: "当前时间段处于提交高峰期，请过几分钟重新提交。", preferredStyle: .alert)
-                    let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    failAlert.addAction(failAction)
-                    self.present(failAlert, animated: true, completion: nil)
-                }
-            case .failure(_):
-//                print("getKey---\(error)")
-                HUD.hide()
-                let failAlert = UIAlertController(title: "错误", message: "网络超时", preferredStyle: .alert)
-                let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                failAlert.addAction(failAction)
-                self.present(failAlert, animated: true, completion: nil)
-            }
-        }
-    }
     
     // 启动
-    func startClick(key: String) {
+    func startClick() {
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 15)
         
         for dict in PlistManager.standard.array {
             
-            let parameters2 = ["type":"5", "id":dict["id"]! as String, "key":key]
-            AFManager.request(POST.postUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
+            let parameters2 = ["url":dict["url"]!, "game_id":"61619"]
+            AFManager.request(POST.newUrl, method: .post, parameters: parameters2, encoding: URLEncoding.default, headers: nil).responseJSON(completionHandler: { (response) in
                 
                 switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-//                    print(json)
                     
-                    HUD.hide({ (value) in
-//                        print(value)
-                        HUD.flash(.label(json["msg"].stringValue), delay: 1.5)
+                case .success( _):
+                    HUD.hide({ ( _) in
+                        HUD.flash(.label("提交成功\n请打开游戏查看是否到账。"), delay: 1.5)
                     })
                     self.isSuccessful = true
-                    
                     self.tableView.reloadData()
-                case .failure(_):
-//                    print("post---\(error)")
-                    let failAlert = UIAlertController(title: "错误", message: "网络超时", preferredStyle: .alert)
+                    
+                case .failure( _):
+                    HUD.hide()
+                    let failAlert = UIAlertController(title: "错误", message: "网络不太稳定,请稍后重试", preferredStyle: .alert)
                     let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                     failAlert.addAction(failAction)
                     self.present(failAlert, animated: true, completion: nil)
-                }
-                
+                }       
             })
         }
     }

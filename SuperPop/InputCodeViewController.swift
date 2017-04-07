@@ -123,7 +123,7 @@ class InputCodeViewController: AddViewController {
     
     func save(url: String?) {
         var dict = [String:String]()
-        
+        dict["url"] = lollyLinkTF.text
         // 取出id
         let pattern = "id=(\\d{6,10})"
         let id = url?.match(pattern: pattern, index: 1)
@@ -141,7 +141,7 @@ class InputCodeViewController: AddViewController {
         }
         
         // 存入plist
-        if dict.count == 2 {
+        if dict.count == 3 {
             PlistManager.standard.array.append(dict)
             HUD.hide()
             self.dismiss(animated: true, completion: nil)
