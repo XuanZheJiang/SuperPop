@@ -28,9 +28,6 @@ class InputCodeViewController: AddViewController {
         // 备注
         nameTF = LinkTextField()
         nameTF.placeholder = "备注名称(必填)"
-        #if DEBUG
-//            nameTF.text = "name"
-        #endif
         nameTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
         view.addSubview(nameTF)
         nameTF.snp.makeConstraints { (make) in
