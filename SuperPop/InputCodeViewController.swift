@@ -15,7 +15,7 @@ import Device
 
 class InputCodeViewController: AddViewController {
 
-    var carefulView: UIImageView!
+    var nameTF: LinkTextField!
     var lollyLinkTF: LinkTextField!
     var addBtn: BaseButton!
 
@@ -25,30 +25,35 @@ class InputCodeViewController: AddViewController {
         self.headerView.image = #imageLiteral(resourceName: "headerT")
         self.headerView.frame.size.width = 125
         
-        // 注意字样
-        carefulView = UIImageView()
-        carefulView.image = #imageLiteral(resourceName: "careful")
-        view.addSubview(carefulView)
-        carefulView.snp.makeConstraints { (make) in
+        // 备注
+        nameTF = LinkTextField()
+        nameTF.placeholder = "备注名称(必填)"
+        #if DEBUG
+//            nameTF.text = "name"
+        #endif
+        nameTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
+        view.addSubview(nameTF)
+        nameTF.snp.makeConstraints { (make) in
             if Device.size() == Size.screen4Inch {
                 make.top.equalTo(self.headerView.snp.bottom).offset(30)
             }else {
                 make.top.equalTo(self.headerView.snp.bottom).offset(64)
             }
-            make.centerX.equalToSuperview()
-            make.width.equalTo(261)
-            make.height.equalTo(53)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
         }
         
         // 棒棒糖推广链接输入框
         lollyLinkTF = LinkTextField()
+        lollyLinkTF.keyboardType = .asciiCapable
         #if DEBUG
         lollyLinkTF.text = "http://t.cn/RtqVl3m"
         #endif
         lollyLinkTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
         view.addSubview(lollyLinkTF)
         lollyLinkTF.snp.makeConstraints { (make) in
-            make.top.equalTo(self.carefulView.snp.bottom).offset(20)
+            make.top.equalTo(self.nameTF.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
             make.height.equalTo(50)
@@ -63,7 +68,7 @@ class InputCodeViewController: AddViewController {
         addBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(Screen.width / 6)
             if Device.size() == Size.screen4Inch {
-                make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(20)
+                make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(10)
             }else {
                 make.top.equalTo(self.lollyLinkTF.snp.bottom).offset(50)
             }
@@ -74,7 +79,7 @@ class InputCodeViewController: AddViewController {
     
     // 密码输入框文字监听
     func textChange() -> Void {
-        if lollyLinkTF.text!.characters.count > 15 {
+        if lollyLinkTF.text!.characters.count > 15 && nameTF.text!.characters.count > 0 {
             addBtn.isEnabled = true
         } else {
             addBtn.isEnabled = false
@@ -82,8 +87,8 @@ class InputCodeViewController: AddViewController {
     }
     
     func addAccount() {
+        view.endEditing(true)
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 10)
-        
         
         let parameters = ["turl":lollyLinkTF.text!]
         Alamofire.request(POST.shortUrl, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseString { (response) in
@@ -124,6 +129,7 @@ class InputCodeViewController: AddViewController {
     func save(url: String?) {
         var dict = [String:String]()
         dict["url"] = lollyLinkTF.text
+        dict["name"] = nameTF.text
         // 取出id
         let pattern = "id=(\\d{6,10})"
         let id = url?.match(pattern: pattern, index: 1)
@@ -141,7 +147,7 @@ class InputCodeViewController: AddViewController {
         }
         
         // 存入plist
-        if dict.count == 3 {
+        if dict.count == 4 {
             PlistManager.standard.array.append(dict)
             HUD.hide()
             self.dismiss(animated: true, completion: nil)

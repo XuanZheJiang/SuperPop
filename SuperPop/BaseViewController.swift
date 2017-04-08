@@ -15,7 +15,7 @@ import SwiftyJSON
 
 class BaseViewController: UIViewController {
 
-    let items = ["手动录入", "二维码扫描", "相册二维码录入", "意见反馈", "评价"]
+    let items = ["手动添加", "意见反馈", "评价"]
     var noCountImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bgNavi"), for: .default)
         self.navigationController?.navigationBar.shadowImage = #imageLiteral(resourceName: "line")
         
-        let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "添加帐号", items: items as [AnyObject] )
+        let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "添加", items: items as [AnyObject] )
 
         self.navigationItem.titleView = menu
         menu.cellBackgroundColor = UIColor.colorFrom(hexString: "5A657A")
@@ -54,19 +54,19 @@ class BaseViewController: UIViewController {
             switch index {
             case 0:
                 self?.present(InputCodeViewController(), animated: true, completion: nil)
+//            case 1:
+//                self?.present(QRCodeViewController(), animated: true, completion: nil)
+//            case 2:
+//                let photoPickerVC = PhotoPickerViewController()
+//                photoPickerVC.sourceType = .photoLibrary
+//                photoPickerVC.navigationBar.barTintColor = Color.naviColor
+//                photoPickerVC.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//                photoPickerVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+//                photoPickerVC.delegate = self
+//                self?.present(photoPickerVC, animated: true, completion: nil)
             case 1:
-                self?.present(QRCodeViewController(), animated: true, completion: nil)
-            case 2:
-                let photoPickerVC = PhotoPickerViewController()
-                photoPickerVC.sourceType = .photoLibrary
-                photoPickerVC.navigationBar.barTintColor = Color.naviColor
-                photoPickerVC.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                photoPickerVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
-                photoPickerVC.delegate = self
-                self?.present(photoPickerVC, animated: true, completion: nil)
-            case 3:
                 self?.present(FeedbackViewController(), animated: true, completion: nil)
-            case 4:
+            case 2:
                 UpdateManager.evaluation()
             default:
                 break

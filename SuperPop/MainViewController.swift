@@ -68,7 +68,7 @@ class MainViewController: BaseViewController {
     // 清空plist
     func clearAll() {
         
-        let alert = UIAlertController(title: "警告", message: "确定清空所有帐号？", preferredStyle: .alert)
+        let alert = UIAlertController(title: "警告", message: "确定清空所有记录？", preferredStyle: .alert)
         let cancle = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let action = UIAlertAction(title: "确定", style: .destructive) { (action) in
             PlistManager.standard.clear()
@@ -112,7 +112,7 @@ class MainViewController: BaseViewController {
                 switch response.result {
                 case .success( _):
                     HUD.hide({ ( _) in
-                        HUD.flash(.label("提交成功\n请打开游戏查看是否到账。"), delay: 1.5)
+                        HUD.flash(.label("成功"), delay: 1.0)
                     })
                     self.isSuccessful = true
                     self.tableView.reloadData()
@@ -143,7 +143,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        cell.accountL.text = PlistManager.standard.array[indexPath.row]["account"]
+        cell.accountL.text = PlistManager.standard.array[indexPath.row]["name"]
         
         if isSuccessful {
             cell.status = .successful

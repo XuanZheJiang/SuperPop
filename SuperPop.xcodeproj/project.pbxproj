@@ -264,8 +264,8 @@
 				FA02379C1E93900100F48E14 /* CloudKitManager.swift */,
 				FA7132751E65840700D1BF04 /* AppDelegate.swift */,
 				FA7132791E65840700D1BF04 /* Main.storyboard */,
-				FA71327C1E65840700D1BF04 /* Assets.xcassets */,
 				FA71327E1E65840700D1BF04 /* LaunchScreen.storyboard */,
+				FA71327C1E65840700D1BF04 /* Assets.xcassets */,
 				FA7132811E65840700D1BF04 /* Info.plist */,
 				FA6F06AE1E90DE4100A5D632 /* SLPopHeader.h */,
 			);

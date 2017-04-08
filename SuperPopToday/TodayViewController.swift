@@ -41,7 +41,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
         if let array = NSArray(contentsOf: groupURL!) {
-            countNumL.text = "\(array.count)个帐号"
+            countNumL.text = "\(array.count)条记录"
             flyBtn.isEnabled = true
             self.arr = array as! [[String : String]]
         }
@@ -71,7 +71,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 
                 switch response.result {
                 case .success( _):
-                    self.logInfoL.text = "提交成功\n请打开游戏查看是否到账。"
+                    self.logInfoL.text = "成功"
                     self.activitySmall.stopAnimating()
                     self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "singleHook.png"), for: .normal)
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {

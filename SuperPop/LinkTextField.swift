@@ -19,7 +19,6 @@ class LinkTextField: UITextField {
         self.textColor = UIColor.colorFrom(hexString: "637291")
         self.autocorrectionType = .no
         self.autocapitalizationType = .none
-        self.keyboardType = .asciiCapable
         self.background = #imageLiteral(resourceName: "bgTF")
     }
     
