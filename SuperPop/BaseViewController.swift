@@ -15,7 +15,7 @@ import SwiftyJSON
 
 class BaseViewController: UIViewController {
 
-    let items = ["手动添加", "意见反馈", "评价"]
+    let items = ["手动添加", "二维码", "相册", "意见反馈", "评价"]
     var noCountImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -54,19 +54,19 @@ class BaseViewController: UIViewController {
             switch index {
             case 0:
                 self?.present(InputCodeViewController(), animated: true, completion: nil)
-//            case 1:
-//                self?.present(QRCodeViewController(), animated: true, completion: nil)
-//            case 2:
-//                let photoPickerVC = PhotoPickerViewController()
-//                photoPickerVC.sourceType = .photoLibrary
-//                photoPickerVC.navigationBar.barTintColor = Color.naviColor
-//                photoPickerVC.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//                photoPickerVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
-//                photoPickerVC.delegate = self
-//                self?.present(photoPickerVC, animated: true, completion: nil)
             case 1:
-                self?.present(FeedbackViewController(), animated: true, completion: nil)
+                self?.present(QRCodeViewController(), animated: true, completion: nil)
             case 2:
+                let photoPickerVC = PhotoPickerViewController()
+                photoPickerVC.sourceType = .photoLibrary
+                photoPickerVC.navigationBar.barTintColor = Color.naviColor
+                photoPickerVC.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                photoPickerVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
+                photoPickerVC.delegate = self
+                self?.present(photoPickerVC, animated: true, completion: nil)
+            case 3:
+                self?.present(FeedbackViewController(), animated: true, completion: nil)
+            case 4:
                 UpdateManager.evaluation()
             default:
                 break
