@@ -12,6 +12,11 @@ import CloudKit
 class CloudKitManager {
     
     
+    /// 反馈到iCloudKit
+    ///
+    /// - Parameters:
+    ///   - content: 反馈内容
+    ///   - callBack: 保存数据的回调闭包
     class func toFeedback(content: String, callBack: @escaping (_ record: CKRecord?, _ error: Error?) -> Void) {
         let publicDataBase = CKContainer.default().publicCloudDatabase
         

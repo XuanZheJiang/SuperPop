@@ -23,6 +23,7 @@ class FeedbackViewController: AddViewController {
         self.headerView.image = #imageLiteral(resourceName: "feedback")
         self.headerView.frame.size.width = 125
         
+        // 反馈textView
         feedbackTextView = UITextView()
         feedbackTextView.delegate = self
         feedbackTextView.font = UIFont.systemFont(ofSize: 16)

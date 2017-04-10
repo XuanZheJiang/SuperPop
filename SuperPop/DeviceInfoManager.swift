@@ -77,6 +77,7 @@ class DeviceInfoManager {
         return Reachability()?.currentReachabilityString ?? "knownNetwork"
     }
     
+    // 生成用户设备详细信息
     func toFormat() -> String {
         let info = "appName: \(appName)\n" + "appVersion: \(appVersion)\n" + "osVersion: \(osVersion)\n\n" + "deviceVersion: \(deviceVersion)\n" + "device: \(device)\n" + "language: \(language)\n" + "timeZone: \(timeZone)\n" + "carrier: \(carrier)\n" + "netWork: \(netWork)\n"
         return info

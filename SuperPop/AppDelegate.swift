@@ -74,7 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
+        // 清空极光服务器角标记录
         JPUSHService.resetBadge()
+        // 清空系统icon角标
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
     

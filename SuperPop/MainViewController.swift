@@ -54,7 +54,6 @@ class MainViewController: BaseViewController {
         removeAllBtn.setBackgroundImage(#imageLiteral(resourceName: "NewdeleteAll"), for: .normal)
         removeAllBtn.addTarget(self, action: #selector(clearAll), for: .touchUpInside)
         removeAllBtn.transform = CGAffineTransform.identity
-        
         view.addSubview(removeAllBtn)
         removeAllBtn.snp.makeConstraints { (make) in
             make.width.height.equalTo(Screen.width / 6)
@@ -62,7 +61,6 @@ class MainViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-20)
         }
 
-        
     }
 
     // 清空plist
@@ -107,7 +105,6 @@ class MainViewController: BaseViewController {
             
             let parameters = ["c_href":dict["url"]!, "POST":"一键领取5个棒棒糖和30个龙蛋"]
             AFManager.request(POST.newUrl, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseString(completionHandler: { (response) in
-//                let str = String.init(data: response.data!, encoding: .utf8)!
                 
                 switch response.result {
                 case .success( _):
