@@ -103,17 +103,26 @@ class MainViewController: BaseViewController {
         
         for dict in PlistManager.standard.array {
             
-            let parameters = ["c_href":dict["url"]!, "POST":"一键领取5个棒棒糖和30个龙蛋"]
-            AFManager.request(POST.newUrl, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseString(completionHandler: { (response) in
+            let parameters = ["url":dict["url"]!]
+            AFManager.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
                 
                 switch response.result {
-                case .success( _):
+                case .success(let value):
                     HUD.hide({ ( _) in
-                        HUD.flash(.label("成功"), delay: 1.0)
+                        let json = JSON(value)
+                        switch json["code"].intValue {
+                        case 1:
+                            HUD.flash(.label("今天已提交\n请明日再来"), delay: 1.0)
+                        case 0:
+                            HUD.flash(.label("提交成功"), delay: 1.0)
+                        case -1:
+                            HUD.flash(.label("提交失败\n请稍后再试"), delay: 1.0)
+                        default:
+                            HUD.flash(.label("未知错误\n请稍后再试"), delay: 1.0)
+                        }
                     })
                     self.isSuccessful = true
                     self.tableView.reloadData()
-                    
                 case .failure( _):
                     HUD.hide()
                     let failAlert = UIAlertController(title: "错误", message: "网络不太稳定,请稍后重试", preferredStyle: .alert)
@@ -166,8 +175,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "删除"
     }
-    
-    
 }
 
 
