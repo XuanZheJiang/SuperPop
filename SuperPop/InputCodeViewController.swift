@@ -27,7 +27,7 @@ class InputCodeViewController: AddViewController {
         
         // 备注
         nameTF = LinkTextField()
-        nameTF.placeholder = "备注名称(必填)"
+        nameTF.placeholder = "备注名称(选填)"
         nameTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
         view.addSubview(nameTF)
         nameTF.snp.makeConstraints { (make) in
@@ -44,9 +44,6 @@ class InputCodeViewController: AddViewController {
         // 棒棒糖推广链接输入框
         lollyLinkTF = LinkTextField()
         lollyLinkTF.keyboardType = .asciiCapable
-        #if DEBUG
-        lollyLinkTF.text = "http://t.cn/RtqVl3m"
-        #endif
         lollyLinkTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
         view.addSubview(lollyLinkTF)
         lollyLinkTF.snp.makeConstraints { (make) in

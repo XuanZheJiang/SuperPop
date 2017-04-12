@@ -21,7 +21,6 @@ class MainViewController: BaseViewController {
     var isSuccessful = false
     var AFManager: SessionManager!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
