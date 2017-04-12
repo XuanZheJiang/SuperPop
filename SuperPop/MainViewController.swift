@@ -27,7 +27,7 @@ class MainViewController: BaseViewController {
         
         // 配置超时config
         let configTimeout = URLSessionConfiguration.default
-        configTimeout.timeoutIntervalForRequest = 15
+        configTimeout.timeoutIntervalForRequest = 30
         AFManager = SessionManager(configuration: configTimeout)
         
         // 初始化tableView
@@ -99,7 +99,7 @@ class MainViewController: BaseViewController {
     
     // 启动
     func startClick() {
-        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 15)
+        HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
         
         for dict in PlistManager.standard.array {
             
@@ -149,7 +149,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        cell.accountL.text = PlistManager.standard.array[indexPath.row]["name"]
+        cell.accountL.text = PlistManager.standard.array[indexPath.row]["account"]
         
         if isSuccessful {
             cell.status = .successful
