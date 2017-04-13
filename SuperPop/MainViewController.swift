@@ -109,13 +109,12 @@ class MainViewController: BaseViewController {
                 case .success(let value):
                     HUD.hide({ ( _) in
                         let json = JSON(value)
+                        print(json)
                         switch json["code"].intValue {
                         case 1:
                             HUD.flash(.label("今天已提交\n请明日再来"), delay: 1.0)
                         case 0:
                             HUD.flash(.label("提交成功"), delay: 1.0)
-                        case -1:
-                            HUD.flash(.label("提交失败\n请稍后再试"), delay: 1.0)
                         default:
                             HUD.flash(.label("未知错误\n请稍后再试"), delay: 1.0)
                         }
