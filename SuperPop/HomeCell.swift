@@ -102,6 +102,15 @@ class HomeCell: UITableViewCell {
         
     }
     
+    func initWith(_ index: IndexPath, _ status: Bool) {
+        self.accountL.text = PlistManager.standard.array[index.row]["account"]
+        if status {
+            self.status = .successful
+        } else {
+            self.status = .failure
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

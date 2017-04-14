@@ -101,7 +101,7 @@ class MainViewController: BaseViewController {
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
         
         for dict in PlistManager.standard.array {
-            
+            print(dict)
             let parameters = ["url":dict["url"]!]
             AFManager.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
                 
@@ -147,14 +147,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        cell.accountL.text = PlistManager.standard.array[indexPath.row]["account"]
-        
-        if isSuccessful {
-            cell.status = .successful
-        } else {
-            cell.status = .failure
-        }
-        
+        cell.initWith(indexPath, isSuccessful)
         return cell
     }
     

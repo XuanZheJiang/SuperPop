@@ -11,11 +11,11 @@ import UIKit
 /// 网络请求
 struct POST {
     /// 获取棒棒糖
-    static let newUrl = "http://api.cn-wolf.cn/Edition/BattleOfBalls/API"
+    static let newUrl = "http://api.cn-wolf.cn/Edition/BattleOfBalls/API/"
     /// 短链接还原
     static let shortUrl = "http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/"
     /// 原链接变短
-    static let changeShort = "http://www.alifeifei.net/index.php?m=index&a=urlCreate"
+    static let changeShort = "http://dwz.cn/create.php"
     /// 请求headers
     static let headers = ["Host":"api.cn-wolf.cn",
                           "Origin":"http://www.000wl.cn",

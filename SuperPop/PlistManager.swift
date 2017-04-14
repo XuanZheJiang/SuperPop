@@ -23,9 +23,6 @@ class PlistManager {
     }
     
     private func writePlist() {
-        #if DEBUG
-        print(array.count)
-        #endif
         (array as NSArray).write(to: Path.groupURL!, atomically: true)
     }
     

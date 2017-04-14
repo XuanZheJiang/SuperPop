@@ -142,7 +142,7 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                 if result.characters.count >= 28 {
                     
                     session.stopRunning()
-                    Alamofire.request(URL(string: POST.changeShort)!, method: .post, parameters: ["url":result, "type":"2"], encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
+                    Alamofire.request(URL(string: POST.changeShort)!, method: .post, parameters: ["url":result, "access_type":"web"], encoding: URLEncoding.default, headers: nil).responseJSON { (response) in
                         switch response.result {
                         case .success(let value):
                             
@@ -165,7 +165,7 @@ extension QRCodeViewController: AVCaptureMetadataOutputObjectsDelegate {
                                 
                                 if let utfAccount = (utfAccount as NSString).removingPercentEncoding {
                                     // 存入plist
-                                    let dict = ["id":id.first!, "account":utfAccount, "url":json["list"].stringValue]
+                                    let dict = ["id":id.first!, "account":utfAccount, "url":json["tinyurl"].stringValue]
                                         PlistManager.standard.array.append(dict)
                                         self.dismiss(animated: true, completion: nil)
                                 }else {
