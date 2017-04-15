@@ -58,41 +58,50 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func startClick() {
         
         for dict in arr {
+            lollyRequest(dict: dict)
+            longDanRequest(dict: dict)
+        }
+    }
+    
+    func longDanRequest(dict: [String:String]) {
+        let parameters = ["url":dict["url"]!]
+        Alamofire.request(POST.LongDanUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in })
+    }
+    
+    func lollyRequest(dict: [String:String]) {
+        let parameters = ["url":dict["url"]!]
+        Alamofire.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
             
-            let parameters = ["url":dict["url"]!]
-            Alamofire.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
                 
-                switch response.result {
-                case .success(let value):
-                    let json = JSON(value)
-                    
-                    switch json["code"].intValue {
-                    case 1:
-                        self.logInfoL.text = "今天已提交\n请明日再来"
-                    case 0:
-                        self.logInfoL.text = "提交成功"
-                    default:
-                        self.logInfoL.text = "未知错误\n请稍后再试"
-                    }
-                    
-                    self.activitySmall.stopAnimating()
-                    self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "singleHook.png"), for: .normal)
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
-                        self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "Newfly.png"), for: .normal)
-                        self.flyBtn.isEnabled = true
-                        self.logInfoL.text = ""
-                    })
-                case .failure( _):
-                    self.flyBtn.isEnabled = true
-                    self.activitySmall.stopAnimating()
-                    self.logInfoL.text = "网络不太稳定,请稍后重试"
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { 
-                        self.logInfoL.text = ""
-                    })
+                switch json["code"].intValue {
+                case 1:
+                    self.logInfoL.text = "今天已提交\n请明日再来"
+                case 0:
+                    self.logInfoL.text = "提交成功"
+                default:
+                    self.logInfoL.text = "未知错误\n请稍后再试"
                 }
                 
-            })
-        }
+                self.activitySmall.stopAnimating()
+                self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "singleHook.png"), for: .normal)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2.0, execute: {
+                    self.flyBtn.setBackgroundImage(#imageLiteral(resourceName: "Newfly.png"), for: .normal)
+                    self.flyBtn.isEnabled = true
+                    self.logInfoL.text = ""
+                })
+            case .failure( _):
+                self.flyBtn.isEnabled = true
+                self.activitySmall.stopAnimating()
+                self.logInfoL.text = "网络不太稳定,请稍后重试"
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
+                    self.logInfoL.text = ""
+                })
+            }
+            
+        })
     }
 
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {

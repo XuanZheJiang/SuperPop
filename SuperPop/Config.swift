@@ -12,6 +12,8 @@ import UIKit
 struct POST {
     /// 获取棒棒糖
     static let newUrl = "http://api.cn-wolf.cn/Edition/BattleOfBalls/API/"
+    /// 获取龙蛋
+    static let LongDanUrl = "http://api.cn-wolf.cn/Edition/BattleOfBalls/API/ld.php?"
     /// 短链接还原
     static let shortUrl = "http://duanwangzhihuanyuan.51240.com/web_system/51240_com_www/system/file/duanwangzhihuanyuan/get/"
     /// 原链接变短
@@ -35,9 +37,8 @@ struct Color {
 
 /// 常用路径
 struct Path {
+    /// 共享空间
     static let groupURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.SuperPop")?.appendingPathComponent("profile.plist")
-//    static let doc = NSHomeDirectory().appending("/Documents/profile.plist")
-    static let doc = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!.appending("p.plist")
 }
 
 /// 常用字体字号

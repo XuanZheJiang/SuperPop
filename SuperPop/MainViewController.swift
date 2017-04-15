@@ -21,6 +21,10 @@ class MainViewController: BaseViewController {
     var isSuccessful = false
     var AFManager: SessionManager!
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,35 +105,45 @@ class MainViewController: BaseViewController {
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
         
         for dict in PlistManager.standard.array {
-            print(dict)
-            let parameters = ["url":dict["url"]!]
-            AFManager.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
-                
-                switch response.result {
-                case .success(let value):
-                    HUD.hide({ ( _) in
-                        let json = JSON(value)
-                        print(json)
-                        switch json["code"].intValue {
-                        case 1:
-                            HUD.flash(.label("今天已提交\n请明日再来"), delay: 1.0)
-                        case 0:
-                            HUD.flash(.label("提交成功"), delay: 1.0)
-                        default:
-                            HUD.flash(.label("未知错误\n请稍后再试"), delay: 1.0)
-                        }
-                    })
-                    self.isSuccessful = true
-                    self.tableView.reloadData()
-                case .failure( _):
-                    HUD.hide()
-                    let failAlert = UIAlertController(title: "错误", message: "网络不太稳定,请稍后重试", preferredStyle: .alert)
-                    let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    failAlert.addAction(failAction)
-                    self.present(failAlert, animated: true, completion: nil)
-                }
-            })
+//            print(dict)
+            lollyRequest(dict: dict)
+            longDanRequest(dict: dict)
         }
+    }
+    
+    func longDanRequest(dict: [String:String]) {
+        let parameters = ["url":dict["url"]!]
+        AFManager.request(POST.LongDanUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in })
+    }
+    
+    func lollyRequest(dict: [String:String]) {
+        let parameters = ["url":dict["url"]!]
+        AFManager.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
+            
+            switch response.result {
+            case .success(let value):
+                HUD.hide({ ( _) in
+                    let json = JSON(value)
+//                    print("lolly-------------------\(json)")
+                    switch json["code"].intValue {
+                    case 1:
+                        HUD.flash(.label("今天已提交\n请明日再来"), delay: 1.0)
+                    case 0:
+                        HUD.flash(.label("提交成功"), delay: 1.0)
+                    default:
+                        HUD.flash(.label("未知错误\n请稍后再试"), delay: 1.0)
+                    }
+                })
+                self.isSuccessful = true
+                self.tableView.reloadData()
+            case .failure( _):
+                HUD.hide()
+                let failAlert = UIAlertController(title: "错误", message: "网络不太稳定,请稍后重试", preferredStyle: .alert)
+                let failAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                failAlert.addAction(failAction)
+                self.present(failAlert, animated: true, completion: nil)
+            }
+        })
     }
     
 }
