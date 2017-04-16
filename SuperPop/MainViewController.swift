@@ -21,10 +21,6 @@ class MainViewController: BaseViewController {
     var isSuccessful = false
     var AFManager: SessionManager!
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,20 +99,31 @@ class MainViewController: BaseViewController {
     // 启动
     func startClick() {
         HUD.flash(.rotatingImage(#imageLiteral(resourceName: "lollyR")), delay: 30)
-        
-        for dict in PlistManager.standard.array {
-//            print(dict)
-            lollyRequest(dict: dict)
-            longDanRequest(dict: dict)
+
+        DispatchQueue.global().async {
+            for dict in PlistManager.standard.array {
+                let group = DispatchGroup()
+                group.enter()
+                self.lollyRequest(dict: dict) {
+                    group.leave()
+                }
+                group.enter()
+                self.longDanRequest(dict: dict) {
+                    group.leave()
+                }
+                group.wait()
+            }
         }
     }
     
-    func longDanRequest(dict: [String:String]) {
+    func longDanRequest(dict: [String:String], callBack: @escaping () -> Void) {
         let parameters = ["url":dict["url"]!]
-        AFManager.request(POST.LongDanUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in })
+        AFManager.request(POST.LongDanUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
+            callBack()
+        })
     }
     
-    func lollyRequest(dict: [String:String]) {
+    func lollyRequest(dict: [String:String], callBack: @escaping () -> Void) {
         let parameters = ["url":dict["url"]!]
         AFManager.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
             
@@ -143,6 +150,7 @@ class MainViewController: BaseViewController {
                 failAlert.addAction(failAction)
                 self.present(failAlert, animated: true, completion: nil)
             }
+            callBack()
         })
     }
     

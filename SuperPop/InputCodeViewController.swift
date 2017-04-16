@@ -43,6 +43,9 @@ class InputCodeViewController: AddViewController {
         
         // 棒棒糖推广链接输入框
         lollyLinkTF = LinkTextField()
+        #if DEBUG
+        lollyLinkTF.text = "http://t.cn/RJDR4ZN"
+        #endif
         lollyLinkTF.keyboardType = .asciiCapable
         lollyLinkTF.addTarget(self, action: #selector(self.textChange), for: .editingChanged)
         view.addSubview(lollyLinkTF)
@@ -55,7 +58,11 @@ class InputCodeViewController: AddViewController {
         
         // 增加按钮
         addBtn = BaseButton()
-        addBtn.isEnabled = false
+        #if DEBUG
+            addBtn.isEnabled = true
+        #else
+            addBtn.isEnabled = false
+        #endif
         addBtn.setBackgroundImage(#imageLiteral(resourceName: "Hook"), for: .normal)
         addBtn.addTarget(self, action: #selector(addAccount), for: .touchUpInside)
         view.addSubview(addBtn)
@@ -73,7 +80,7 @@ class InputCodeViewController: AddViewController {
     
     // 密码输入框文字监听
     func textChange() -> Void {
-        if lollyLinkTF.text!.characters.count > 15 && nameTF.text!.characters.count > 0 {
+        if lollyLinkTF.text!.characters.count > 15 {
             addBtn.isEnabled = true
         } else {
             addBtn.isEnabled = false
