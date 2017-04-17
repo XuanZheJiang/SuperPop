@@ -56,19 +56,30 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     // 启动
     func startClick() {
-        
-        for dict in arr {
-            lollyRequest(dict: dict)
-            longDanRequest(dict: dict)
+        DispatchQueue.global().async {
+            for dict in self.arr {
+                let group = DispatchGroup()
+                group.enter()
+                self.lollyRequest(dict: dict) {
+                    group.leave()
+                }
+                group.enter()
+                self.longDanRequest(dict: dict) {
+                    group.leave()
+                }
+                group.wait()
+            }
         }
     }
     
-    func longDanRequest(dict: [String:String]) {
+    func longDanRequest(dict: [String:String], callBack: @escaping () -> Void) {
         let parameters = ["url":dict["url"]!]
-        Alamofire.request(POST.LongDanUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in })
+        Alamofire.request(POST.LongDanUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
+            callBack()
+        })
     }
     
-    func lollyRequest(dict: [String:String]) {
+    func lollyRequest(dict: [String:String], callBack: @escaping () -> Void) {
         let parameters = ["url":dict["url"]!]
         Alamofire.request(POST.newUrl, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: POST.headers).responseJSON(completionHandler: { (response) in
             
@@ -100,7 +111,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                     self.logInfoL.text = ""
                 })
             }
-            
+            callBack()
         })
     }
 
