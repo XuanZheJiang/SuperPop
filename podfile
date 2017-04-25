@@ -15,6 +15,7 @@ target 'SuperPop' do
   pod 'Fuzi', '~> 1.0.0'  
   pod 'PKHUD', '~> 4.0'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
+  pod 'MMTransition', '1.0.0'
 end
 
 target 'SuperPopToday' do

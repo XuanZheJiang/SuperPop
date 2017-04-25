@@ -12,6 +12,7 @@ import PKHUD
 import MessageUI
 import Alamofire
 import SwiftyJSON
+import MMTransition
 
 class BaseViewController: UIViewController {
 
@@ -53,9 +54,23 @@ class BaseViewController: UIViewController {
         menu.didSelectItemAtIndexHandler = { [weak self] index in
             switch index {
             case 0:
-                self?.present(InputCodeViewController(), animated: true, completion: nil)
+                let inputVC = InputCodeViewController()
+                inputVC.mmT.present.dialog { (config) in
+                    config.dialogType = .size(s: UIScreen.main.bounds.size)
+                    config.presentingScale = 0.90
+                    config.duration = 0.35
+                    config.animateType = .direction(type: .bottom)
+                }
+                self?.present(inputVC, animated: true, completion: nil)
             case 1:
-                self?.present(QRCodeViewController(), animated: true, completion: nil)
+                let QRCodeVC = QRCodeViewController()
+                QRCodeVC.mmT.present.dialog { (config) in
+                    config.dialogType = .size(s: UIScreen.main.bounds.size)
+                    config.presentingScale = 0.90
+                    config.duration = 0.35
+                    config.animateType = .direction(type: .bottom)
+                }
+                self?.present(QRCodeVC, animated: true, completion: nil)
             case 2:
                 let photoPickerVC = PhotoPickerViewController()
                 photoPickerVC.sourceType = .photoLibrary
@@ -63,9 +78,22 @@ class BaseViewController: UIViewController {
                 photoPickerVC.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 photoPickerVC.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)]
                 photoPickerVC.delegate = self
+                photoPickerVC.mmT.present.dialog { (config) in
+                    config.dialogType = .size(s: UIScreen.main.bounds.size)
+                    config.presentingScale = 0.90
+                    config.duration = 0.35
+                    config.animateType = .direction(type: .bottom)
+                }
                 self?.present(photoPickerVC, animated: true, completion: nil)
             case 3:
-                self?.present(FeedbackViewController(), animated: true, completion: nil)
+                let FDBVC = FeedbackViewController()
+                FDBVC.mmT.present.dialog { (config) in
+                    config.dialogType = .size(s: UIScreen.main.bounds.size)
+                    config.presentingScale = 0.90
+                    config.duration = 0.35
+                    config.animateType = .direction(type: .bottom)
+                }
+                self?.present(FDBVC, animated: true, completion: nil)
             case 4:
                 UpdateManager.evaluation()
             default:

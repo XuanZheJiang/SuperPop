@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIAlertViewDelegate {
         let mainNC = UINavigationController(rootViewController: MainViewController())
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
-        window?.backgroundColor = UIColor.white
+        window?.backgroundColor = UIColor.black
         window?.rootViewController = mainNC
         window?.makeKeyAndVisible()
         
