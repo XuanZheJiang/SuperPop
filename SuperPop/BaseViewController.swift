@@ -15,7 +15,7 @@ import SwiftyJSON
 
 class BaseViewController: UIViewController {
 
-    let items = ["手动添加", "二维码", "相册", "意见反馈", "评价"]
+    let items = ["手动添加", "二维码扫描", "从相册录入", "意见反馈", "评价"]
     var noCountImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(#imageLiteral(resourceName: "bgNavi"), for: .default)
         self.navigationController?.navigationBar.shadowImage = #imageLiteral(resourceName: "line")
         
-        let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "添加", items: items as [AnyObject] )
+        let menu = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "录入账号", items: items as [AnyObject] )
 
         self.navigationItem.titleView = menu
         menu.cellBackgroundColor = UIColor.colorFrom(hexString: "5A657A")
