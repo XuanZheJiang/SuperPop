@@ -94,6 +94,7 @@ class MainViewController: BaseViewController {
         
         self.isSuccessful = false
         tableView.reloadData()
+        print("reloaddATA")
     }
     
     // 启动
