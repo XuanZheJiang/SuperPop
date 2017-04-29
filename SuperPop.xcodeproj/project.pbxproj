@@ -27,7 +27,6 @@
 		FA71328A1E6588DC00D1BF04 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7132891E6588DC00D1BF04 /* QRCodeViewController.swift */; };
 		FA71328C1E658C1200D1BF04 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71328B1E658C1200D1BF04 /* Config.swift */; };
 		FA71328E1E658C3100D1BF04 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA71328D1E658C3100D1BF04 /* UIViewExtension.swift */; };
-		FA74F6291E8A1AD000A10AC4 /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74F6281E8A1AD000A10AC4 /* PhotoPickerViewController.swift */; };
 		FA74F62B1E8A2E0B00A10AC4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74F62A1E8A2E0B00A10AC4 /* BaseViewController.swift */; };
 		FA74F62D1E8A336E00A10AC4 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74F62C1E8A336E00A10AC4 /* BaseTableView.swift */; };
 		FA74F6361E8A63C300A10AC4 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA74F6351E8A63C300A10AC4 /* NotificationCenter.framework */; };
@@ -122,7 +121,6 @@
 		FA7132891E6588DC00D1BF04 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		FA71328B1E658C1200D1BF04 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FA71328D1E658C3100D1BF04 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		FA74F6281E8A1AD000A10AC4 /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		FA74F62A1E8A2E0B00A10AC4 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA74F62C1E8A336E00A10AC4 /* BaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
 		FA74F6341E8A63C300A10AC4 /* SuperPopToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SuperPopToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -259,7 +257,6 @@
 				FA7132771E65840700D1BF04 /* MainViewController.swift */,
 				FA7132871E65884900D1BF04 /* InputCodeViewController.swift */,
 				FA7132891E6588DC00D1BF04 /* QRCodeViewController.swift */,
-				FA74F6281E8A1AD000A10AC4 /* PhotoPickerViewController.swift */,
 				FA0237981E937A5C00F48E14 /* FeedbackViewController.swift */,
 				FAE89E931E65A63500116C2B /* HomeCell.swift */,
 				FA121E911E6662700027451E /* PlistManager.swift */,
@@ -623,7 +620,6 @@
 				FA121E921E6662700027451E /* PlistManager.swift in Sources */,
 				FA7132781E65840700D1BF04 /* MainViewController.swift in Sources */,
 				FA02379D1E93900100F48E14 /* CloudKitManager.swift in Sources */,
-				FA74F6291E8A1AD000A10AC4 /* PhotoPickerViewController.swift in Sources */,
 				FAE7F8081E92194500C7286F /* UpdateManager.swift in Sources */,
 				FA71328A1E6588DC00D1BF04 /* QRCodeViewController.swift in Sources */,
 				FA08F71C1E88FD2100F59CD2 /* AddViewController.swift in Sources */,

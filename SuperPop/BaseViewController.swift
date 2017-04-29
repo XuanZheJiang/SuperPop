@@ -72,7 +72,7 @@ class BaseViewController: UIViewController {
 //                }
                 self?.present(QRCodeVC, animated: true, completion: nil)
             case 2:
-                let photoPickerVC = PhotoPickerViewController()
+                let photoPickerVC = UIImagePickerController()
                 photoPickerVC.sourceType = .photoLibrary
                 photoPickerVC.navigationBar.barTintColor = Color.naviColor
                 photoPickerVC.navigationBar.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
