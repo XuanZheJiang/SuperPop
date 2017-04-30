@@ -27,6 +27,9 @@ struct POST {
                           "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.1 Safari/603.1.30",
                           "Referer":"http://www.000wl.cn/",
                           "Accept-Language":"zh-cn"]
+    
+    static let xzfuliHeaders = ["":"",
+                                "":""]
 }
 
 /// 常用颜色
