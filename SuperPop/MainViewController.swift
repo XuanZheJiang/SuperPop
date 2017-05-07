@@ -139,7 +139,7 @@ class MainViewController: BaseViewController {
                     case 0:
                         HUD.flash(.label("提交成功"), delay: 1.0)
                     default:
-                        HUD.flash(.label("未知错误\n请稍后再试"), delay: 1.0)
+                        HUD.flash(.label("出现未知错误\n请稍后再试"), delay: 1.0)
                     }
                 })
                 self.isSuccessful = true

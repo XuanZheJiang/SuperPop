@@ -93,7 +93,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 case 0:
                     self.logInfoL.text = "提交成功"
                 default:
-                    self.logInfoL.text = "未知错误\n请稍后再试"
+                    self.logInfoL.text = "出现未知错误\n请稍后再试"
                 }
                 
                 self.activitySmall.stopAnimating()
